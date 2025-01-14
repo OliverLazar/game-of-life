@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://e2scyq3pobbu"]
+[gd_scene load_steps=4 format=3 uid="uid://e2scyq3pobbu"]
 
 [ext_resource type="Script" path="res://Scripts/csg_box_3d.gd" id="1_gijdd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwl40"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kvlty"]
+
 [node name="Level1" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.958473, 0.034375, -0.283105, 0.0158861, 0.984732, 0.173351, 0.284741, -0.17065, 0.943293, -0.657785, 0.550049, 2.15291)
+transform = Transform3D(0.958473, 0.034375, -0.283105, 0.0158861, 0.984732, 0.173351, 0.284741, -0.17065, 0.943293, -0.657785, 1.30065, 3.53548)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_gijdd")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
-script = ExtResource("1_gijdd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("BoxShape3D_lwl40")
@@ -20,3 +22,14 @@ shape = SubResource("BoxShape3D_lwl40")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.778609, 1.95295, 3.33038)
 omni_attenuation = -1.038
+
+[node name="CSGSphere3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20974, 0)
+gravity_scale = 0.135
+
+[node name="RigidBody3D" type="CSGSphere3D" parent="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.171978, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46522e-05, 0.172037, -0.0001266)
+shape = SubResource("SphereShape3D_kvlty")

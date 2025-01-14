@@ -1,4 +1,4 @@
-extends CSGBox3D
+extends CharacterBody3D
 
 @export var speed: Vector3 = Vector3(25,50,40)
 var time: float = 0
