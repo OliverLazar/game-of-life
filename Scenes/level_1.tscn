@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://e2scyq3pobbu"]
+[gd_scene load_steps=3 format=3 uid="uid://e2scyq3pobbu"]
+
+[ext_resource type="Script" path="res://Scripts/csg_box_3d.gd" id="1_gijdd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwl40"]
 
@@ -10,6 +12,7 @@ transform = Transform3D(0.958473, 0.034375, -0.283104, 0.0158861, 0.984732, 0.17
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
+script = ExtResource("1_gijdd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("BoxShape3D_lwl40")
