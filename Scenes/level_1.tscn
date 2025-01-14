@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://e2scyq3pobbu"]
 
-[ext_resource type="Script" path="res://Scripts/csg_box_3d.gd" id="1_gijdd"]
+[ext_resource type="Script" path="res://Scripts/box_movement.gd" id="1_gijdd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwl40"]
 
@@ -11,12 +11,12 @@
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.958473, 0.034375, -0.283105, 0.0158861, 0.984732, 0.173351, 0.284741, -0.17065, 0.943293, -0.657785, 1.30065, 3.53548)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Box" type="CharacterBody3D" parent="."]
 script = ExtResource("1_gijdd")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Box"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
 shape = SubResource("BoxShape3D_lwl40")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
