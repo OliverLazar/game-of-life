@@ -7,7 +7,7 @@
 [node name="Level1" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.958473, 0.034375, -0.283104, 0.0158861, 0.984732, 0.173351, 0.284741, -0.17065, 0.943293, -0.370409, 0.740638, 2.15291)
+transform = Transform3D(0.958473, 0.034375, -0.283105, 0.0158861, 0.984732, 0.173351, 0.284741, -0.17065, 0.943293, -0.657785, 0.550049, 2.15291)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
@@ -18,5 +18,5 @@ script = ExtResource("1_gijdd")
 shape = SubResource("BoxShape3D_lwl40")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77198, 1.2548, 0.773576)
-omni_attenuation = -3.204
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.778609, 1.95295, 3.33038)
+omni_attenuation = -1.038
