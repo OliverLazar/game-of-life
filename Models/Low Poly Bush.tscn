@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://o7ob0hgqxdim"]
+
+[ext_resource type="PackedScene" uid="uid://dsa17uf7ncce" path="res://Models/stylized bush/stylized bush.fbx" id="1_tex2p"]
+
+[node name="LowPolyBush" type="Node3D"]
+
+[node name="stylized bush" parent="." instance=ExtResource("1_tex2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609309, 0, 3.64841)

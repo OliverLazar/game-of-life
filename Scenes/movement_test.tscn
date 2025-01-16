@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt66pve6kwlvi"]
+[gd_scene load_steps=5 format=3 uid="uid://bt66pve6kwlvi"]
 
 [ext_resource type="Script" path="res://Scripts/movement_test/movement.gd" id="1_qbwnk"]
+[ext_resource type="PackedScene" uid="uid://dsa17uf7ncce" path="res://Models/stylized bush/stylized bush.fbx" id="2_ubmpj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t4w6x"]
 
@@ -48,3 +49,6 @@ shape = SubResource("BoxShape3D_0wf0b")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D2"]
 transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="stylized bush" parent="." instance=ExtResource("2_ubmpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506109, 0.332913, -8.9377)

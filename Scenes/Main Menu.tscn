@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyete4nq1v8x3"]
+[gd_scene load_steps=4 format=3 uid="uid://bpgqlgff2xvs2"]
 
 [ext_resource type="Script" path="res://Scripts/Main Menu/autosize.gd" id="1_sd8u5"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
