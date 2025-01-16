@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://e2scyq3pobbu"]
 
-[ext_resource type="Script" path="res://Scripts/box_movement.gd" id="1_gijdd"]
+[ext_resource type="Script" path="res://Scripts/ball boink/box_shake.gd" id="1_gijdd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbbib"]
 vertex_color_use_as_albedo = true
