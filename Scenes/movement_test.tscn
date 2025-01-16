@@ -19,6 +19,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874043, 0.0542967, -0.128
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0505202, 0)
 shape = SubResource("SphereShape3D_t4w6x")
 
+[node name="Camera3D" type="Camera3D" parent="box"]
+transform = Transform3D(0.998298, -0.00187712, 0.0582901, -0.000153484, 0.999394, 0.0348121, -0.0583202, -0.0347618, 0.997693, -0.0619253, 0.0717803, -0.338553)
+
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814099, -0.167087, -0.136617)
 mass = 0.001
@@ -31,8 +34,17 @@ shape = SubResource("BoxShape3D_0wf0b")
 [node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
 transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.978853, 0.204564, 0, -0.204564, 0.978853, 0.52396, 2.13421, 4.08502)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.860344, 0.0388215, -0.508233, 0.216622, 0.874722, 0.433517, 0.461392, -0.483068, 0.744152, -0.945247, 2.70937, 3.41539)
+transform = Transform3D(-0.813343, 0.407306, -0.415421, 0.216622, 0.874722, 0.433517, 0.539952, 0.262608, -0.79968, -0.945247, 2.70937, -13.0962)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814099, -0.167087, -9.26739)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+shape = SubResource("BoxShape3D_0wf0b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D2"]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
