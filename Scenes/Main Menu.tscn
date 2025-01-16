@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyete4nq1v8x3"]
+
+[ext_resource type="Script" path="res://Scenes/autosize.gd" id="1_x0gjt"]
+[ext_resource type="Script" path="res://Scenes/playButton.gd" id="2_o2qaw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_355rv"]
+font_size = 100
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_top = 38.28
+offset_right = 1152.0
+offset_bottom = 203.28
+
+[node name="Label" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+text = "The Game of Life"
+label_settings = SubResource("LabelSettings_355rv")
+horizontal_alignment = 1
+script = ExtResource("1_x0gjt")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 381.0
+offset_top = 329.0
+offset_right = 770.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 48
+text = "Play
+"
+script = ExtResource("2_o2qaw")

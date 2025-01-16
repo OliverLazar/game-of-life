@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="Game of Life"
-run/main_scene="res://Scenes/ball_boink_for_reference.tscn"
+run/main_scene="res://Scenes/movement_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
