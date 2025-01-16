@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://bn2v17bfxm66r"]
+[gd_scene load_steps=3 format=3 uid="uid://bn2v17bfxm66r"]
+
+[ext_resource type="PackedScene" uid="uid://dx1pn1exhi6fc" path="res://Models/Game of Life Bus.fbx" id="1_3jnp5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_flo6r"]
+size = Vector3(35.6769, 7.65332, 10.728)
 
 [node name="MAp" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04216, 1.57479, -0.0565095)
+
+[node name="Game of Life Bus" parent="CharacterBody3D" instance=ExtResource("1_3jnp5")]
+transform = Transform3D(1, 0, 0, 0, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -22.1893, -1.77821, -20.5418)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0101409, 1, 0, -1, -0.0101409, -22.4426, 3.28561, -17.2645)
+shape = SubResource("BoxShape3D_flo6r")
