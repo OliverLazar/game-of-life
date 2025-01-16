@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt66pve6kwlvi"]
+[gd_scene load_steps=4 format=3 uid="uid://bt66pve6kwlvi"]
+
+[ext_resource type="Script" path="res://Scripts/movement_test/movement.gd" id="1_qbwnk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t4w6x"]
 
@@ -8,6 +10,7 @@
 
 [node name="box" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013906, 1.18373, 0)
+script = ExtResource("1_qbwnk")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874043, 0.0542967, -0.128033)
