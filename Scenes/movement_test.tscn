@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt66pve6kwlvi"]
+
+[ext_resource type="Script" path="res://Scenes/movement.gd" id="1_4lheq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t4w6x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wf0b"]
+
+[node name="MovementTest" type="Node3D"]
+
+[node name="box" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013906, 1.18373, 0)
+script = ExtResource("1_4lheq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874043, 0.0542967, -0.128033)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0505202, 0)
+shape = SubResource("SphereShape3D_t4w6x")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814099, -0.167087, -0.136617)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+shape = SubResource("BoxShape3D_0wf0b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978853, 0.204564, 0, -0.204564, 0.978853, 0.52396, 2.13421, 4.08502)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.860344, 0.0388215, -0.508233, 0.216622, 0.874722, 0.433517, 0.461392, -0.483068, 0.744152, -0.945247, 2.70937, 3.41539)

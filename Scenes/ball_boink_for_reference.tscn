@@ -13,7 +13,7 @@ metallic = 0.41
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5wp2"]
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(0.0745098, 0.584314, 0.0901961, 1)
+albedo_color = Color(0, 0.52549, 0, 1)
 albedo_texture_force_srgb = true
 metallic = 0.5
 
