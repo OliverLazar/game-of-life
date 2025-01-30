@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://co2vlrba0prko"]
+
+[ext_resource type="Script" path="res://Scenes/testdelte.gd" id="1_r8vlv"]
+
+[sub_resource type="Gradient" id="Gradient_2b0x5"]
+colors = PackedColorArray(0.108721, 0.335207, 0.163214, 1, 0.239829, 0.704267, 0.200136, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8tks4"]
+seed = -3
+frequency = 0.029
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_duulh"]
+width = 3000
+height = 3000
+seamless = true
+color_ramp = SubResource("Gradient_2b0x5")
+noise = SubResource("FastNoiseLite_8tks4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bjywe"]
+frequency = 0.0458
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t1g5y"]
+width = 1000
+height = 1000
+as_normal_map = true
+bump_strength = 6.9
+noise = SubResource("FastNoiseLite_bjywe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kor2k"]
+albedo_texture = SubResource("NoiseTexture2D_duulh")
+normal_enabled = true
+normal_scale = 1.6
+normal_texture = SubResource("NoiseTexture2D_t1g5y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
+size = Vector3(122.492, 1, 143.173)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4uyp"]
+size = Vector3(0.266602, 0.454102, 0.313477)
+
+[node name="Map" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232605, -0.17828, 0.00226402)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Node3D"]
+freeze = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4706, 0.0553875, -34.2112)
+material_override = SubResource("StandardMaterial3D_kor2k")
+size = Vector3(122.492, 1, 143.173)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.471, 0.055, -34.211)
+shape = SubResource("BoxShape3D_sjmfa")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67313, 0)
+script = ExtResource("1_r8vlv")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142184, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0649421, 0)
+shape = SubResource("BoxShape3D_k4uyp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8544, 82.8713, -23.0922)
+light_color = Color(0.976471, 0.862745, 0.14902, 1)
+light_energy = 15.054
+light_size = 0.054
+omni_range = 291.871
+omni_attenuation = 0.46
