@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt66pve6kwlvi"]
+[gd_scene load_steps=6 format=3 uid="uid://bt66pve6kwlvi"]
 
 [ext_resource type="Script" path="res://Scripts/movement_test/movement.gd" id="1_qbwnk"]
 [ext_resource type="PackedScene" uid="uid://dsa17uf7ncce" path="res://Models/stylized bush/stylized bush.fbx" id="2_ubmpj"]
@@ -6,6 +6,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_t4w6x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wf0b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mmo2"]
 
 [node name="MovementTest" type="Node3D"]
 
@@ -40,7 +42,7 @@ transform = Transform3D(-0.813343, 0.407306, -0.415421, 0.216622, 0.874722, 0.43
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814099, -0.167087, -9.26739)
-mass = 0.001
+mass = 10.0
 gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
@@ -50,5 +52,13 @@ shape = SubResource("BoxShape3D_0wf0b")
 [node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D2"]
 transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
 
-[node name="stylized bush" parent="." instance=ExtResource("2_ubmpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506109, 0.332913, -8.9377)
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478447, 0.831044, -8.92691)
+gravity_scale = 0.0
+
+[node name="stylized bush" parent="RigidBody3D3" instance=ExtResource("2_ubmpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293214, -0.327323, -0.0107212)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293214, -0.327323, -0.0107212)
+shape = SubResource("BoxShape3D_7mmo2")
