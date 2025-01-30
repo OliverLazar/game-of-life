@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn2v17bfxm66r"]
+[gd_scene load_steps=11 format=3 uid="uid://bn2v17bfxm66r"]
 
 [ext_resource type="PackedScene" uid="uid://dx1pn1exhi6fc" path="res://Models/Game of Life Bus.fbx" id="1_k3nei"]
+[ext_resource type="PackedScene" uid="uid://dkp4lykm7muld" path="res://Models/game_of_life_bus red.tscn" id="2_cxsr6"]
+[ext_resource type="PackedScene" uid="uid://ddxmj1u3pcjjx" path="res://Models/game_of_life_bus pink.tscn" id="2_kwys2"]
+[ext_resource type="PackedScene" uid="uid://7nbuvupq16fa" path="res://Models/game_of_life_bus orange.tscn" id="3_ptdpb"]
+[ext_resource type="PackedScene" uid="uid://di4okjbq6gm68" path="res://Models/game_of_life_bus yellow.tscn" id="4_s0at4"]
+[ext_resource type="PackedScene" uid="uid://cdvkqho7ufii6" path="res://Models/game_of_life_bus green.tscn" id="5_1sann"]
+[ext_resource type="PackedScene" uid="uid://dyipyyu78ev0r" path="res://Models/game_of_life_bus light blue.tscn" id="6_26rpr"]
+[ext_resource type="PackedScene" uid="uid://bafv2c3rdxmxx" path="res://Models/game_of_life_bus light dark blue.tscn" id="7_j7d47"]
+[ext_resource type="PackedScene" uid="uid://b126wlk048iqu" path="res://Models/game_of_life_bus purple.tscn" id="9_71u2s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_flo6r"]
 size = Vector3(35.6769, 14.2758, 10.728)
@@ -24,8 +32,8 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Red Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 2.79397e-09, 1.16415e-10, -3.49246e-10, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -22.7141, -1.23901, -20.3928)
+[node name="Game of Life Bus" parent="Red Bus" instance=ExtResource("2_cxsr6")]
+transform = Transform3D(1, 1.76951e-08, 1.16415e-10, -1.04774e-09, -0.0101402, 0.999949, 4.65661e-09, -0.999949, -0.0101402, -21.7306, -1.24027, -19.7384)
 
 [node name="Orange Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 28.9466, 1.96055, -5.9163)
@@ -34,8 +42,8 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus3" parent="Orange Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 6.51926e-09, 5.82077e-10, -8.14907e-10, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus" parent="Orange Bus" instance=ExtResource("3_ptdpb")]
+transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Yellow Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 61.2112, 1.96055, -5.91631)
@@ -44,18 +52,18 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Yellow Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 7.45058e-09, 5.82077e-10, -9.31323e-10, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus2" parent="Yellow Bus" instance=ExtResource("4_s0at4")]
+transform = Transform3D(1, 1.67638e-08, 2.32831e-10, -1.16415e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Green Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 97.1249, 1.96055, -5.91631)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Green Bus"]
-transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
+transform = Transform3D(1.00554, 3.72529e-09, -5.82077e-10, 1.86265e-09, -0.0101971, 1.00554, 0, -1.00554, -0.0101971, -22.4166, 3.25192, -20.8689)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus3" parent="Green Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 8.3819e-09, 5.82077e-10, -1.04774e-09, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus" parent="Green Bus" instance=ExtResource("5_1sann")]
+transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Light Blue Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.0144333, 1.18222e-11, 0.999896, -3.49246e-10, 1, -8.36735e-11, -0.999896, 1.70651e-13, 0.0144333, 130.828, 1.8766, -5.2121)
@@ -64,8 +72,8 @@ transform = Transform3D(0.0144333, 1.18222e-11, 0.999896, -3.49246e-10, 1, -8.36
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus" parent="Light Blue Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 2.79397e-09, 1.16415e-10, -3.49246e-10, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -22.7088, -1.239, -20.2277)
+[node name="Game of Life Bus" parent="Light Blue Bus" instance=ExtResource("6_26rpr")]
+transform = Transform3D(1, 1.49012e-08, 4.65661e-10, -1.39698e-09, -0.0101402, 0.999949, 3.72529e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Dark Blue Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 159.746, 1.96055, -5.91631)
@@ -74,18 +82,18 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Dark Blue Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 9.31323e-09, 5.82077e-10, -1.16415e-09, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus" parent="Dark Blue Bus" instance=ExtResource("7_j7d47")]
+transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Purple Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 191.495, 1.96055, -5.93779)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Purple Bus"]
-transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
+transform = Transform3D(1.00554, 3.72529e-09, -5.82077e-10, 1.86265e-09, -0.0101971, 1.00554, 0, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus3" parent="Purple Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 1.02445e-08, 5.82077e-10, -1.28057e-09, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus" parent="Purple Bus" instance=ExtResource("9_71u2s")]
+transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Pink" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 226.012, 1.96055, -5.95786)
@@ -94,5 +102,5 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Pink" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 1.11759e-08, 5.82077e-10, -1.39698e-09, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -21.7026, -1.24042, -20.0536)
+[node name="Game of Life Bus2" parent="Pink" instance=ExtResource("2_kwys2")]
+transform = Transform3D(1, 1.76951e-08, 0, -1.04774e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.032, -1.13367, -20.882)
