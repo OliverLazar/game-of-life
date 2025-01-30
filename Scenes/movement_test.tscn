@@ -44,6 +44,7 @@ transform = Transform3D(-0.813343, 0.407306, -0.415421, 0.216622, 0.874722, 0.43
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814099, -0.167087, -9.26739)
 mass = 10.0
 gravity_scale = 0.0
+freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
@@ -53,8 +54,9 @@ shape = SubResource("BoxShape3D_0wf0b")
 transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478447, 0.831044, -8.92691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478447, 0.687396, -8.92691)
 gravity_scale = 0.0
+freeze = true
 
 [node name="stylized bush" parent="RigidBody3D3" instance=ExtResource("2_ubmpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293214, -0.327323, -0.0107212)
