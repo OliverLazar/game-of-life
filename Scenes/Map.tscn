@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://co2vlrba0prko"]
 
-[ext_resource type="Script" path="res://Scenes/testdelte.gd" id="1_r8vlv"]
+[ext_resource type="Script" path="res://Scripts/Map/testdelte.gd" id="1_r8vlv"]
 
 [sub_resource type="Gradient" id="Gradient_2b0x5"]
 colors = PackedColorArray(0.108721, 0.335207, 0.163214, 1, 0.239829, 0.704267, 0.200136, 1)
