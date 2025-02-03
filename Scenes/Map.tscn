@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://co2vlrba0prko"]
+[gd_scene load_steps=14 format=3 uid="uid://co2vlrba0prko"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/testdelte.gd" id="1_r8vlv"]
+[ext_resource type="PackedScene" uid="uid://ci7tqmt28cp6f" path="res://stylized bush/stylized bush.fbx" id="2_yjofa"]
+[ext_resource type="PackedScene" uid="uid://cg1cvynipm175" path="res://Models/tree.tscn" id="4_71bfm"]
 
 [sub_resource type="Gradient" id="Gradient_2b0x5"]
 colors = PackedColorArray(0.108721, 0.335207, 0.163214, 1, 0.239829, 0.704267, 0.200136, 1)
@@ -40,7 +42,7 @@ size = Vector3(122.492, 1, 143.173)
 albedo_texture = ExtResource("1_2mq4v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4uyp"]
-size = Vector3(0.266602, 0.454102, 0.313477)
+size = Vector3(0.266602, 1.24951, 0.313477)
 
 [node name="Map" type="Node3D"]
 
@@ -291,6 +293,11 @@ material_override = SubResource("StandardMaterial3D_4rj7b")
 transform = Transform3D(-13.8893, 0, 1.75709, 0, 14, 0, -1.75709, 0, -13.8893, 101.33, 2.85889, 24.7678)
 material_override = SubResource("StandardMaterial3D_4rj7b")
 
+[node name="Greenery" type="Node3D" parent="Node3D"]
+
+[node name="stylized bush" parent="Node3D/Greenery" instance=ExtResource("2_yjofa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.515807, 0.555, -2.77857)
+
 [node name="TestCharacter" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67313, 0)
 script = ExtResource("1_r8vlv")
@@ -299,8 +306,11 @@ script = ExtResource("1_r8vlv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142184, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestCharacter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0649421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.332763, 0)
 shape = SubResource("BoxShape3D_k4uyp")
+
+[node name="Cylinder" parent="TestCharacter" instance=ExtResource("4_71bfm")]
+transform = Transform3D(16.544, 0, 0, 0, -1.9722e-06, 16.544, 0, -16.544, -1.9722e-06, -2.18959, -2.29641, -3.77547)
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8544, 82.8713, -23.0922)
