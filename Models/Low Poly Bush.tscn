@@ -6,3 +6,6 @@
 
 [node name="stylized bush" parent="." instance=ExtResource("1_tex2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609309, 0, 3.64841)
+
+[node name="stylized bush2" parent="." instance=ExtResource("1_tex2p")]
+transform = Transform3D(0.87189, 0, 0.824505, 0, 1.2, 0, -0.824505, 0, 0.87189, 2.72691, 0.0295448, 3.29252)

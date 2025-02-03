@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt66pve6kwlvi"]
+[gd_scene load_steps=8 format=3 uid="uid://bt66pve6kwlvi"]
 
 [ext_resource type="Script" path="res://Scripts/movement_test/movement.gd" id="1_qbwnk"]
 [ext_resource type="PackedScene" uid="uid://dsa17uf7ncce" path="res://Models/stylized bush/stylized bush.fbx" id="2_ubmpj"]
+[ext_resource type="PackedScene" uid="uid://6a8ssb2ihrkx" path="res://Models/low-poly-tree (1)/source/Tree3.fbx" id="3_bus0j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t4w6x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wf0b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mmo2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d7hf0"]
+height = 3.21758
+radius = 0.62384
 
 [node name="MovementTest" type="Node3D"]
 
@@ -62,5 +67,15 @@ freeze = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293214, -0.327323, -0.0107212)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293214, -0.327323, -0.0107212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0421803, -0.31465, -0.0193501)
 shape = SubResource("BoxShape3D_7mmo2")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03064, 1.70033, -9.87466)
+
+[node name="Tree3" parent="RigidBody3D4" instance=ExtResource("3_bus0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0294683, -1.22118, 0.0989485)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0467253, 0.267866, 0.140275)
+shape = SubResource("CylinderShape3D_d7hf0")
