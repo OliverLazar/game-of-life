@@ -1,29 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn2v17bfxm66r"]
+[gd_scene load_steps=16 format=3 uid="uid://bn2v17bfxm66r"]
 
-[ext_resource type="PackedScene" uid="uid://dx1pn1exhi6fc" path="res://Models/Game of Life Bus.fbx" id="1_k3nei"]
-[ext_resource type="PackedScene" uid="uid://dkp4lykm7muld" path="res://Models/game_of_life_bus red.tscn" id="2_cxsr6"]
-[ext_resource type="PackedScene" uid="uid://ddxmj1u3pcjjx" path="res://Models/game_of_life_bus pink.tscn" id="2_kwys2"]
-[ext_resource type="PackedScene" uid="uid://7nbuvupq16fa" path="res://Models/game_of_life_bus orange.tscn" id="3_ptdpb"]
-[ext_resource type="PackedScene" uid="uid://di4okjbq6gm68" path="res://Models/game_of_life_bus yellow.tscn" id="4_s0at4"]
-[ext_resource type="PackedScene" uid="uid://cdvkqho7ufii6" path="res://Models/game_of_life_bus green.tscn" id="5_1sann"]
-[ext_resource type="PackedScene" uid="uid://dyipyyu78ev0r" path="res://Models/game_of_life_bus light blue.tscn" id="6_26rpr"]
-[ext_resource type="PackedScene" uid="uid://bafv2c3rdxmxx" path="res://Models/game_of_life_bus light dark blue.tscn" id="7_j7d47"]
-[ext_resource type="PackedScene" uid="uid://b126wlk048iqu" path="res://Models/game_of_life_bus purple.tscn" id="9_71u2s"]
+[ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="1_4fw2c"]
+[ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="2_cxsr6"]
+[ext_resource type="PackedScene" uid="uid://dpx51dj35sn0q" path="res://Models/Bus/game_of_life_bus pink.tscn" id="2_kwys2"]
+[ext_resource type="PackedScene" uid="uid://bqqq2lrqjqire" path="res://Models/Bus/game_of_life_bus orange.tscn" id="3_ptdpb"]
+[ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="4_s0at4"]
+[ext_resource type="PackedScene" uid="uid://dbekhn8lvb77k" path="res://Models/Bus/game_of_life_bus green.tscn" id="5_1sann"]
+[ext_resource type="PackedScene" uid="uid://2uie2nejotyn" path="res://Models/Bus/game_of_life_bus light blue.tscn" id="6_26rpr"]
+[ext_resource type="PackedScene" uid="uid://d0jdkpopj763o" path="res://Models/Bus/game_of_life_bus light dark blue.tscn" id="7_j7d47"]
+[ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="9_71u2s"]
+[ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="10_bjwmg"]
+[ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="11_w4v2o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_flo6r"]
 size = Vector3(35.6769, 14.2758, 10.728)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6sjs"]
+size = Vector3(5.47208, 9.79803, 4.95255)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0hf2"]
+albedo_color = Color(0, 0.662745, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grspd"]
+albedo_color = Color(1, 0.352941, 1, 1)
 
 [node name="MAp" type="Node3D"]
 
 [node name="Blank Color Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00091811, 0.00154917, 0.999998, -0.000317774, 0.999999, -0.00154946, -1, -0.000319189, -0.000917603, -41.402, 1.95889, -5.90925)
 
-[node name="Game of Life Bus" parent="Blank Color Bus" instance=ExtResource("1_k3nei")]
-transform = Transform3D(1, 0, 0, 0, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -22.7341, -1.23901, -20.4951)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blank Color Bus"]
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
+
+[node name="Game of Life Bus2" parent="Blank Color Bus" instance=ExtResource("1_4fw2c")]
+transform = Transform3D(1, 0, -2.91038e-11, 0, -0.0101402, 0.999949, 0, -0.999949, -0.0101402, -22.7341, -1.23901, -20.4951)
 
 [node name="Red Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, -3.71804, 1.96055, -5.91631)
@@ -52,7 +63,7 @@ transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Yellow Bus" instance=ExtResource("4_s0at4")]
+[node name="Game of Life Bus" parent="Yellow Bus" instance=ExtResource("4_s0at4")]
 transform = Transform3D(1, 1.67638e-08, 2.32831e-10, -1.16415e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Green Bus" type="CharacterBody3D" parent="."]
@@ -63,7 +74,7 @@ transform = Transform3D(1.00554, 3.72529e-09, -5.82077e-10, 1.86265e-09, -0.0101
 shape = SubResource("BoxShape3D_flo6r")
 
 [node name="Game of Life Bus" parent="Green Bus" instance=ExtResource("5_1sann")]
-transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
+transform = Transform3D(1, 1.76951e-08, 3.49246e-10, -1.16415e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
 [node name="Light Blue Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.0144333, 1.18222e-11, 0.999896, -3.49246e-10, 1, -8.36735e-11, -0.999896, 1.70651e-13, 0.0144333, 130.828, 1.8766, -5.2121)
@@ -95,12 +106,50 @@ shape = SubResource("BoxShape3D_flo6r")
 [node name="Game of Life Bus" parent="Purple Bus" instance=ExtResource("9_71u2s")]
 transform = Transform3D(1, 1.58325e-08, 3.49246e-10, -1.28057e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.6779, -1.24055, -20.3325)
 
-[node name="Pink" type="CharacterBody3D" parent="."]
+[node name="Pink Bus" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.00997823, 0.000320945, 0.999951, 0.00149454, 0.999999, -0.000306045, -0.999949, 0.00149142, -0.00997868, 226.012, 1.96055, -5.95786)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Bus"]
 transform = Transform3D(1.00554, 3.7835e-09, -3.20142e-10, 1.74623e-09, -0.0101971, 1.00554, -5.82077e-11, -1.00554, -0.0101971, -22.4426, 3.25203, -20.5757)
 shape = SubResource("BoxShape3D_flo6r")
 
-[node name="Game of Life Bus2" parent="Pink" instance=ExtResource("2_kwys2")]
+[node name="Game of Life Bus2" parent="Pink Bus" instance=ExtResource("2_kwys2")]
 transform = Transform3D(1, 1.76951e-08, 0, -1.04774e-09, -0.0101402, 0.999949, 2.79397e-09, -0.999949, -0.0101402, -21.032, -1.13367, -20.882)
+
+[node name="Blank Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.3273, -2.95044, 39.9311)
+
+[node name="Tinker" type="MeshInstance3D" parent="Blank Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
+mesh = ExtResource("10_bjwmg")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blank Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_d6sjs")
+
+[node name="Blue Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1023, -2.95045, 39.9273)
+
+[node name="Blue" type="MeshInstance3D" parent="Blue Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
+mesh = ExtResource("10_bjwmg")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_s0hf2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_d6sjs")
+
+[node name="Pink Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5782, -2.95045, 39.9273)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_d6sjs")
+
+[node name="Pink" type="MeshInstance3D" parent="Pink Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
+mesh = ExtResource("11_w4v2o")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_grspd")

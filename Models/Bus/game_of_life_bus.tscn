@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://dkp4lykm7muld"]
+[gd_scene load_steps=5 format=4 uid="uid://d3opoi1tw1nyv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lpcp"]
 
@@ -33,10 +33,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kpd6o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vou3u"]
-albedo_color = Color(0.919745, 0, 0.0768814, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0bd5"]
+albedo_color = Color(0.75, 0.75, 0.75, 1)
 
 [node name="Game of Life Bus" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_t0nlg")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_vou3u")
+surface_material_override/0 = SubResource("StandardMaterial3D_k0bd5")

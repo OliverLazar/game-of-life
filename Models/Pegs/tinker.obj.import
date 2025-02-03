@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://thloply4sp1v"
+path="res://.godot/imported/tinker.obj-ed9394c9f4ac6d8ebdfbc807bbb8a44a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tinker.obj-ed9394c9f4ac6d8ebdfbc807bbb8a44a.mesh"]
+
+source_file="res://Models/Pegs/tinker.obj"
+dest_files=["res://.godot/imported/tinker.obj-ed9394c9f4ac6d8ebdfbc807bbb8a44a.mesh", "res://.godot/imported/tinker.obj-ed9394c9f4ac6d8ebdfbc807bbb8a44a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
