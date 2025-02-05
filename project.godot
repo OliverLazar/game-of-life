@@ -19,3 +19,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
+
+[filesystem]
+
+import/blender/enabled=false
