@@ -10,9 +10,9 @@ albedo_texture = ExtResource("1_skegs")
 [node name="Low-polyRockCliff" type="Node3D"]
 
 [node name="Cliff" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0462716, 0, 0.110968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87062, 0.422163, 2.03031)
 material_override = SubResource("StandardMaterial3D_2erfy")
 mesh = ExtResource("2_577ql")
 
 [node name="Stone01" parent="." instance=ExtResource("3_a5d2c")]
-transform = Transform3D(-0.489991, 0, 0.871727, 0, 1, 0, -0.871727, 0, -0.489991, 3.80309, 1.15712, 1.64832)
+transform = Transform3D(-0.489991, 0, 0.871727, 0, 1, 0, -0.871727, 0, -0.489991, 2.19882, 0.292979, 1.64832)
