@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c8b0i1mxnu1qk"
+path="res://.godot/imported/Cliff.obj-d695065b75f1e1e32597c4dd0a682e6d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cliff.obj-d695065b75f1e1e32597c4dd0a682e6d.mesh"]
+
+source_file="res://Models/low-poly-cliff/cliff/Cliff.obj"
+dest_files=["res://.godot/imported/Cliff.obj-d695065b75f1e1e32597c4dd0a682e6d.mesh", "res://.godot/imported/Cliff.obj-d695065b75f1e1e32597c4dd0a682e6d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

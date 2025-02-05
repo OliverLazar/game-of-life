@@ -3,12 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6a8ssb2ihrkx" path="res://Models/low-poly-tree (1)/source/Tree3.fbx" id="1_qihts"]
 
 [node name="Low-polyTree" type="Node3D"]
+transform = Transform3D(0.999259, 0, -0.0384925, 0, 1, 0, 0.0384925, 0, 0.999259, 1.49644, 1.02834, 0)
 
 [node name="Tree3" parent="." instance=ExtResource("1_qihts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98615, 5.47644, 9.50308)
-
-[node name="Tree4" parent="." instance=ExtResource("1_qihts")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.82512, 5.4314, 8.48166)
-
-[node name="Tree5" parent="." instance=ExtResource("1_qihts")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.2379, 5.68457, 10.6426)
+transform = Transform3D(0.999259, 0, 0.0384925, 0, 1, 0, -0.0384925, 0, 0.999259, -1.42703, 0.68169, -0.400301)

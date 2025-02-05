@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://x34btkn2hqo2"]
+
+[ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_skegs"]
+[ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_577ql"]
+[ext_resource type="PackedScene" uid="uid://btxcvrvc7jxht" path="res://Models/low-poly-stone-for-games/source/Stone01.fbx" id="3_a5d2c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2erfy"]
+albedo_texture = ExtResource("1_skegs")
+
+[node name="Low-polyRockCliff" type="Node3D"]
+
+[node name="Cliff" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0462716, 0, 0.110968)
+material_override = SubResource("StandardMaterial3D_2erfy")
+mesh = ExtResource("2_577ql")
+
+[node name="Stone01" parent="." instance=ExtResource("3_a5d2c")]
+transform = Transform3D(-0.489991, 0, 0.871727, 0, 1, 0, -0.871727, 0, -0.489991, 3.80309, 1.15712, 1.64832)
