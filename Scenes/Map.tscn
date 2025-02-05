@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://co2vlrba0prko"]
+[gd_scene load_steps=12 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/testdelte.gd" id="1_r8vlv"]
