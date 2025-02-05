@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpgqlgff2xvs2"]
+[gd_scene load_steps=6 format=3 uid="uid://bpgqlgff2xvs2"]
 
 [ext_resource type="Script" path="res://Scripts/Main Menu/autosize.gd" id="1_sd8u5"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
-[ext_resource type="Texture2D" uid="uid://1mo6u0gyj24s" path="res://Media/ra.png" id="3_esfwe"]
+[ext_resource type="Texture2D" uid="uid://bext001723m13" path="res://Media/ra_loading.png" id="3_xb77i"]
+[ext_resource type="AudioStream" uid="uid://tj7wni37l0s5" path="res://Media/powerUp.wav" id="4_cjtds"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_355rv"]
 font_size = 100
@@ -48,4 +49,7 @@ script = ExtResource("2_o2qaw")
 visible = false
 position = Vector2(578.25, 325.75)
 scale = Vector2(6.45531, 3.60497)
-texture = ExtResource("3_esfwe")
+texture = ExtResource("3_xb77i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cjtds")
