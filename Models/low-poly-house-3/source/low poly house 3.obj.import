@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://brgj0kdkmpt6t"
+path="res://.godot/imported/low poly house 3.obj-0ba6177bc3e7525678f94bc37c7e4c47.mesh"
+
+[deps]
+
+files=["res://.godot/imported/low poly house 3.obj-0ba6177bc3e7525678f94bc37c7e4c47.mesh"]
+
+source_file="res://Models/low-poly-house-3/source/low poly house 3.obj"
+dest_files=["res://.godot/imported/low poly house 3.obj-0ba6177bc3e7525678f94bc37c7e4c47.mesh", "res://.godot/imported/low poly house 3.obj-0ba6177bc3e7525678f94bc37c7e4c47.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
