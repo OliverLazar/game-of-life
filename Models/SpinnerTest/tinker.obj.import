@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpvyqjvfqyavg"
+path="res://.godot/imported/tinker.obj-5aa64eea5a8d98a269a42f433618448f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tinker.obj-5aa64eea5a8d98a269a42f433618448f.mesh"]
+
+source_file="res://Models/SpinnerTest/tinker.obj"
+dest_files=["res://.godot/imported/tinker.obj-5aa64eea5a8d98a269a42f433618448f.mesh", "res://.godot/imported/tinker.obj-5aa64eea5a8d98a269a42f433618448f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
