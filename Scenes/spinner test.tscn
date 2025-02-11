@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjuc48vvfoef3"]
+[gd_scene load_steps=3 format=3 uid="uid://bk75ud7hg002n"]
 
 [ext_resource type="PackedScene" uid="uid://bxdtwkp325nxu" path="res://Models/SpinnerTest/model.glb" id="1_tn8gp"]
 [ext_resource type="Script" path="res://Models/SpinnerTest/model.gd" id="2_165sh"]
@@ -6,7 +6,7 @@
 [node name="SpinnerTest" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.64284, 40.7614, 1.24666)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.64284, 54.3073, 1.24666)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.93073, 41.3201, 0.887218)
@@ -14,10 +14,10 @@ light_energy = 50.0
 omni_range = 494.731
 omni_attenuation = 0.8
 
-[node name="model" parent="." instance=ExtResource("1_tn8gp")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.444, 1.73326)
+[node name="Root" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0649431, 0, 0, 0, 1, -0.0226669, 3.87683, -0.0867214)
+size = Vector3(1, 42.5321, 1)
 script = ExtResource("2_165sh")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0226669, 20.766, -0.0867214)
-size = Vector3(1, 42.5321, 1)
+[node name="model" parent="Root" instance=ExtResource("1_tn8gp")]
+transform = Transform3D(1, 0, 0, 0, -6.73072e-07, 15.3981, 0, -1, -4.37114e-08, -0.0713988, -205.115, 1.66854)

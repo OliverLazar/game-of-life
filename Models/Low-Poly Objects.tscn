@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://x34btkn2hqo2"]
+[gd_scene load_steps=11 format=3 uid="uid://b6dsp685lv46o"]
 
 [ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_7gsr7"]
 [ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_8woyj"]

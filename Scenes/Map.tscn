@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=39 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://btxcvrvc7jxht" path="res://Models/low-poly-stone-for-games/source/Stone01.fbx" id="6_hj1bq"]
 [ext_resource type="Texture2D" uid="uid://cx0x027kvercr" path="res://Media/blue_square.png" id="7_0wx8j"]
 [ext_resource type="Texture2D" uid="uid://cd3orpj52raub" path="res://Media/red_square.png" id="8_3m7mw"]
+[ext_resource type="PackedScene" uid="uid://cit2oo31x0ryn" path="res://Models/Low Poly House/Low Poly House/Low Poly House.fbx" id="8_i12e6"]
+[ext_resource type="Texture2D" uid="uid://dgmn7wu7v6y4e" path="res://Models/low-poly-house-3/textures/20240506_091241.jpg" id="10_qx0ll"]
+[ext_resource type="ArrayMesh" uid="uid://brgj0kdkmpt6t" path="res://Models/low-poly-house-3/source/low poly house 3.obj" id="11_otc4s"]
+[ext_resource type="PackedScene" uid="uid://bqng5qmp0jkml" path="res://Models/model (1).glb" id="12_5j8jk"]
 [ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="12_8xu31"]
 [ext_resource type="Script" path="res://Scripts/Map/fpsCounter.gd" id="14_740nq"]
 
@@ -53,6 +57,9 @@ albedo_texture = ExtResource("1_2mq4v")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yvdna"]
 albedo_texture = ExtResource("4_5nics")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmf2o"]
+albedo_texture = ExtResource("10_qx0ll")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4uyp"]
 size = Vector3(0.266602, 1.24951, 0.313477)
@@ -437,6 +444,30 @@ skeleton = NodePath("../../..")
 
 [node name="Stone01" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
 transform = Transform3D(0.999652, 0, -0.0263513, 0, 1, 0, 0.0263513, 0, 0.999652, -4.11187, 0.476359, -6.48599)
+
+[node name="Low Poly House" parent="NodeBase/Greenery" instance=ExtResource("8_i12e6")]
+transform = Transform3D(0.0542655, 0, -0.396302, 0, 0.4, 0, 0.396302, 0, 0.0542655, 7.86294, 0.555, -8.88255)
+
+[node name="Low Poly House2" parent="NodeBase/Greenery" instance=ExtResource("8_i12e6")]
+transform = Transform3D(0.23525, 0, -0.323508, 0, 0.4, 0, 0.323508, 0, 0.23525, 12.9988, 0.555, -10.6537)
+
+[node name="Low Poly House3" parent="NodeBase/Greenery" instance=ExtResource("8_i12e6")]
+transform = Transform3D(-0.295198, 0, 0.269922, 0, 0.4, 0, -0.269922, 0, -0.295198, 17.1478, 0.555, -9.31391)
+
+[node name="LowPolyHouse3" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.253989, 0, -0.159655, 0, 0.3, 0, 0.159655, 0, -0.253989, 14.4422, 0.737981, -8.3833)
+material_override = SubResource("StandardMaterial3D_dmf2o")
+mesh = ExtResource("11_otc4s")
+skeleton = NodePath("")
+
+[node name="LowPolyHouse4" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-1.04038, 0, -0.357217, 0, 1.1, 0, 0.357217, 0, -1.04038, 11.0713, 0.737981, -5.66946)
+material_override = SubResource("StandardMaterial3D_dmf2o")
+mesh = ExtResource("11_otc4s")
+skeleton = NodePath("")
+
+[node name="MountOIl" parent="NodeBase" instance=ExtResource("12_5j8jk")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 43.1321, -1.10832, -38.9919)
 
 [node name="TestCharacter" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67313, 0)
