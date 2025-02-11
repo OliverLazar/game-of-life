@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://x34btkn2hqo2"]
+[gd_scene load_steps=11 format=3 uid="uid://x34btkn2hqo2"]
 
 [ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_7gsr7"]
 [ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_8woyj"]
@@ -7,15 +7,13 @@
 [ext_resource type="ArrayMesh" uid="uid://brgj0kdkmpt6t" path="res://Models/low-poly-house-3/source/low poly house 3.obj" id="5_pd4ks"]
 [ext_resource type="PackedScene" uid="uid://c0wmdltf4cyfc" path="res://Models/small-low-poly-house/source/sadece ev.fbx" id="6_fwxhs"]
 [ext_resource type="PackedScene" uid="uid://cit2oo31x0ryn" path="res://Models/Low Poly House/Low Poly House/Low Poly House.fbx" id="7_y6biu"]
-[ext_resource type="PackedScene" uid="uid://fxtna1lu6bxv" path="res://Models/Mount Oil.glb" id="8_h77ts"]
+[ext_resource type="PackedScene" uid="uid://bqng5qmp0jkml" path="res://Models/model (1).glb" id="8_haceo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2erfy"]
 albedo_texture = ExtResource("1_7gsr7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujvqr"]
 albedo_texture = ExtResource("4_hop7f")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpqid"]
 
 [node name="Low-polyRockCliff" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -227.692, 7.48695, -67.9384)
@@ -37,11 +35,7 @@ mesh = ExtResource("5_pd4ks")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.71178, -0.320227, 10.8346)
 
 [node name="LowPolyHouse2" parent="." instance=ExtResource("7_y6biu")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 4.82768, -0.15145, 7.28768)
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 5.27187, 0.811351, 7.13409)
 
-[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("8_h77ts")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.0332, -0.441248, 11.5283)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tinkercad GLTF Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421875, -0.944946, -1.84241)
-material_overlay = SubResource("StandardMaterial3D_wpqid")
+[node name="model (1)" parent="." instance=ExtResource("8_haceo")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 12.6532, -1.10832, 4.63603)
