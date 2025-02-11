@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjuc48vvfoef3"]
+
+[ext_resource type="PackedScene" uid="uid://bxdtwkp325nxu" path="res://Models/SpinnerTest/model.glb" id="1_tn8gp"]
+[ext_resource type="Script" path="res://Models/SpinnerTest/model.gd" id="2_165sh"]
+
+[node name="SpinnerTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.64284, 40.7614, 1.24666)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.93217, 41.3064, 0.978149)
+light_energy = 50.0
+omni_range = 494.731
+omni_attenuation = 0.8
+
+[node name="model" parent="." instance=ExtResource("1_tn8gp")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.11538, -8.76124, 2.61651)
+script = ExtResource("2_165sh")
+speed = null

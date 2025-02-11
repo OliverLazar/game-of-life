@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bn2v17bfxm66r"]
+[gd_scene load_steps=17 format=3 uid="uid://bn2v17bfxm66r"]
 
 [ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="1_4fw2c"]
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="2_cxsr6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="9_71u2s"]
 [ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="10_bjwmg"]
 [ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="11_w4v2o"]
+[ext_resource type="ArrayMesh" uid="uid://bpvyqjvfqyavg" path="res://Models/SpinnerTest/tinker.obj" id="12_tnvre"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_flo6r"]
 size = Vector3(35.6769, 14.2758, 10.728)
@@ -179,3 +180,7 @@ transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.0045
 mesh = ExtResource("11_w4v2o")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_grspd")
+
+[node name="Tinker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00837753, 0.999965, 0, -0.999965, 0.00837753, 91.2792, -2.4638, 101.474)
+mesh = ExtResource("12_tnvre")
