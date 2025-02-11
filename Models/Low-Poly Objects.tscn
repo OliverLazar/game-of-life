@@ -1,18 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://x34btkn2hqo2"]
+[gd_scene load_steps=12 format=3 uid="uid://x34btkn2hqo2"]
 
-[ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_skegs"]
-[ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_577ql"]
-[ext_resource type="PackedScene" uid="uid://btxcvrvc7jxht" path="res://Models/low-poly-stone-for-games/source/Stone01.fbx" id="3_a5d2c"]
+[ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_7gsr7"]
+[ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_8woyj"]
+[ext_resource type="PackedScene" uid="uid://btxcvrvc7jxht" path="res://Models/low-poly-stone-for-games/source/Stone01.fbx" id="3_alklb"]
+[ext_resource type="Texture2D" uid="uid://dgmn7wu7v6y4e" path="res://Models/low-poly-house-3/textures/20240506_091241.jpg" id="4_hop7f"]
+[ext_resource type="ArrayMesh" uid="uid://brgj0kdkmpt6t" path="res://Models/low-poly-house-3/source/low poly house 3.obj" id="5_pd4ks"]
+[ext_resource type="PackedScene" uid="uid://c0wmdltf4cyfc" path="res://Models/small-low-poly-house/source/sadece ev.fbx" id="6_fwxhs"]
+[ext_resource type="PackedScene" uid="uid://cit2oo31x0ryn" path="res://Models/Low Poly House/Low Poly House/Low Poly House.fbx" id="7_y6biu"]
+[ext_resource type="PackedScene" uid="uid://fxtna1lu6bxv" path="res://Models/Mount Oil.glb" id="8_h77ts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2erfy"]
-albedo_texture = ExtResource("1_skegs")
+albedo_texture = ExtResource("1_7gsr7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujvqr"]
+albedo_texture = ExtResource("4_hop7f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpqid"]
 
 [node name="Low-polyRockCliff" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -227.692, 7.48695, -67.9384)
 
 [node name="Cliff" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87062, 0.422163, 2.03031)
 material_override = SubResource("StandardMaterial3D_2erfy")
-mesh = ExtResource("2_577ql")
+mesh = ExtResource("2_8woyj")
 
-[node name="Stone01" parent="." instance=ExtResource("3_a5d2c")]
+[node name="Stone01" parent="." instance=ExtResource("3_alklb")]
 transform = Transform3D(-0.489991, 0, 0.871727, 0, 1, 0, -0.871727, 0, -0.489991, 2.19882, 0.292979, 1.64832)
+
+[node name="LowPolyHouse3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.510598, -0.0515593, 6.81316)
+material_override = SubResource("StandardMaterial3D_ujvqr")
+mesh = ExtResource("5_pd4ks")
+
+[node name="LowPolyHouse1" parent="." instance=ExtResource("6_fwxhs")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.71178, -0.320227, 10.8346)
+
+[node name="LowPolyHouse2" parent="." instance=ExtResource("7_y6biu")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 4.82768, -0.15145, 7.28768)
+
+[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("8_h77ts")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.0332, -0.441248, 11.5283)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tinkercad GLTF Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421875, -0.944946, -1.84241)
+material_overlay = SubResource("StandardMaterial3D_wpqid")
