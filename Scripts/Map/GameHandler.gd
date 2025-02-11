@@ -3,12 +3,45 @@ extends Node3D
 @onready var Map = $"NodeMapMath"
 @onready var testCar = $"Game of Life Bus"
 
+var d = Vector3.ZERO
+var r = Vector3.ZERO
+var playerObject
+var Target = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var playerObject = Player.new()
+	playerObject = Player.new()
 	playerObject.setCar(testCar)
-
+	moveCar(playerObject, Target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	playerObject._process(delta)
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		Target += 1
+		moveCar(playerObject, Target)
+	
+func moveCar(player, target):
+	var node = Map.get_node(str(target))
+	
+	# Target Rotation
+	r = node.rotation_degrees + Vector3(-90, 180, 0)
+	
+	var yaw = deg_to_rad(r.y-90)
+	var pitch = deg_to_rad(r.x+90)
+	var roll = deg_to_rad(r.z)
+
+	var forward = Vector3(
+		cos(pitch) * sin(yaw),
+		sin(pitch),
+		cos(pitch) * cos(yaw)
+	).normalized()
+	
+	# Target Position
+	d = node.position + forward + Vector3.UP*0.1
+	if target == 0: d += Vector3.UP*0.4
+	
+	# Move car
+	player.setDestination(d, r)

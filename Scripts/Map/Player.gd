@@ -12,12 +12,22 @@ func _ready():
 	pass
 
 func _process(delta: float):
-	# lerp position
 	if lerpWeight < 1:
 		car.position = lerp(car.position, pDestination, lerpWeight)
+		car.rotation_degrees = lerp(car.rotation_degrees, rDestination, lerpWeight)
 		lerpWeight += Speed*delta
 
 func setCar(Car):
 	car = Car
 	car.position = pDestination
 	car.rotation_degrees = rDestination
+	
+func teleport(dest, rot):
+	pDestination = dest
+	rDestination = rot
+	car.position = dest
+	car.rotation_degrees = rot
+	
+func setDestination(dest, rot):
+	pDestination = dest
+	rDestination = rot
