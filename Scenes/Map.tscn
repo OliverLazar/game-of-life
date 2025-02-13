@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=37 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
-[ext_resource type="Script" path="res://Scripts/Map/testdelte.gd" id="1_r8vlv"]
 [ext_resource type="PackedScene" uid="uid://ci7tqmt28cp6f" path="res://stylized bush/stylized bush.fbx" id="2_yjofa"]
 [ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="4_5nics"]
 [ext_resource type="PackedScene" uid="uid://cg1cvynipm175" path="res://Models/tree.tscn" id="4_71bfm"]
@@ -60,9 +59,6 @@ albedo_texture = ExtResource("4_5nics")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmf2o"]
 albedo_texture = ExtResource("10_qx0ll")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k4uyp"]
-size = Vector3(0.266602, 1.24951, 0.313477)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjmrd"]
 transparency = 1
@@ -469,17 +465,6 @@ skeleton = NodePath("")
 [node name="MountOIl" parent="NodeBase" instance=ExtResource("12_5j8jk")]
 transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 43.1321, -1.10832, -38.9919)
 
-[node name="TestCharacter" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67313, 0)
-script = ExtResource("1_r8vlv")
-
-[node name="Camera3D" type="Camera3D" parent="TestCharacter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142184, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestCharacter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.332763, 0)
-shape = SubResource("BoxShape3D_k4uyp")
-
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8544, 82.8713, -23.0922)
 light_energy = 10.946
@@ -662,9 +647,15 @@ material = SubResource("StandardMaterial3D_bs8op")
 [node name="Game of Life Bus" parent="." instance=ExtResource("12_8xu31")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 3.11633, 0.449129, -6.90746)
 
+[node name="carCamera" type="Camera3D" parent="Game of Life Bus"]
+transform = Transform3D(20, 0, 0, 0, 19.8218, -2.66381, 0, 2.66381, 19.8218, 0, -33.2238, 109.59)
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="UI"]
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("14_740nq")
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.618834, 0.438986, -0.651411, 0, 0.829272, 0.558846, 0.785522, -0.345832, 0.513181, 0, 7.89057, 0)

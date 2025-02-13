@@ -3,19 +3,36 @@ extends Node3D
 @onready var Map = $"NodeMapMath"
 @onready var testCar = $"Game of Life Bus"
 
+@onready var mainCamera = $"MainCamera"
+
 var d = Vector3.ZERO
 var r = Vector3.ZERO
 var playerObject
 var Target = 0
 
+var MoveAmount = 4
+var MoveCooldownReset = 30
+var MoveCooldown = 300
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mainCamera.current = true
+	
 	playerObject = Player.new()
 	playerObject.setCar(testCar)
 	moveCar(playerObject, Target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if MoveAmount > 0:
+		MoveCooldown -= 1
+		if MoveCooldown == 0:
+			playerObject.activateCamera()
+			MoveCooldown = MoveCooldownReset
+			Target += 1
+			MoveAmount -= 1
+			moveCar(playerObject, Target)
+	
 	playerObject._process(delta)
 	
 func _input(event: InputEvent) -> void:

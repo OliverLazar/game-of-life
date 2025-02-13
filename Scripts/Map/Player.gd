@@ -31,3 +31,6 @@ func teleport(dest, rot):
 func setDestination(dest, rot):
 	pDestination = dest
 	rDestination = rot
+	
+func activateCamera():
+	car.get_node("carCamera").current = true
