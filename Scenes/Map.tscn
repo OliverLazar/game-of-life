@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=46 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -17,6 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://bqng5qmp0jkml" path="res://Models/model (1).glb" id="12_5j8jk"]
 [ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="12_8xu31"]
 [ext_resource type="Script" path="res://Scripts/Map/fpsCounter.gd" id="14_740nq"]
+[ext_resource type="PackedScene" uid="uid://dbekhn8lvb77k" path="res://Models/Bus/game_of_life_bus green.tscn" id="18_bn7b2"]
+[ext_resource type="PackedScene" uid="uid://2uie2nejotyn" path="res://Models/Bus/game_of_life_bus light blue.tscn" id="19_ru4b2"]
+[ext_resource type="PackedScene" uid="uid://d0jdkpopj763o" path="res://Models/Bus/game_of_life_bus light dark blue.tscn" id="20_wy4mw"]
+[ext_resource type="PackedScene" uid="uid://bqqq2lrqjqire" path="res://Models/Bus/game_of_life_bus orange.tscn" id="21_qocdc"]
+[ext_resource type="PackedScene" uid="uid://dpx51dj35sn0q" path="res://Models/Bus/game_of_life_bus pink.tscn" id="22_5xivm"]
+[ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="23_nn4gh"]
+[ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="24_lm7d8"]
+[ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
 
 [sub_resource type="Gradient" id="Gradient_2b0x5"]
 colors = PackedColorArray(0.108721, 0.335207, 0.163214, 1, 0.239829, 0.704267, 0.200136, 1)
@@ -92,6 +100,9 @@ albedo_color = Color(1, 0.163096, 0.0698683, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs8op"]
 albedo_color = Color(0.783389, 0.932412, 0.808551, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ssral"]
+font_size = 40
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_mawgn")
@@ -657,5 +668,79 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("14_740nq")
 
+[node name="PlayerCount" type="HSlider" parent="UI"]
+offset_left = 471.0
+offset_top = 257.0
+offset_right = 800.0
+offset_bottom = 327.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="pcountLabel" type="Label" parent="UI"]
+offset_left = 284.0
+offset_top = 260.0
+offset_right = 453.0
+offset_bottom = 321.0
+text = "Players:"
+label_settings = SubResource("LabelSettings_ssral")
+
+[node name="StartGame" type="Button" parent="UI"]
+offset_left = 435.0
+offset_top = 399.0
+offset_right = 624.0
+offset_bottom = 473.0
+text = "Start"
+
+[node name="OptionA" type="Button" parent="UI"]
+visible = false
+offset_left = 217.0
+offset_top = 283.0
+offset_right = 406.0
+offset_bottom = 604.0
+text = "OptionA"
+
+[node name="OptionB" type="Button" parent="UI"]
+visible = false
+offset_left = 678.0
+offset_top = 286.0
+offset_right = 867.0
+offset_bottom = 607.0
+text = "OptionB
+"
+
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.618834, 0.438986, -0.651411, 0, 0.829272, 0.558846, 0.785522, -0.345832, 0.513181, 0, 7.89057, 0)
+
+[node name="Garage" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.69261, 0)
+
+[node name="Green" parent="Garage" instance=ExtResource("18_bn7b2")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+surface_material_override/0 = null
+
+[node name="Cyan" parent="Garage" instance=ExtResource("19_ru4b2")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.915098, 0)
+
+[node name="Blue" parent="Garage" instance=ExtResource("20_wy4mw")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.92324, 0)
+surface_material_override/0 = null
+
+[node name="Orange" parent="Garage" instance=ExtResource("21_qocdc")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -2.83918, 0)
+surface_material_override/0 = null
+
+[node name="Pink" parent="Garage" instance=ExtResource("22_5xivm")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -3.88127, 0)
+
+[node name="Purple" parent="Garage" instance=ExtResource("23_nn4gh")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -4.88843, 0)
+
+[node name="Red" parent="Garage" instance=ExtResource("24_lm7d8")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -5.87464, 0)
+
+[node name="Yellow" parent="Garage" instance=ExtResource("25_jb1yt")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -6.82438, 0)
+surface_material_override/0 = null

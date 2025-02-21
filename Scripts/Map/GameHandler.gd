@@ -5,43 +5,64 @@ extends Node3D
 
 @onready var mainCamera = $"MainCamera"
 
+@onready var Garage = $"Garage"
+
+# Start Menu
+@onready var pSlider = $"UI/PlayerCount"
+@onready var start = $"UI/StartGame"
+
+# Buttons
+@onready var opA = $"UI/OptionA"
+@onready var opB = $"UI/OptionB"
+
+var PlayerCount = 3
+
+var cooldown_gameStart = 300
+var cooldown_movement = 30
+var cooldown_endMovement = 120
+
+# Player Movement
+var currentPlayerID = 0
+var Roll = 0
+var Target = 0
+var PathChoice = ""
 var d = Vector3.ZERO
 var r = Vector3.ZERO
-var playerObject
-var Target = 0
 
-var MoveAmount = 4
-var MoveCooldownReset = 30
-var MoveCooldown = 300
+# Game
+var Players = []
+var Cooldown: int
+var gameState = 0
+var gameStateChanged = false
+# 0 -> setup
+# 1 -> spin spinner
+# 2 -> move car
+# 3 -> regular square cards (yellow)
+# 4 -> stop sign event (red)
+# 5 -> branch selection (blue)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#start.pressed.connect(_start_button)
 	mainCamera.current = true
-	
-	playerObject = Player.new()
-	playerObject.setCar(testCar)
-	moveCar(playerObject, Target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if MoveAmount > 0:
-		MoveCooldown -= 1
-		if MoveCooldown == 0:
-			playerObject.activateCamera()
-			MoveCooldown = MoveCooldownReset
-			Target += 1
-			MoveAmount -= 1
-			moveCar(playerObject, Target)
+func _process(delta: float) -> void:	
+	if gameStateChanged:
+		if gameState == 3:
+			opA.visible = true
+			opB.visible = true
+			
 	
-	playerObject._process(delta)
+	for car in Players:
+		car._process(delta)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		Target += 1
-		moveCar(playerObject, Target)
+		pass
 	
-func moveCar(player, target):
-	var node = Map.get_node(str(target))
+func moveCar(player, target, ext):
+	var node = Map.get_node(str(target)+str(ext))
 	
 	# Target Rotation
 	r = node.rotation_degrees + Vector3(-90, 180, 0)
@@ -62,3 +83,11 @@ func moveCar(player, target):
 	
 	# Move car
 	player.setDestination(d, r)
+	
+func _start_button():
+	PlayerCount = pSlider.value
+	for p in range(PlayerCount):
+		var pp = Player.new()
+		pp.setCar(Garage.get_node("Green").duplicate())
+		Players.append(pp)
+		moveCar(pp, Target, PathChoice)
