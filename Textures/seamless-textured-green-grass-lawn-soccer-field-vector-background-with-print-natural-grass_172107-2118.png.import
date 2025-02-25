@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fr2xnytn8v8h"
-path.s3tc="res://.godot/imported/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png-e35df8974a026da153d5417e33be600c.s3tc.ctex"
+path.s3tc="res://.godot/imported/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png-828ef8ed63452c4c2e8de414a9706eae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png"
-dest_files=["res://.godot/imported/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png-e35df8974a026da153d5417e33be600c.s3tc.ctex"]
+source_file="res://Textures/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png"
+dest_files=["res://.godot/imported/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png-828ef8ed63452c4c2e8de414a9706eae.s3tc.ctex"]
 
 [params]
 
