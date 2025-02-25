@@ -43,11 +43,12 @@ var gameStateChanged = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#start.pressed.connect(_start_button)
+	start.pressed.connect(self._start_button)
 	mainCamera.current = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
+	
 	if gameStateChanged:
 		if gameState == 3:
 			opA.visible = true
@@ -85,6 +86,8 @@ func moveCar(player, target, ext):
 	player.setDestination(d, r)
 	
 func _start_button():
+	print("starting")
+	
 	PlayerCount = pSlider.value
 	for p in range(PlayerCount):
 		var pp = Player.new()
