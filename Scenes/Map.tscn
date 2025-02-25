@@ -631,10 +631,7 @@ sides = 50
 material = SubResource("StandardMaterial3D_bs8op")
 
 [node name="Game of Life Bus" parent="." instance=ExtResource("12_8xu31")]
-transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 3.11633, 0.449129, -6.90746)
-
-[node name="carCamera" type="Camera3D" parent="Game of Life Bus"]
-transform = Transform3D(20, 0, 0, 0, 19.8218, -2.66381, 0, 2.66381, 19.8218, 0, -33.2238, 109.59)
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 3.11633, -0.991733, -6.90746)
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -663,6 +660,7 @@ text = "Players:"
 label_settings = SubResource("LabelSettings_ssral")
 
 [node name="number" type="Label" parent="UI/pcountLabel"]
+layout_mode = 0
 offset_left = 188.0
 offset_top = -15.0
 offset_right = 205.0
@@ -671,6 +669,7 @@ text = "2"
 label_settings = SubResource("LabelSettings_ny1yj")
 
 [node name="number2" type="Label" parent="UI/pcountLabel"]
+layout_mode = 0
 offset_left = 343.0
 offset_top = -18.0
 offset_right = 360.0
@@ -679,6 +678,7 @@ text = "3"
 label_settings = SubResource("LabelSettings_ny1yj")
 
 [node name="number3" type="Label" parent="UI/pcountLabel"]
+layout_mode = 0
 offset_left = 498.0
 offset_top = -18.0
 offset_right = 519.0
@@ -713,20 +713,8 @@ text = "OptionB
 [node name="Garage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.69261, 0)
 
-[node name="Green" parent="Garage" instance=ExtResource("18_bn7b2")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-surface_material_override/0 = null
-
 [node name="Cyan" parent="Garage" instance=ExtResource("19_ru4b2")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.915098, 0)
-
-[node name="Blue" parent="Garage" instance=ExtResource("20_wy4mw")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -1.92324, 0)
-surface_material_override/0 = null
-
-[node name="Orange" parent="Garage" instance=ExtResource("21_qocdc")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -2.83918, 0)
-surface_material_override/0 = null
 
 [node name="Pink" parent="Garage" instance=ExtResource("22_5xivm")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -3.88127, 0)
@@ -737,9 +725,28 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -4.88843, 0)
 [node name="Red" parent="Garage" instance=ExtResource("24_lm7d8")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -5.87464, 0)
 
+[node name="Blue" parent="Garage" instance=ExtResource("20_wy4mw")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 4.87594, -12.6955, 15.4726)
+
+[node name="Orange" parent="Garage" instance=ExtResource("21_qocdc")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.76318, -11.3953, 12.1994)
+
 [node name="Yellow" parent="Garage" instance=ExtResource("25_jb1yt")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -6.82438, 0)
-surface_material_override/0 = null
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.567476, -8.67516, 5.26888)
+
+[node name="Green" parent="Garage" instance=ExtResource("18_bn7b2")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.72429, -13.3485, -0.867436)
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.829038, 0.559193, 0, -0.559193, 0.829038, 42.3648, 31.8393, 15.5809)
+
+[node name="StartCameraPOS" type="Camera3D" parent="."]
+transform = Transform3D(0.756778, 0.207326, -0.619921, 0, 0.948368, 0.317172, 0.653672, -0.240029, 0.717704, 0, 5.06755, 0)
+
+[node name="SpinnerCameraPOS" type="Camera3D" parent="."]
+transform = Transform3D(0.973738, 0.227671, 9.95182e-09, 0, -4.37114e-08, 1, 0.227671, -0.973738, -4.25634e-08, 45.0152, 28.3324, -38.5262)
+
+[node name="carCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.133191, 0.99109, 0, -0.99109, 0.133191, 3.11633, 5.92863, -5.24627)
+
+[node name="PLayers" type="Node3D" parent="."]

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cs1ov5qid8sua"]
 
-[ext_resource type="Texture2D" uid="uid://fr2xnytn8v8h" path="res://Scenes/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png" id="1_1v7ee"]
+[ext_resource type="Texture2D" uid="uid://fr2xnytn8v8h" path="res://Textures/seamless-textured-green-grass-lawn-soccer-field-vector-background-with-print-natural-grass_172107-2118.png" id="1_1v7ee"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bjywe"]
 frequency = 0.0458

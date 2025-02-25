@@ -1,6 +1,8 @@
 class_name Player extends Node3D
 
 var car
+var spot = 0
+var spotExt = ""
 
 var pDestination = Vector3.ZERO
 var rDestination = Vector3(-90, 0, 0)
