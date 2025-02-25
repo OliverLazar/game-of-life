@@ -1,10 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=41 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
+[ext_resource type="Material" uid="uid://bo0bc227b5mlu" path="res://Scenes/Noise.tres" id="2_l5edw"]
 [ext_resource type="PackedScene" uid="uid://ci7tqmt28cp6f" path="res://stylized bush/stylized bush.fbx" id="2_yjofa"]
 [ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="4_5nics"]
-[ext_resource type="PackedScene" uid="uid://cg1cvynipm175" path="res://Models/tree.tscn" id="4_71bfm"]
+[ext_resource type="PackedScene" path="res://Models/tree.tscn" id="4_71bfm"]
 [ext_resource type="Texture2D" uid="uid://bn8lftqvmbfdm" path="res://Media/yellow_square.png" id="5_2ovox"]
 [ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="5_jnv4d"]
 [ext_resource type="Texture2D" uid="uid://b577gd8uehieg" path="res://Media/green_square.png" id="6_bx5gf"]
@@ -25,36 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="23_nn4gh"]
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="24_lm7d8"]
 [ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
-
-[sub_resource type="Gradient" id="Gradient_2b0x5"]
-colors = PackedColorArray(0.108721, 0.335207, 0.163214, 1, 0.239829, 0.704267, 0.200136, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8tks4"]
-seed = -3
-frequency = 0.029
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_duulh"]
-width = 400
-height = 400
-seamless = true
-color_ramp = SubResource("Gradient_2b0x5")
-noise = SubResource("FastNoiseLite_8tks4")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bjywe"]
-frequency = 0.0458
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t1g5y"]
-width = 200
-height = 200
-as_normal_map = true
-bump_strength = 6.9
-noise = SubResource("FastNoiseLite_bjywe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kor2k"]
-albedo_texture = SubResource("NoiseTexture2D_duulh")
-normal_enabled = true
-normal_scale = 1.6
-normal_texture = SubResource("NoiseTexture2D_t1g5y")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -115,82 +86,83 @@ freeze = true
 
 [node name="Ground" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.13784, 0.500898, 14.1298)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
+calculate_tangents = false
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground2" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 29.338, 0.501511, 14.13)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground3" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 59.742, 0.499511, 14.13)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground4" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 89.5593, 0.500898, 14.1298)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground5" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.13784, 0.500898, -21.622)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground6" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 29.338, 0.501511, -21.6218)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground7" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 59.742, 0.499511, -21.6218)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground8" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 89.5593, 0.500898, -21.622)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground9" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.13784, 0.500898, -57.4153)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground10" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 29.338, 0.501511, -57.415)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground11" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 59.742, 0.499511, -57.415)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground12" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 89.5593, 0.500898, -57.4153)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground13" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.13784, 0.500898, -93.1997)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground14" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 29.338, 0.501511, -93.1994)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground15" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 59.742, 0.499511, -93.1994)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="Ground16" type="CSGBox3D" parent="NodeBase/Ground"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 89.5593, 0.500898, -93.1997)
-material_override = SubResource("StandardMaterial3D_kor2k")
+material_override = ExtResource("2_l5edw")
 size = Vector3(122.492, 1, 143.173)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NodeBase/Ground"]
@@ -474,7 +446,7 @@ mesh = ExtResource("11_otc4s")
 skeleton = NodePath("")
 
 [node name="MountOIl" parent="NodeBase" instance=ExtResource("12_5j8jk")]
-transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 43.1321, -1.10832, -38.9919)
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 43.0568, -1.10832, -38.9767)
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8544, 82.8713, -23.0922)
