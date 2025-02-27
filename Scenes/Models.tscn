@@ -182,5 +182,5 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_grspd")
 
 [node name="Tinker" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00837753, 0.999965, 0, -0.999965, 0.00837753, 91.2792, -2.4638, 101.474)
+transform = Transform3D(1, 0, 0, 0, 0.00837753, 0.999965, 0, -0.999965, 0.00837753, 44.7751, 5.45443, 121.95)
 mesh = ExtResource("12_tnvre")

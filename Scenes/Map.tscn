@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=45 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="23_nn4gh"]
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="24_lm7d8"]
 [ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
+[ext_resource type="ArrayMesh" uid="uid://bpvyqjvfqyavg" path="res://Models/SpinnerTest/tinker.obj" id="27_ub3wo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -85,6 +86,7 @@ font = SubResource("SystemFont_5cpvy")
 font_size = 25
 
 [node name="Map" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99055, 1.79852, 1.87526)
 script = ExtResource("1_mawgn")
 
 [node name="NodeBase" type="Node3D" parent="."]
@@ -734,6 +736,7 @@ offset_right = 911.0
 offset_bottom = 609.0
 
 [node name="Text" type="Label" parent="UI/OptionB"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 171.0
 offset_right = 188.0
@@ -742,6 +745,7 @@ text = "Text"
 horizontal_alignment = 1
 
 [node name="Value" type="Label" parent="UI/OptionB"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 267.0
 offset_right = 188.0
@@ -776,18 +780,23 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.76318, -11.3953, 
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.567476, -8.67516, 5.26888)
 
 [node name="Green" parent="Garage" instance=ExtResource("18_bn7b2")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.72429, -13.3485, -0.867436)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.88924, -13.4849, -1.02512)
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.829038, 0.559193, 0, -0.559193, 0.829038, 42.3648, 31.8393, 15.5809)
 
 [node name="StartCameraPOS" type="Camera3D" parent="."]
-transform = Transform3D(0.756778, 0.207326, -0.619921, 0, 0.948368, 0.317172, 0.653672, -0.240029, 0.717704, 0, 5.06755, 0)
+transform = Transform3D(0.756778, 0.207326, -0.619922, 0, 0.948368, 0.317172, 0.653672, -0.240029, 0.717704, 0, 7.91115, 0)
 
 [node name="SpinnerCameraPOS" type="Camera3D" parent="."]
 transform = Transform3D(0.973738, 0.227671, 9.95182e-09, 0, -4.37114e-08, 1, 0.227671, -0.973738, -4.25634e-08, 45.0152, 28.3324, -38.5262)
 
 [node name="carCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.133191, 0.99109, 0, -0.99109, 0.133191, 3.11633, 5.92863, -5.24627)
+transform = Transform3D(1, 0, 0, 0, 0.133191, 0.99109, 0, -0.99109, 0.133191, 3.11633, 4.96123, -5.24627)
 
 [node name="PLayers" type="Node3D" parent="."]
+
+[node name="Tinker" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 44.6017, 14.1181, -38.4753)
+mesh = ExtResource("27_ub3wo")
+skeleton = NodePath("../StartCameraPOS")

@@ -221,8 +221,8 @@ func _optionB():
 	
 	
 var DebugStandardChoices = [
-	{"text":"Sigma", "value":1000, "valueText": "$1000"},
-	{"text":"Skibidi", "value":26, "valueText": "$26"},
-	{"text":"Rizz", "value":-48, "valueText": "-$48"},
+	{"text":"Daniel", "value":1000, "valueText": "$1000"},
+	{"text":"Roderick", "value":26, "valueText": "$26"},
+	{"text":"Ayoub", "value":-48, "valueText": "-$48"},
 	{"text":"Oliver", "value":696969, "valueText": "$696969"}
 ]

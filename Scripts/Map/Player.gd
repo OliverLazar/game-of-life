@@ -20,6 +20,11 @@ func _ready():
 	pass
 
 func _process(delta: float):
+	if car and car.has_node("carCamera"):
+		var camera = car.get_node("carCamera")
+		camera.position = Vector3(0, 0, 100)
+		camera.rotation_degrees = Vector3(0, camera.rotation_degrees.y, 0)
+	
 	if lerpWeight < 1:
 		car.position = lerp(car.position, pDestination, lerpWeight)
 		car.rotation_degrees = lerp(car.rotation_degrees, rDestination, lerpWeight)
