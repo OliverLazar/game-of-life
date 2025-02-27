@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=44 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -77,6 +77,12 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_ny1yj"]
 font_size = 30
+
+[sub_resource type="SystemFont" id="SystemFont_5cpvy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a6b6e"]
+font = SubResource("SystemFont_5cpvy")
+font_size = 25
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_mawgn")
@@ -695,20 +701,55 @@ text = "Start"
 
 [node name="OptionA" type="Button" parent="UI"]
 visible = false
-offset_left = 217.0
-offset_top = 283.0
-offset_right = 406.0
-offset_bottom = 604.0
-text = "OptionA"
+offset_left = 261.0
+offset_top = 285.0
+offset_right = 450.0
+offset_bottom = 606.0
+
+[node name="Text" type="Label" parent="UI/OptionA"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 171.0
+offset_right = 188.0
+offset_bottom = 254.0
+text = "Text"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="UI/OptionA"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 267.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "$1000"
+label_settings = SubResource("LabelSettings_a6b6e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="OptionB" type="Button" parent="UI"]
 visible = false
-offset_left = 678.0
-offset_top = 286.0
-offset_right = 867.0
-offset_bottom = 607.0
-text = "OptionB
-"
+offset_left = 722.0
+offset_top = 288.0
+offset_right = 911.0
+offset_bottom = 609.0
+
+[node name="Text" type="Label" parent="UI/OptionB"]
+offset_left = 3.0
+offset_top = 171.0
+offset_right = 188.0
+offset_bottom = 254.0
+text = "Text"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="UI/OptionB"]
+offset_left = 3.0
+offset_top = 267.0
+offset_right = 188.0
+offset_bottom = 323.0
+text = "$1000"
+label_settings = SubResource("LabelSettings_a6b6e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Garage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.69261, 0)

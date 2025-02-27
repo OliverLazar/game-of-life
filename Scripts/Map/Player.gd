@@ -8,7 +8,13 @@ var pDestination = Vector3.ZERO
 var rDestination = Vector3(-90, 0, 0)
 
 var lerpWeight = 0
-var Speed = 0.01
+var Speed = 0.2
+
+# Game Variables
+var Cash = 0
+var Salary = 0
+var Pegs = 0
+var Job = "None"
 
 func _ready():
 	pass
@@ -29,10 +35,12 @@ func teleport(dest, rot):
 	rDestination = rot
 	car.position = dest
 	car.rotation_degrees = rot
+	lerpWeight = 0
 	
 func setDestination(dest, rot):
 	pDestination = dest
 	rDestination = rot
+	lerpWeight = 0
 	
 func activateCamera():
 	car.get_node("carCamera").current = true
