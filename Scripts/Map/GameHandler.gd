@@ -5,6 +5,8 @@ extends Node3D
 @onready var testCar = $"Game of Life Bus"  # Reference to a test car, may not be used
 @onready var mainCamera = $"MainCamera"  # Reference to the main camera used in the scene
 @onready var Garage = $"Garage"  # Reference to the Garage where cars are stored
+@onready var Spinner = $"Spinner"
+var spinRotVel = 0
 
 # Start Menu UI elements
 @onready var pSlider = $"UI/PlayerCount"  # Slider for selecting the number of players
@@ -15,6 +17,9 @@ extends Node3D
 @onready var opB = $"UI/OptionB"  # Option B button in the UI
 var Asel = 0  # Option A selection index
 var Bsel = 0  # Option B selection index
+
+# Topleft UI
+@onready var PlayerInfo = $"UI/PlayerHeader"
 
 var PlayerCount = 3  # Default number of players
 
@@ -54,6 +59,9 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	PlayerInfo.get_node("Player").visible = false
+	PlayerInfo.get_node("Money").visible = false
+		
 	# Connect the start button and option buttons to their respective functions
 	start.pressed.connect(self._start_button)
 	opA.pressed.connect(self._optionA)
@@ -66,6 +74,10 @@ func _process(delta: float) -> void:
 		gameStateChanged = false  # Reset the game state change flag
 
 		if gameState == 1:  # Spin the spinner (prepare the camera)
+			# Set player text
+			PlayerInfo.get_node("Player").visible = true
+			PlayerInfo.get_node("Money").visible = true
+			PlayerInfo.get_node("Player").set_text("Player " + str(currentPlayerID+1) + " (" + Players[currentPlayerID].car.name + ")")		
 			# Tween (smooth transition) the camera to the spinner's position and rotation
 			var cameraTween1 = get_tree().create_tween()
 			var cameraTween2 = get_tree().create_tween()
@@ -148,8 +160,27 @@ func _process(delta: float) -> void:
 				opB.visible = true  # Make option B visible
 				
 
+	if len(Players) - 1 >= currentPlayerID:
+		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	
+	# spin the spiiner
+	if gameState == 1 and spinRotVel > 0:
+		Spinner.rotate_y(spinRotVel*delta)
+		spinRotVel -= 0.1
+		
+		var num = (((180 - (int(Spinner.rotation_degrees.y) % 180)) / 36 - 1) % 10)
+		if num == 0: num = 10
+		if num == -1: num = 9
+		
+		if spinRotVel <= 0:
+			print(num)
+			Roll = num
+			gameState = 2  # Start the movement phase
+			gameStateChanged = true
+			
+
 	# Handle movement and game state changes during the movement phase
-	if gameState == 3:
+	if gameState == 3:		
 		var p = Players[currentPlayerID]
 		if p.lerpWeight >= 0.2:  # Check if the car has finished moving
 			var node = Map.get_node(str(p.spot)+str(p.spotExt))
@@ -180,6 +211,10 @@ func _process(delta: float) -> void:
 				if nodeType == "default":
 					gameState = 4  # Return to regular event if no special event occurs
 					gameStateChanged = true
+				elif nodeType == "payday":
+					nextPlayer()
+					gameState = 1
+					gameStateChanged = true
 
 	# Process all players each frame (if needed for player updates)
 	for car in Players:
@@ -189,10 +224,12 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		if gameState == 1:  # If the game is in the spin state
-			Roll = randi_range(1, rollMaxMaxMax)  # Generate a random roll
-			print("Roll: ", Roll)
-			gameState = 2  # Start the movement phase
-			gameStateChanged = true
+			#Roll = randi_range(1, rollMaxMaxMax)  # Generate a random roll
+			#print("Roll: ", Roll)
+			#gameState = 2  # Start the movement phase
+			#gameStateChanged = true
+			
+			spinRotVel = 20.0 + randf_range(-1.5, 1.5)
 
 # Move the car to the target position and rotation
 func moveCar(player, target, ext):
@@ -250,6 +287,7 @@ func _start_button():
 	for p in range(PlayerCount):
 		var pp = Player.new()  # Create a new player object
 		var car = Garage.get_node("Green").duplicate()  # Duplicate the car from the garage
+		car.name = Garage.get_node("Green").name + str(p)
 		add_child(car)  # Add the car to the scene
 		pp.setCar(car)  # Set the car for the player
 		Players.append(pp)  # Add the player to the list of players
@@ -315,6 +353,7 @@ func _optionB():
 		if SubEvent == "career":
 			# college
 			Players[currentPlayerID].spotExt = BlueExtB
+			Players[currentPlayerID].Cash -= 100000
 		if SubEvent == "poorJob":
 			Players[currentPlayerID].Salary = PoorJobs[BlueExtB]["value"]
 		if SubEvent == "richJob":
@@ -336,6 +375,17 @@ var DebugStandardChoices = [
 	{"text":"Roderick", "value":26, "valueText": "$26"},
 	{"text":"Ayoub", "value":-48, "valueText": "-$48"},
 	{"text":"Oliver", "value":696969, "valueText": "$696969"}
+]
+
+# 0 = money
+# 1 = bonus turn
+# 2 = lose turn
+# 3 = child benefits
+# 4 = give birth
+# 5 = lose child
+var ActionCards = [
+	{"path":"res://Media/ra.png", "value":30, "types":[0]},
+	{"path":"res://Media/grass.jpg", "value":30, "types":[0]},
 ]
 
 # Jobs that dont pay well
