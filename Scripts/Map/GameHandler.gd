@@ -6,7 +6,9 @@ extends Node3D
 @onready var mainCamera = $"MainCamera"  # Reference to the main camera used in the scene
 @onready var Garage = $"Garage"  # Reference to the Garage where cars are stored
 @onready var Spinner = $"Spinner"
+@onready var spinnerPlayer = $"Spinner/AudioStreamPlayer3D"
 var spinRotVel = 0
+var spinTickNumberTracker = 0
 
 # Start Menu UI elements
 @onready var pSlider = $"UI/PlayerCount"  # Slider for selecting the number of players
@@ -26,9 +28,9 @@ var Csel = 0
 var PlayerCount = 3  # Default number of players
 
 # Cooldown variables controlling the flow of the game
-var cooldown_gameStart = 300  # Cooldown time before starting the game
+var cooldown_gameStart = 60*5  # Cooldown time before starting the game
 var cooldown_movement = 30  # Cooldown time for each movement step
-var cooldown_endMovement = 120  # Cooldown time before ending movement
+var cooldown_endMovement = 60*2  # Cooldown time before ending movement
 
 # Player Movement variables
 var currentPlayerID: int = 0  # Tracks the current player ID (index)
@@ -63,6 +65,8 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 func _ready() -> void:
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
+	
+	#spinnerPlayer.stream = "res://Media/minecraft_click.mp3"
 		
 	# Connect the start button and option buttons to their respective functions
 	start.pressed.connect(self._start_button)
@@ -73,6 +77,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Cooldown:
+		Cooldown -= 1
+		return
+		
+	if len(Players) - 1 >= currentPlayerID:
+		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	
 	if gameStateChanged:
 		gameStateChanged = false  # Reset the game state change flag
 
@@ -160,9 +171,6 @@ func _process(delta: float) -> void:
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
 				
-
-	if len(Players) - 1 >= currentPlayerID:
-		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
 	
 	# spin the spiiner
 	if gameState == 1 and spinRotVel > 0:
@@ -173,13 +181,18 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 1
+		num *= 100
+		
+		if num != spinTickNumberTracker:
+			spinnerPlayer.play(0.6)
+			spinTickNumberTracker = num
 		
 		if spinRotVel <= 0:
 			print(num)
 			Roll = num
 			gameState = 2  # Start the movement phase
 			gameStateChanged = true
+			Cooldown = 60
 			
 
 	# Handle movement and game state changes during the movement phase
@@ -265,13 +278,17 @@ func moveCar(player, target, ext):
 
 # Switch to the next player in the game
 func nextPlayer():
-	mainCamera.position = Players[currentPlayerID].car.position + Vector3.UP*4
+	PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	
+	mainCamera.position = Players[currentPlayerID].car.position + Vector3.UP*5
 	mainCamera.rotation = Players[currentPlayerID].car.rotation
 	
 	mainCamera.current = true  # Set the camera to follow the current player's car
 	opA.visible = false  # Hide options A and B
 	opB.visible = false
 	opC.visible = false
+	
+	Cooldown = cooldown_endMovement
 	
 	currentPlayerID += 1  # Move to the next player
 	

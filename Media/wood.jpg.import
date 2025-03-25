@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2vd7es7nokfa"
-path.s3tc="res://.godot/imported/9.png-86605741c6066b88f0ff04c95a856d19.s3tc.ctex"
+uid="uid://do1h6k2ntqr1k"
+path.s3tc="res://.godot/imported/wood.jpg-cb9e2de70a0fc304f915c90a258b52d6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/stylized bush/9.png"
-dest_files=["res://.godot/imported/9.png-86605741c6066b88f0ff04c95a856d19.s3tc.ctex"]
+source_file="res://Media/wood.jpg"
+dest_files=["res://.godot/imported/wood.jpg-cb9e2de70a0fc304f915c90a258b52d6.s3tc.ctex"]
 
 [params]
 
