@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpgqlgff2xvs2"]
+[gd_scene load_steps=5 format=3 uid="uid://bpgqlgff2xvs2"]
 
-[ext_resource type="Script" path="res://Scripts/Main Menu/autosize.gd" id="1_sd8u5"]
+[ext_resource type="Texture2D" uid="uid://di3uun1ctom8d" path="res://Textures/Titlescreen.png" id="1_8gmqe"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
-[ext_resource type="Texture2D" uid="uid://ce76ardoxot7o" path="res://Media/ra_loading.png" id="3_xb77i"]
+[ext_resource type="Texture2D" uid="uid://j86epuhe58k1" path="res://Textures/Loading.png" id="3_mtl7s"]
 [ext_resource type="AudioStream" uid="uid://d3l6s51tgyldd" path="res://Media/powerUp.wav" id="4_cjtds"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_355rv"]
-font_size = 100
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -23,33 +20,44 @@ offset_bottom = 648.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
 layout_mode = 0
-offset_top = 38.28
-offset_right = 1152.0
-offset_bottom = 203.28
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 646.0
 
-[node name="Label" type="Label" parent="Control/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 2
-text = "The Game of Life"
-label_settings = SubResource("LabelSettings_355rv")
-horizontal_alignment = 1
-script = ExtResource("1_sd8u5")
+offset_left = -2.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_8gmqe")
+expand_mode = 1
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Play" type="Button" parent="Control"]
 layout_mode = 2
 offset_left = 381.0
-offset_top = 329.0
-offset_right = 770.0
-offset_bottom = 448.0
+offset_top = 334.0
+offset_right = 774.0
+offset_bottom = 452.0
 theme_override_font_sizes/font_size = 48
-text = "Play
+text = "PLAY
 "
+script = ExtResource("2_o2qaw")
+
+[node name="Exit" type="Button" parent="Control"]
+offset_left = 384.0
+offset_top = 488.0
+offset_right = 771.0
+offset_bottom = 582.0
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
 script = ExtResource("2_o2qaw")
 
 [node name="Loading" type="Sprite2D" parent="Control"]
 visible = false
-position = Vector2(578.25, 325.75)
-scale = Vector2(6.45531, 3.60497)
-texture = ExtResource("3_xb77i")
+position = Vector2(576, 325.705)
+scale = Vector2(1, 1.008)
+texture = ExtResource("3_mtl7s")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cjtds")

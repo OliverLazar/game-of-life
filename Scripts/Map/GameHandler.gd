@@ -6,7 +6,9 @@ extends Node3D
 @onready var mainCamera = $"MainCamera"  # Reference to the main camera used in the scene
 @onready var Garage = $"Garage"  # Reference to the Garage where cars are stored
 @onready var Spinner = $"Spinner"
+@onready var spinnerPlayer = $"Spinner/AudioStreamPlayer3D"
 var spinRotVel = 0
+var spinTickNumberTracker = 0
 
 # Start Menu UI elements
 @onready var pSlider = $"UI/PlayerCount"  # Slider for selecting the number of players
@@ -15,8 +17,10 @@ var spinRotVel = 0
 # Buttons for event options
 @onready var opA = $"UI/OptionA"  # Option A button in the UI
 @onready var opB = $"UI/OptionB"  # Option B button in the UI
+@onready var opC = $"UI/OptionC"  # Option B button in the UI
 var Asel = 0  # Option A selection index
 var Bsel = 0  # Option B selection index
+var Csel = 0
 
 # Topleft UI
 @onready var PlayerInfo = $"UI/PlayerHeader"
@@ -24,9 +28,9 @@ var Bsel = 0  # Option B selection index
 var PlayerCount = 3  # Default number of players
 
 # Cooldown variables controlling the flow of the game
-var cooldown_gameStart = 300  # Cooldown time before starting the game
+var cooldown_gameStart = 60*5  # Cooldown time before starting the game
 var cooldown_movement = 30  # Cooldown time for each movement step
-var cooldown_endMovement = 120  # Cooldown time before ending movement
+var cooldown_endMovement = 60*2  # Cooldown time before ending movement
 
 # Player Movement variables
 var currentPlayerID: int = 0  # Tracks the current player ID (index)
@@ -61,15 +65,25 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 func _ready() -> void:
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
+	
+	#spinnerPlayer.stream = "res://Media/minecraft_click.mp3"
 		
 	# Connect the start button and option buttons to their respective functions
 	start.pressed.connect(self._start_button)
 	opA.pressed.connect(self._optionA)
 	opB.pressed.connect(self._optionB)
+	opC.pressed.connect(self._optionC)
 	mainCamera.current = true  # Set the main camera as the active camera
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Cooldown:
+		Cooldown -= 1
+		return
+		
+	if len(Players) - 1 >= currentPlayerID:
+		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	
 	if gameStateChanged:
 		gameStateChanged = false  # Reset the game state change flag
 
@@ -91,6 +105,7 @@ func _process(delta: float) -> void:
 		if gameState == 2:  # Move the player's car
 			opA.visible = false
 			opB.visible = false
+			opC.visible = false
 			
 			Players[currentPlayerID].car.get_node("carCamera").current = true  # Set the player's car camera active
 			
@@ -106,27 +121,18 @@ func _process(delta: float) -> void:
 			gameState = 3  # Wait for the car to finish moving
 
 		if gameState == 4:  # Regular event (choose between two options)
-			Asel = randi_range(0, len(DebugStandardChoices)-1)  # Randomly select option A
-			Bsel = randi_range(0, len(DebugStandardChoices)-1)  # Randomly select option B
-			while Bsel == Asel:  # Ensure the two options are different
-				Bsel = randi_range(0, len(DebugStandardChoices)-1)
+			Csel = randi_range(0, len(ActionCards)-1)  # Randomly select option C
 				
 			# Set the text and value of each option
-			opA.get_node("Text").set_text(DebugStandardChoices[Asel]["text"])
-			opA.get_node("Value").set_text(DebugStandardChoices[Asel]["valueText"])
-			opB.get_node("Text").set_text(DebugStandardChoices[Bsel]["text"])
-			opB.get_node("Value").set_text(DebugStandardChoices[Bsel]["valueText"])
+			opC.get_node("image").texture = load(ActionCards[Csel]["path"])
 			
-			opA.visible = true  # Make option A visible
-			opB.visible = true  # Make option B visible
+			opC.visible = true  # Make option A visible
 			
 		if gameState == 6:
 			if SubEvent == "career": # choose career or college
 				# Set the text and value of each option
-				opA.get_node("Text").set_text("Career")
-				opA.get_node("Value").set_text("Free, Quick")
-				opB.get_node("Text").set_text("College")
-				opB.get_node("Value").set_text("$100k, Slow")
+				opA.get_node("image").texture = load("res://Cards/CARD BACK (CAREER).jpg")
+				opB.get_node("image").texture = load("res://Cards/CARD BACK (COLLEGE).jpg")
 				
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
@@ -137,10 +143,8 @@ func _process(delta: float) -> void:
 					BlueExtB = randi_range(0, len(PoorJobs)-1)
 					
 				# Set the text and value of each option
-				opA.get_node("Text").set_text(PoorJobs[BlueExtA]["text"])
-				opA.get_node("Value").set_text(PoorJobs[BlueExtA]["valueText"])
-				opB.get_node("Text").set_text(PoorJobs[BlueExtB]["text"])
-				opB.get_node("Value").set_text(PoorJobs[BlueExtB]["valueText"])
+				opA.get_node("image").texture = load(PoorJobs[BlueExtA]["path"])
+				opB.get_node("image").texture = load(PoorJobs[BlueExtB]["path"])
 				
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
@@ -151,17 +155,22 @@ func _process(delta: float) -> void:
 					BlueExtB = randi_range(0, len(RichJobs)-1)
 					
 				# Set the text and value of each option
-				opA.get_node("Text").set_text(RichJobs[BlueExtA]["text"])
-				opA.get_node("Value").set_text(RichJobs[BlueExtA]["valueText"])
-				opB.get_node("Text").set_text(RichJobs[BlueExtB]["text"])
-				opB.get_node("Value").set_text(RichJobs[BlueExtB]["valueText"])
+				print(BlueExtA, RichJobs[BlueExtA]["path"])
+				var test = load(RichJobs[BlueExtA]["path"])
+				print(test)
+				opA.get_node("image").texture = test
+				opB.get_node("image").texture = load(RichJobs[BlueExtB]["path"])
+				
+				opA.visible = true  # Make option A visible
+				opB.visible = true  # Make option B visible
+			if SubEvent == "fork":
+				# Set the text and value of each option
+				opA.get_node("image").texture = load("res://Media/Left.jpg")
+				opB.get_node("image").texture = load("res://Media/Right.jpg")
 				
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
 				
-
-	if len(Players) - 1 >= currentPlayerID:
-		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
 	
 	# spin the spiiner
 	if gameState == 1 and spinRotVel > 0:
@@ -172,11 +181,18 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
+		num *= 100
+		
+		if num != spinTickNumberTracker:
+			spinnerPlayer.play(0.6)
+			spinTickNumberTracker = num
+		
 		if spinRotVel <= 0:
 			print(num)
 			Roll = num
 			gameState = 2  # Start the movement phase
 			gameStateChanged = true
+			Cooldown = 60
 			
 
 	# Handle movement and game state changes during the movement phase
@@ -262,12 +278,17 @@ func moveCar(player, target, ext):
 
 # Switch to the next player in the game
 func nextPlayer():
-	mainCamera.position = Players[currentPlayerID].car.position + Vector3.UP*4
+	PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	
+	mainCamera.position = Players[currentPlayerID].car.position + Vector3.UP*5
 	mainCamera.rotation = Players[currentPlayerID].car.rotation
 	
 	mainCamera.current = true  # Set the camera to follow the current player's car
 	opA.visible = false  # Hide options A and B
 	opB.visible = false
+	opC.visible = false
+	
+	Cooldown = cooldown_endMovement
 	
 	currentPlayerID += 1  # Move to the next player
 	
@@ -329,9 +350,11 @@ func _optionA():
 			# career
 			pass
 		if SubEvent == "poorJob":
-			Players[currentPlayerID].Salary = PoorJobs[BlueExtA]["value"]
+			Players[currentPlayerID].Salary = PoorJobs[BlueExtA]["salary"]
 		if SubEvent == "richJob":
-			Players[currentPlayerID].Salary = RichJobs[BlueExtA]["value"]
+			Players[currentPlayerID].Salary = RichJobs[BlueExtA]["salary"]
+		if SubEvent == "fork":
+			Players[currentPlayerID].spotExt = BlueExtA
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -355,9 +378,11 @@ func _optionB():
 			Players[currentPlayerID].spotExt = BlueExtB
 			Players[currentPlayerID].Cash -= 100000
 		if SubEvent == "poorJob":
-			Players[currentPlayerID].Salary = PoorJobs[BlueExtB]["value"]
+			Players[currentPlayerID].Salary = PoorJobs[BlueExtB]["salary"]
 		if SubEvent == "richJob":
-			Players[currentPlayerID].Salary = RichJobs[BlueExtB]["value"]
+			Players[currentPlayerID].Salary = RichJobs[BlueExtB]["salary"]
+		if SubEvent == "fork":
+			Players[currentPlayerID].spotExt = BlueExtB
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -368,6 +393,26 @@ func _optionB():
 			gameStateChanged = true
 			nextPlayer()  # Move to the next player
 			
+			
+func _optionC():
+	Csel = ActionCards[Csel]
+	for type in Csel["types"]:
+		if type == 0:
+			Players[currentPlayerID].Cash += Csel["value"]
+		if type == 1:
+			currentPlayerID -= 1
+		if type == 2:
+			pass
+		if type == 3:
+			Players[currentPlayerID].Cash += Csel["value"] * max(Players[currentPlayerID].Pegs-2, 0)
+		if type == 4:
+			Players[currentPlayerID].Pegs += 1
+		if type == 5 and Players[currentPlayerID].Pegs > 2:
+			Players[currentPlayerID].Pegs -= 1
+			
+	gameState = 1  # Move to spinner state
+	gameStateChanged = true
+	nextPlayer()  # Move to the next player
 
 # Example of predefined standard choices for event options
 var DebugStandardChoices = [
@@ -384,18 +429,75 @@ var DebugStandardChoices = [
 # 4 = give birth
 # 5 = lose child
 var ActionCards = [
-	{"path":"res://Media/ra.png", "value":30, "types":[0]},
-	{"path":"res://Media/grass.jpg", "value":30, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (2).jpg", "value":5000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (3).jpg", "value":5000, "types":[0,1]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (4).jpg", "value":15000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (5).jpg", "value":5000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (6).jpg", "value":20000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (7).jpg", "value":25000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (8).jpg", "value":30000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (9).jpg", "value":30000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (10).jpg", "value":35000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (11).jpg", "value":45000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (12).jpg", "value":65000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (13).jpg", "value":80000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (14).jpg", "value":100000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (15).jpg", "value":100000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (16).jpg", "value":100000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (17).jpg", "value":30000, "types":[3]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (18).jpg", "value":35000, "types":[3]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (19).jpg", "value":-5000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (20).jpg", "value":-10000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (21).jpg", "value":-10000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (22).jpg", "value":-15000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (23).jpg", "value":-25000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (24).jpg", "value":-25000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (25).jpg", "value":-40000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (26).jpg", "value":-50000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (27).jpg", "value":0, "types":[1]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (28).jpg", "value":0, "types":[1]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (29).jpg", "value":0, "types":[1]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (30).jpg", "value":0, "types":[1]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (31).jpg", "value":0, "types":[2]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (32).jpg", "value":0, "types":[2]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (33).jpg", "value":0, "types":[2]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (34).jpg", "value":0, "types":[2]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (35).jpg", "value":0, "types":[5]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (36).jpg", "value":0, "types":[1,5]},
 ]
 
 # Jobs that dont pay well
 var PoorJobs = [
-	{"text":"Garbage Man", "value":1000, "valueText": "$1000"},
-	{"text":"Barista", "value":2000, "valueText": "$2000"}
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (9).jpg", "name":"Salesperson", "salary":40000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (10).jpg", "name":"Hairstylist", "salary":45000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (11).jpg", "name":"Police Officer", "salary":55000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (12).jpg", "name":"Mechanic", "salary":55000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (13).jpg", "name":"Athlete", "salary":60000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (14).jpg", "name":"Entertainment", "salary":65000}
 ]
 
 # Jobs that do pay well
 var RichJobs = [
-	{"text":"Doctor", "value":125000, "valueText": "$125k"},
-	{"text":"Lawyer", "value":110000, "valueText": "$110k"}
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (2).jpg", "name":"Teacher", "salary":65000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (3).jpg", "name":"Computer Designer", "salary":75000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (4).jpg", "name":"Accountant", "salary":85000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (5).jpg", "name":"Veterinarian", "salary":95000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (6).jpg", "name":"Lawyer", "salary":110000},
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (7).jpg", "name":"Doctor", "salary":12500}
+]
+
+var Housing = [
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (2).jpg", "price":1000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (3).jpg", "price":5000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (4).jpg", "price":20000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (5).jpg", "price":35000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (6).jpg", "price":50000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (7).jpg", "price":65000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (8).jpg", "price":85000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (9).jpg", "price":125000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (10).jpg", "price":150000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (11).jpg", "price":200000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (12).jpg", "price":300000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (13).jpg", "price":400000},
+	{"path":"res://Cards/CARD TEMPLATE (HOUSE) (14).jpg", "price":500000}
 ]

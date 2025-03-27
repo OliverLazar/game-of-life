@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=51 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -17,8 +17,10 @@
 [ext_resource type="ArrayMesh" uid="uid://brgj0kdkmpt6t" path="res://Models/low-poly-house-3/source/low poly house 3.obj" id="11_otc4s"]
 [ext_resource type="PackedScene" uid="uid://bqng5qmp0jkml" path="res://Models/model (1).glb" id="12_5j8jk"]
 [ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="12_8xu31"]
+[ext_resource type="Texture2D" uid="uid://do1h6k2ntqr1k" path="res://Media/wood.jpg" id="12_inhr8"]
 [ext_resource type="Script" path="res://Scripts/Map/fpsCounter.gd" id="14_740nq"]
 [ext_resource type="PackedScene" uid="uid://dbekhn8lvb77k" path="res://Models/Bus/game_of_life_bus green.tscn" id="18_bn7b2"]
+[ext_resource type="Texture2D" uid="uid://d1501h5qsdf5w" path="res://Cards/CARD BACK (ACTION).jpg" id="19_0ikuf"]
 [ext_resource type="PackedScene" uid="uid://2uie2nejotyn" path="res://Models/Bus/game_of_life_bus light blue.tscn" id="19_ru4b2"]
 [ext_resource type="PackedScene" uid="uid://d0jdkpopj763o" path="res://Models/Bus/game_of_life_bus light dark blue.tscn" id="20_wy4mw"]
 [ext_resource type="PackedScene" uid="uid://bqqq2lrqjqire" path="res://Models/Bus/game_of_life_bus orange.tscn" id="21_qocdc"]
@@ -27,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="24_lm7d8"]
 [ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
 [ext_resource type="ArrayMesh" uid="uid://bpvyqjvfqyavg" path="res://Models/SpinnerTest/tinker.obj" id="27_ub3wo"]
+[ext_resource type="AudioStream" uid="uid://6xfbveucm5qn" path="res://Media/minecraft_click.mp3" id="29_fmgmd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -39,6 +42,10 @@ albedo_texture = ExtResource("4_5nics")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmf2o"]
 albedo_texture = ExtResource("10_qx0ll")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvxcq"]
+albedo_color = Color(0.8696, 0.588425, 0.31497, 1)
+albedo_texture = ExtResource("12_inhr8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjmrd"]
 transparency = 1
@@ -438,8 +445,77 @@ material_override = SubResource("StandardMaterial3D_yvdna")
 mesh = ExtResource("5_jnv4d")
 skeleton = NodePath("../../..")
 
+[node name="Cliff3" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.345036, 0, -0.93859, 0, 1, 0, 0.93859, 0, -0.345036, 51.5246, -2.95419, -73.8172)
+material_override = SubResource("StandardMaterial3D_yvdna")
+mesh = ExtResource("5_jnv4d")
+skeleton = NodePath("../../..")
+
+[node name="Cliff4" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.992082, 0, 0.125593, 0, 1, 0, -0.125593, 0, -0.992082, 55.1237, -0.930902, -75.0546)
+material_override = SubResource("StandardMaterial3D_yvdna")
+mesh = ExtResource("5_jnv4d")
+skeleton = NodePath("../../..")
+
+[node name="Cliff5" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.290284, 0, 0.95694, 0, 1, 0, -0.95694, 0, 0.290284, 65.9747, -2.95419, -75.4605)
+material_override = SubResource("StandardMaterial3D_yvdna")
+mesh = ExtResource("5_jnv4d")
+skeleton = NodePath("../../..")
+
+[node name="Cliff6" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.997677, 0, -0.0681194, 0, 1, 0, 0.0681194, 0, 0.997677, 62.4531, -0.930902, -74.0175)
+material_override = SubResource("StandardMaterial3D_yvdna")
+mesh = ExtResource("5_jnv4d")
+skeleton = NodePath("../../..")
+
 [node name="Stone01" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
 transform = Transform3D(0.999652, 0, -0.0263513, 0, 1, 0, 0.0263513, 0, 0.999652, -4.11187, 0.476359, -6.48599)
+
+[node name="Stone02" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.999652, 0, -0.0263513, 0.00839584, 0.947885, 0.318501, 0.024978, -0.318612, 0.947555, 65.9149, -0.766407, -53.2576)
+
+[node name="Stone03" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.67292, 0.230246, -0.702969, 0.00839584, 0.947885, 0.318501, 0.739667, -0.220228, 0.635917, 64.9392, -0.766407, -51.3455)
+
+[node name="Stone04" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.924384, 0.114118, -0.363991, 0.00839584, 0.947885, 0.318501, 0.381369, -0.297474, 0.875252, 66.0459, -0.766407, -49.2541)
+
+[node name="Stone05" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.620035, -0.254826, 0.742037, 0.00839583, 0.947885, 0.318501, -0.784528, -0.191252, 0.589862, 67.9905, -0.647166, -48.9681)
+
+[node name="Stone06" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.857589, -0.170632, 0.485207, 0.00839583, 0.947885, 0.318501, -0.514267, -0.26907, 0.814328, 70.5992, -0.647166, -49.9873)
+
+[node name="Stone07" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.994483, -0.0412178, 0.0964523, 0.00839584, 0.947885, 0.318501, -0.104554, -0.315935, 0.943002, 73.6316, -0.48487, -48.4168)
+
+[node name="Stone08" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.83654, 0.167842, -0.521564, 0.00839584, 0.947885, 0.318501, 0.54784, -0.270818, 0.791535, 74.1203, -0.48487, -45.6655)
+
+[node name="Stone09" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.92355, 0.114767, -0.3659, 0.00839586, 0.947885, 0.318501, 0.383384, -0.297224, 0.874456, 72.431, -0.23221, -43.7145)
+
+[node name="Stone10" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.974247, 0.0640169, -0.2162, 0.00839585, 0.947885, 0.318501, 0.225323, -0.312114, 0.922937, 69.2775, -0.23221, -42.9282)
+
+[node name="Stone11" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.971578, -0.0830857, 0.221659, 0.00839585, 0.947885, 0.318501, -0.23657, -0.307588, 0.921642, 66.3703, -0.23221, -42.8118)
+
+[node name="Stone12" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.726912, -0.224509, 0.648994, 0.00839586, 0.947885, 0.318501, -0.686678, -0.226074, 0.690914, 63.7696, -0.23221, -40.9545)
+
+[node name="Stone13" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(-0.126068, -0.314968, 0.940692, 0.00839586, 0.947886, 0.318501, -0.991986, 0.0480506, -0.116853, 64.0171, -0.0119312, -37.5116)
+
+[node name="Stone14" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(-0.668324, -0.231606, 0.706895, 0.00839586, 0.947886, 0.318501, -0.743822, 0.218797, -0.63155, 67.0427, -0.0119312, -35.9825)
+
+[node name="Stone15" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(-0.0537053, -0.317625, 0.946694, 0.00839586, 0.947885, 0.318501, -0.998521, 0.0250534, -0.0482398, 70.1595, -0.0119307, -35.2569)
+
+[node name="Stone16" parent="NodeBase/Greenery" instance=ExtResource("6_hj1bq")]
+transform = Transform3D(0.565777, 0.258125, -0.783114, 0.00839586, 0.947885, 0.318501, 0.824515, -0.186776, 0.534125, 72.8918, 0.285224, -33.5234)
 
 [node name="Low Poly House" parent="NodeBase/Greenery" instance=ExtResource("8_i12e6")]
 transform = Transform3D(0.333797, 0, -0.220408, 0, 0.4, 0, 0.220408, 0, 0.333797, 17.7563, 0.555, -17.5464)
@@ -462,8 +538,72 @@ material_override = SubResource("StandardMaterial3D_dmf2o")
 mesh = ExtResource("11_otc4s")
 skeleton = NodePath("")
 
+[node name="LowPolyHouse5" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.417116, 0, -1.01785, 0, 1.1, 0, 1.01785, 0, -0.417116, 80.3413, 0.737981, -6.99208)
+material_override = SubResource("StandardMaterial3D_dmf2o")
+mesh = ExtResource("11_otc4s")
+skeleton = NodePath("")
+
+[node name="LowPolyHouse6" type="MeshInstance3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.954879, 0, 0.546087, 0, 1.1, 0, -0.546087, 0, -0.954879, 74.6364, 0.737981, -5.73655)
+material_override = SubResource("StandardMaterial3D_dmf2o")
+mesh = ExtResource("11_otc4s")
+skeleton = NodePath("")
+
+[node name="Bridge" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.964072, -0.26564, 0, 0.26564, 0.964072, 0, 0, 0, 1, 56.9748, 3.04599, -74.5116)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge2" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.975072, -0.221889, 0, 0.221889, 0.975072, 0, 0, 0, 1, 57.4511, 3.17277, -74.5116)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge3" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.989211, -0.146497, 0, 0.146497, 0.989211, 0, 0, 0, 1, 57.934, 3.26513, -74.5116)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge4" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.997014, -0.0772237, 0, 0.0772237, 0.997014, 0, 0, 0, 1, 58.4227, 3.31841, -74.5116)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge6" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.964072, 0.26564, 0.000506075, 0.26564, 0.964072, 0, -0.000487893, 0.000134434, -1, 60.8534, 3.04599, -74.5113)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge7" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.975072, 0.221889, 0.000506075, 0.221889, 0.975072, 0, -0.00049346, 0.000112292, -1, 60.377, 3.17277, -74.5115)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge8" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.989211, 0.146497, 0.000506075, 0.146497, 0.989211, 0, -0.000500615, 7.41387e-05, -1, 59.8941, 3.26513, -74.5118)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge9" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(-0.997014, 0.0772237, 0.000506075, 0.0772237, 0.997014, 0, -0.000504564, 3.9081e-05, -1, 59.4055, 3.31841, -74.512)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
+[node name="Bridge5" type="CSGBox3D" parent="NodeBase/Greenery"]
+transform = Transform3D(0.999981, -0.00614353, 0, 0.00614353, 0.999981, 0, 0, 0, 1, 58.9093, 3.33696, -74.5116)
+material_override = SubResource("StandardMaterial3D_xvxcq")
+size = Vector3(0.478027, 0.124023, 2.22327)
+
 [node name="MountOIl" parent="NodeBase" instance=ExtResource("12_5j8jk")]
 transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 43.0568, -1.10832, -38.9767)
+
+[node name="Lake1" type="CSGBox3D" parent="NodeBase"]
+transform = Transform3D(5.38743, 0, -4.0043, 0, 1, 0, 2.57671, 0, 8.37224, 14.2919, 0.322038, -72.467)
+
+[node name="Lake2" type="CSGBox3D" parent="NodeBase"]
+transform = Transform3D(1.97273, 0, -8.75959, 0, 1, 0, 5.63668, 0, 3.06568, 69.1401, 0.172544, -42.7719)
+size = Vector3(3.81055, 1, 1.89917)
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8544, 82.8713, -23.0922)
@@ -551,6 +691,22 @@ metadata/extB = &"job"
 transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
 
 [node name="Colour" type="CSGBox3D" parent="NodeMapMath/1"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_4mfna")
+material_overlay = SubResource("StandardMaterial3D_7t70o")
+metadata/Square_Type = &"default"
+
+[node name="32" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0143797, 0, 0.998873, 0, 0.122093, 0, -0.302675, 0, -0.0474552, 17.1044, 0.390341, -60.2217)
+metadata/Type = &"event"
+metadata/Subevent = &"fork"
+metadata/extA = &"a"
+metadata/extB = &""
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/32"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/32"]
 transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
 material_override = SubResource("StandardMaterial3D_4mfna")
 material_overlay = SubResource("StandardMaterial3D_7t70o")
@@ -736,6 +892,1484 @@ metadata/Type = &"default"
 transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
 
 [node name="Colour" type="CSGBox3D" parent="NodeMapMath/19"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="20" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0635387, 0, 0.977769, 0, 0.122093, 0, -0.29628, 0, -0.209687, 19.269, 0.415867, -35.573)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/20"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/20"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="21" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0382982, 0, 0.991981, 0, 0.122093, 0, -0.300586, 0, -0.126389, 18.8261, 0.415867, -37.599)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/21"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/21"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="22" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0218128, 0, 0.997406, 0, 0.122093, 0, -0.30223, 0, -0.0719846, 18.5642, 0.415867, -39.6252)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/22"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/22"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="23" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0378627, 0, 0.992163, 0, 0.122093, 0, -0.300641, 0, -0.124952, 18.4103, 0.415867, -41.6888)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/23"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/23"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="24" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0539356, 0, 0.984032, 0, 0.122093, 0, -0.298177, 0, -0.177995, 18.1719, 0.415867, -43.7355)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/24"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/24"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="25" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0539356, 0, 0.984032, 0, 0.122093, 0, -0.298177, 0, -0.177995, 17.8101, 0.415867, -45.7788)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/25"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/25"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="26" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0397981, 0, 0.991338, 0, 0.122093, 0, -0.300391, 0, -0.131339, 17.4356, 0.415867, -47.8104)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/26"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/26"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="27" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0111514, 0, 0.999323, 0, 0.122093, 0, -0.302811, 0, -0.0368004, 17.173, 0.415867, -49.8883)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/27"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/27"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="28" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.00645675, 0, 0.999773, 0, 0.122093, 0, -0.302947, 0, 0.0213091, 17.0939, 0.415867, -51.9866)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/28"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/28"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="29" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.00645675, 0, 0.999773, 0, 0.122093, 0, -0.302947, 0, 0.0213091, 17.1395, 0.415867, -54.03)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/29"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/29"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="30" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.00428911, 0, 0.9999, 0, 0.122093, 0, -0.302986, 0, -0.0141539, 17.1931, 0.415867, -56.0762)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/30"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/30"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="31" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0115847, 0, 0.999269, 0, 0.122093, 0, -0.302795, 0, -0.0382306, 17.1732, 0.415867, -58.1486)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/31"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/31"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="33a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.292768, 0, 0.257875, 0, 0.122093, 0, -0.0781401, 0, -0.966178, 16.5375, 0.415867, -62.3787)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/33a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/33a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="34a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.277363, 0, 0.402683, 0, 0.122093, 0, -0.122019, 0, -0.915339, 14.5755, 0.415867, -62.9222)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/34a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/34a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="35a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.248942, 0, 0.57014, 0, 0.122093, 0, -0.172761, 0, -0.821547, 12.7245, 0.415867, -63.7611)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/35a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/35a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="36a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.192705, 0, 0.771724, 0, 0.122093, 0, -0.233845, 0, -0.635957, 11.0681, 0.415867, -64.9737)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/36a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/36a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="37a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.145529, 0, 0.877121, 0, 0.122093, 0, -0.265782, 0, -0.480269, 9.70424, 0.415867, -66.611)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/37a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/37a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="38a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.100051, 0, 0.943916, 0, 0.122093, 0, -0.286022, 0, -0.330185, 8.6673, 0.415867, -68.4563)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/38a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/38a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="39a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.00484958, 0, 0.999872, 0, 0.122093, 0, -0.302977, 0, -0.0160038, 7.95538, 0.415867, -70.5075)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/39a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/39a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="40a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.064815, 0, 0.976855, 0, 0.122093, 0, -0.296003, 0, 0.2139, 7.93108, 0.415867, -72.6452)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/40a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/40a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="41a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.130294, 0, 0.902833, 0, 0.122093, 0, -0.273573, 0, 0.429991, 8.41475, 0.415867, -74.7277)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/41a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/41a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="42a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.192423, 0, 0.772489, 0, 0.122093, 0, -0.234077, 0, 0.635027, 9.33574, 0.415867, -76.6681)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/42a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/42a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="43a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.232236, 0, 0.642346, 0, 0.122093, 0, -0.194641, 0, 0.766414, 10.7304, 0.415867, -78.316)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/43a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/43a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="44a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.269536, 0, 0.456911, 0, 0.122093, 0, -0.138452, 0, 0.889512, 12.3638, 0.415867, -79.6832)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/44a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/44a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="45a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.297298, 0, 0.193344, 0, 0.122093, 0, -0.0585864, 0, 0.981131, 14.283, 0.415867, -80.6273)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/45a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/45a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="46a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302507, 0, -0.0579474, 0, 0.122093, 0, 0.0175589, 0, 0.998319, 16.4103, 0.415867, -81.0321)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/46a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/46a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="47a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.289017, 0, -0.300439, 0, 0.122093, 0, 0.0910379, 0, 0.953801, 18.5703, 0.415867, -80.8852)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/47a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/47a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="48a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.272986, 0, -0.434036, 0, 0.122093, 0, 0.13152, 0, 0.900895, 20.5867, 0.415867, -80.2636)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/48a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/48a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="49a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.27008, 0, -0.453399, 0, 0.122093, 0, 0.137387, 0, 0.891307, 22.4471, 0.415867, -79.355)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/49a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/49a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="50a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.279117, 0, -0.389253, 0, 0.122093, 0, 0.11795, 0, 0.921131, 24.2942, 0.415867, -78.4115)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/50a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/50a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="51a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.290823, 0, -0.280817, 0, 0.122093, 0, 0.0850921, 0, 0.959761, 26.2044, 0.415867, -77.6006)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/51a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/51a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="52a" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.300178, 0, -0.136546, 0, 0.122093, 0, 0.0413754, 0, 0.990634, 28.1965, 0.415867, -77.0027)
+metadata/Type = &"default"
+metadata/teleport = 43
+metadata/teleportExt = &""
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/52a"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/52a"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="33" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0235475, 0, 0.996976, 0, 0.122093, 0, -0.3021, 0, 0.077711, 17.0173, 0.415867, -62.324)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/33"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/33"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="34" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0716731, 0, 0.971623, 0, 0.122093, 0, -0.294418, 0, 0.236533, 17.2139, 0.415867, -64.4093)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/34"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/34"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="35" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.1047, 0, 0.938408, 0, 0.122093, 0, -0.284353, 0, 0.345528, 17.7118, 0.415867, -66.4575)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/35"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/35"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="36" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.145617, 0, 0.876962, 0, 0.122093, 0, -0.265733, 0, 0.48056, 18.4476, 0.415867, -68.4375)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/36"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/36"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="37" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.17842, 0, 0.808267, 0, 0.122093, 0, -0.244918, 0, 0.588816, 19.4462, 0.415867, -70.283)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/37"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/37"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="38" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.244965, 0, 0.588604, 0, 0.122093, 0, -0.178357, 0, 0.808422, 20.6853, 0.415867, -71.9706)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/38"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/38"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="39" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.275047, 0, 0.419626, 0, 0.122093, 0, -0.127154, 0, 0.907697, 22.3797, 0.415867, -73.1587)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/39"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/39"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="40" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.288721, 0, 0.303517, 0, 0.122093, 0, -0.0919708, 0, 0.952826, 24.3486, 0.415867, -74.0614)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/40"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/40"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="41" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.284444, 0, 0.344708, 0, 0.122093, 0, -0.104452, 0, 0.93871, 26.3636, 0.415867, -74.7069)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/41"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/41"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="42" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.28993, 0, 0.290702, 0, 0.122093, 0, -0.0880876, 0, 0.956814, 28.3486, 0.415867, -75.4687)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/42"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/42"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="43" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.299198, 0, 0.158244, 0, 0.122093, 0, -0.0479507, 0, 0.9874, 30.324, 0.415867, -76.302)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/43"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/43"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="44" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302646, 0, 0.0494073, 0, 0.122093, 0, -0.0149715, 0, 0.998778, 32.3947, 0.415867, -76.5533)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/44"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/44"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="45" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302799, 0, -0.0378474, 0, 0.122093, 0, 0.0114681, 0, 0.999283, 34.444, 0.415867, -76.6478)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/45"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/45"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="46" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.301717, 0, -0.0925099, 0, 0.122093, 0, 0.0280317, 0, 0.995711, 36.4843, 0.415867, -76.5618)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/46"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/46"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="47" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.299521, 0, -0.151451, 0, 0.122093, 0, 0.0458918, 0, 0.988464, 38.5514, 0.415867, -76.3558)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/47"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/47"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="48" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.29676, 0, -0.202155, 0, 0.122093, 0, 0.061256, 0, 0.979353, 40.5878, 0.415867, -76.0554)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/48"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/48"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="49" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.29676, 0, -0.202155, 0, 0.122093, 0, 0.061256, 0, 0.979353, 42.6154, 0.415867, -75.6513)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/49"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/49"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="50" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.299562, 0, -0.150571, 0, 0.122093, 0, 0.0456252, 0, 0.988598, 44.6107, 0.415867, -75.2579)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/50"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/50"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="51" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302273, 0, -0.0700007, 0, 0.122093, 0, 0.021211, 0, 0.997546, 46.6256, 0.415867, -74.9473)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/51"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/51"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="52" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302771, 0, -0.0402195, 0, 0.122093, 0, 0.0121868, 0, 0.99919, 48.7133, 0.415867, -74.8002)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/52"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/52"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="53" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.298711, 0, -0.167974, 0, 0.122093, 0, 0.0508984, 0, 0.985791, 51.3227, 0.854721, -74.7728)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/53"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/53"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="54" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.303016, 0, -0.00197278, 0, 0.122093, 0, 0.000597406, 0, 0.999997, 53.4782, 1.51715, -74.3667)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/54"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/54"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="55" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.297684, 0, -0.186782, 0, 0.122093, 0, 0.0565975, 0, 0.982401, 55.7479, 2.90743, -74.9783)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/55"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/55"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="56" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.265354, 0, -0.482839, 0, 0.122093, 0, 0.146308, 0, 0.875708, 60.6807, 2.86238, -74.9029)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/56"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/56"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="57" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.256675, 0, 0.531486, 0, 0.122093, 0, -0.161049, 0, 0.847066, 62.7186, 1.53491, -73.9017)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/57"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/57"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="58" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.301666, 0, -0.0942999, 0, 0.122093, 0, 0.0285741, 0, 0.995543, 64.645, 0.912706, -74.5547)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/58"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/58"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="59" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.302455, 0, 0.0608388, 0, 0.122093, 0, -0.0184355, 0, 0.998147, 67.0772, 0.438722, -74.4659)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/59"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/59"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="60" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.295675, 0, 0.21879, 0, 0.122093, 0, -0.0662972, 0, 0.975771, 69.2285, 0.438722, -74.5966)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/60"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/60"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="61" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.274085, 0, 0.426426, 0, 0.122093, 0, -0.129214, 0, 0.904522, 71.3587, 0.438722, -75.0413)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/61"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/61"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="62" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.234298, 0, 0.634136, 0, 0.122093, 0, -0.192154, 0, 0.77322, 73.3065, 0.438722, -75.9187)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/62"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/62"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="63" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.167479, 0, 0.833374, 0, 0.122093, 0, -0.252526, 0, 0.552708, 74.9494, 0.438722, -77.2019)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/63"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/63"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="64" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.108606, 0, 0.933561, 0, 0.122093, 0, -0.282884, 0, 0.358417, 76.0903, 0.438722, -79.0091)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/64"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/64"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="65" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0383398, 0, 0.991962, 0, 0.122093, 0, -0.300581, 0, 0.126528, 76.8507, 0.438722, -80.939)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/65"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/65"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="66" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0409565, 0, 0.990823, 0, 0.122093, 0, -0.300236, 0, -0.135162, 77.1162, 0.438722, -83.0313)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/66"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/66"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="67" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0750089, 0, 0.968877, 0, 0.122093, 0, -0.293586, 0, -0.247539, 76.8387, 0.438722, -85.0769)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/67"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/67"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="68" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.115989, 0, 0.923839, 0, 0.122093, 0, -0.279938, 0, -0.382779, 76.331, 0.438722, -87.0763)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/68"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/68"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="69" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.168896, 0, 0.830255, 0, 0.122093, 0, -0.251581, 0, -0.557382, 75.5515, 0.438722, -88.9542)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/69"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/69"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="70" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.222321, 0, 0.67948, 0, 0.122093, 0, -0.205893, 0, -0.733693, 74.4253, 0.438722, -90.635)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/70"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/70"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="71" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.264049, 0, 0.490569, 0, 0.122093, 0, -0.14865, 0, -0.871401, 72.94, 0.438722, -92.0386)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/71"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/71"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="72" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.292117, 0, 0.265792, 0, 0.122093, 0, -0.080539, 0, -0.96403, 71.1531, 0.438722, -93.0477)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/72"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/72"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="73" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.303015, 0, -0.00293154, 0, 0.122093, 0, 0.000888668, 0, -0.999995, 69.267, 0.438722, -93.5871)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/73"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/73"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="74" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.296056, 0, -0.213098, 0, 0.122093, 0, 0.0645725, 0, -0.97703, 67.2378, 0.438722, -93.6053)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/74"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/74"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="75" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.275967, 0, -0.412992, 0, 0.122093, 0, 0.125144, 0, -0.910734, 65.2393, 0.438722, -93.187)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/75"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/75"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="76" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.239524, 0, -0.612506, 0, 0.122093, 0, 0.1856, 0, -0.790465, 63.3871, 0.438722, -92.3724)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/76"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/76"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="77" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.208133, 0, -0.726777, 0, 0.122093, 0, 0.220226, 0, -0.686872, 61.7605, 0.438721, -91.1303)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/77"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/77"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="78" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.171582, 0, -0.824234, 0, 0.122093, 0, 0.249757, 0, -0.566248, 60.374, 0.438721, -89.6681)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/78"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/78"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="79" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.119565, 0, -0.918859, 0, 0.122093, 0, 0.27843, 0, -0.394584, 59.1906, 0.438721, -87.9616)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/79"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/79"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="80" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0582074, 0, -0.981376, 0, 0.122093, 0, 0.297373, 0, -0.192094, 58.35, 0.438721, -86.0192)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/80"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/80"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="81" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0211055, 0, -0.997571, 0, 0.122093, 0, 0.30228, 0, -0.0696525, 57.9567, 0.438721, -83.9893)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/81"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/81"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="82" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.013487, 0, -0.999008, 0, 0.122093, 0, 0.302716, 0, 0.0445081, 57.8455, 0.438721, -81.9383)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/82"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/82"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="83" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0264677, 0, -0.996177, 0, 0.122093, 0, 0.301858, 0, 0.0873464, 57.9398, 0.438721, -79.902)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/83"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/83"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="84" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.048003, 0, -0.987372, 0, 0.122093, 0, 0.29919, 0, 0.158416, 58.1389, 0.438721, -77.8414)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/84"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/84"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="85" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0744605, 0, -0.969338, 0, 0.122093, 0, 0.293725, 0, 0.24573, 58.4947, 0.438721, -75.8231)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/85"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/85"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="86" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0936172, 0, -0.951078, 0, 0.122093, 0, 0.288192, 0, 0.30895, 59.0048, 0.438721, -73.8445)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/86"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/86"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="87" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.113458, 0, -0.927255, 0, 0.122093, 0, 0.280974, 0, 0.374428, 59.6207, 0.438721, -71.938)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/87"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/87"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="88" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.139645, 0, -0.887477, 0, 0.122093, 0, 0.26892, 0, 0.46085, 60.3469, 0.438721, -70.0574)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/88"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/88"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="89" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.148922, 0, -0.870896, 0, 0.122093, 0, 0.263896, 0, 0.491465, 61.2766, 0.438721, -68.249)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/89"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/89"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="90" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.1575, 0, -0.854304, 0, 0.122093, 0, 0.258868, 0, 0.519772, 62.2853, 0.438721, -66.4563)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/90"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/90"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="91" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.142388, 0, -0.882717, 0, 0.122093, 0, 0.267478, 0, 0.469902, 63.3436, 0.438721, -64.7294)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/91"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/91"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="92" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.115989, 0, -0.923839, 0, 0.122093, 0, 0.279938, 0, 0.382779, 64.3098, 0.438721, -62.9218)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/92"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/92"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="93" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0945674, 0, -0.950053, 0, 0.122093, 0, 0.287882, 0, 0.312085, 65.1242, 0.438721, -61.0452)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/93"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/93"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="94" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0536806, 0, -0.984182, 0, 0.122093, 0, 0.298223, 0, 0.177153, 65.7666, 0.438721, -59.1363)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/94"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/94"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="95" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0220449, 0, -0.997349, 0, 0.122093, 0, 0.302213, 0, 0.0727503, 66.1518, 0.438721, -57.1473)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/95"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/95"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="111" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0575277, 0, -0.981812, 0, 0.122093, 0, 0.297505, 0, 0.189849, 73.7638, 0.438721, -31.5289)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/111"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/111"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="112" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0617536, 0, -0.979013, 0, 0.122093, 0, 0.296657, 0, 0.203795, 74.1662, 0.438722, -29.4624)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/112"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/112"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="113" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0696421, 0, -0.97323, 0, 0.122093, 0, 0.294905, 0, 0.229828, 74.664, 0.438722, -27.4696)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/113"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/113"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="114" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0822663, 0, -0.96244, 0, 0.122093, 0, 0.291635, 0, 0.27149, 75.1598, 0.438722, -25.4669)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/114"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/114"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="115" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0634818, 0, -0.977808, 0, 0.122093, 0, 0.296292, 0, 0.209499, 75.7153, 0.438722, -23.4541)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/115"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/115"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="116" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0500645, 0, -0.986256, 0, 0.122093, 0, 0.298852, 0, 0.165219, 76.1608, 0.438722, -21.4269)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/116"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/116"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="117" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0500645, 0, -0.986256, 0, 0.122093, 0, 0.298852, 0, 0.165219, 76.4996, 0.438722, -19.3515)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/117"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/117"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="118" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0326627, 0, -0.994173, 0, 0.122093, 0, 0.301251, 0, 0.107791, 76.8364, 0.438722, -17.3046)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/118"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/118"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="119" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0112201, 0, -0.999313, 0, 0.122093, 0, 0.302808, 0, 0.0370271, 77.0595, 0.438722, -15.2475)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/119"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/119"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="120" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0112201, 0, -0.999313, 0, 0.122093, 0, 0.302808, 0, 0.0370271, 77.1242, 0.438722, -13.1667)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/120"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/120"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="121" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0361831, 0, -0.992844, 0, 0.122093, 0, 0.300848, 0, 0.119409, 77.2, 0.438722, -11.0596)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/121"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/121"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="122" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0623695, 0, -0.978587, 0, 0.122093, 0, 0.296528, 0, 0.205828, 77.469, 0.438722, -8.97908)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/122"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/122"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="123" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0623695, 0, -0.978587, 0, 0.122093, 0, 0.296528, 0, 0.205828, 77.9094, 0.438722, -6.92571)
+metadata/Type = &"END"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/123"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/123"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="96" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0520069, 0, -0.469823, 0, 0.061, 0, 0.142826, 0, -0.171075, 66.257, 0.856328, -53.1355)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/96"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/96"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="97" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.00838168, 0, -0.499239, 0, 0.061, 0, 0.151769, 0, 0.0275713, 64.8711, 0.856328, -51.4591)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/97"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/97"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="98" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.104968, 0, -0.361628, 0, 0.061, 0, 0.109935, 0, 0.34529, 65.7863, 0.856329, -49.2195)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/98"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/98"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="99" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.126259, 0, 0.278395, 0, 0.061, 0, -0.0846319, 0, 0.415327, 68.2759, 0.975013, -48.4809)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/99"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/99"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="100" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.149296, 0, -0.093896, 0, 0.061, 0, 0.0285444, 0, 0.491104, 70.5414, 0.975013, -49.6817)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/100"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/100"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="101" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0536314, 0, -0.467842, 0, 0.061, 0, 0.142224, 0, 0.176419, 73.728, 1.11855, -48.3411)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/101"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/101"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="102" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0561299, 0, -0.46466, 0, 0.061, 0, 0.141257, 0, -0.184638, 74.1996, 1.11855, -45.7315)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/102"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/102"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="103" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.113817, 0, -0.331402, 0, 0.061, 0, 0.100746, 0, -0.374397, 72.8182, 1.38513, -43.587)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/103"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/103"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="104" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.15153, 0, 0.0392727, 0, 0.061, 0, -0.0119389, 0, -0.498455, 69.9252, 1.38513, -42.4271)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/104"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/104"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="105" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.119727, 0, -0.308044, 0, 0.061, 0, 0.0936454, 0, -0.393838, 67.2002, 1.38513, -42.6442)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/105"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/105"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="106" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(-0.0295834, 0, -0.490439, 0, 0.061, 0, 0.149093, 0, -0.0973137, 64.4543, 1.38513, -41.0942)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/106"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/106"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="107" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.103102, 0, -0.367392, 0, 0.061, 0, 0.111687, 0, 0.339151, 64.3404, 1.63087, -37.9704)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/107"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/107"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="108" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.137697, 0, -0.211744, 0, 0.061, 0, 0.0643701, 0, 0.452951, 67.1838, 1.63087, -36.5729)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/108"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/108"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="109" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.106444, 0, -0.356931, 0, 0.061, 0, 0.108507, 0, 0.350144, 70.5923, 1.63087, -35.6601)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/109"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/109"]
+transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
+material_override = SubResource("StandardMaterial3D_pjmrd")
+material_overlay = SubResource("StandardMaterial3D_bvwqr")
+
+[node name="110" type="Node3D" parent="NodeMapMath"]
+transform = Transform3D(0.0836333, 0, -0.41751, 0, 0.061, 0, 0.126923, 0, 0.27511, 72.4452, 1.89448, -33.7555)
+metadata/Type = &"default"
+
+[node name="Base" type="CSGBox3D" parent="NodeMapMath/110"]
+transform = Transform3D(6.91076, 0, 0, 0, 0.971739, 0, 0, 0, 1, 3.4539, 0.457732, 0)
+
+[node name="Colour" type="CSGBox3D" parent="NodeMapMath/110"]
 transform = Transform3D(6.49371, 0, 0, 0, 0.639678, 0, 0, 0, 0.920108, 3.4692, 0.862906, -0.0015105)
 material_override = SubResource("StandardMaterial3D_pjmrd")
 material_overlay = SubResource("StandardMaterial3D_bvwqr")
@@ -1006,10 +2640,10 @@ text = "Start"
 
 [node name="OptionA" type="Button" parent="UI"]
 visible = false
-offset_left = 261.0
-offset_top = 285.0
-offset_right = 450.0
-offset_bottom = 606.0
+offset_left = 218.0
+offset_top = 266.0
+offset_right = 458.0
+offset_bottom = 605.0
 
 [node name="Text" type="Label" parent="UI/OptionA"]
 layout_mode = 0
@@ -1031,12 +2665,19 @@ label_settings = SubResource("LabelSettings_a6b6e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="image" type="TextureRect" parent="UI/OptionA"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 339.0
+texture = ExtResource("19_0ikuf")
+expand_mode = 1
+
 [node name="OptionB" type="Button" parent="UI"]
 visible = false
 offset_left = 722.0
-offset_top = 288.0
-offset_right = 911.0
-offset_bottom = 609.0
+offset_top = 271.0
+offset_right = 962.0
+offset_bottom = 610.0
 
 [node name="Text" type="Label" parent="UI/OptionB"]
 layout_mode = 0
@@ -1057,6 +2698,27 @@ text = "$1000"
 label_settings = SubResource("LabelSettings_a6b6e")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="image" type="TextureRect" parent="UI/OptionB"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 339.0
+texture = ExtResource("19_0ikuf")
+expand_mode = 1
+
+[node name="OptionC" type="Button" parent="UI"]
+visible = false
+offset_left = 478.0
+offset_top = 237.0
+offset_right = 718.0
+offset_bottom = 576.0
+
+[node name="image" type="TextureRect" parent="UI/OptionC"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 339.0
+texture = ExtResource("19_0ikuf")
+expand_mode = 1
 
 [node name="PlayerHeader" type="Node2D" parent="UI"]
 
@@ -1126,6 +2788,11 @@ transform = Transform3D(0.325194, 0, 0, 0, 1, 0, 0, 0, 0.261968, 44.8001, 16.754
 transform = Transform3D(0.615018, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.763453, -3.33716e-08, -0.107208, -2.95569, 1.19217)
 mesh = ExtResource("27_ub3wo")
 skeleton = NodePath("../../StartCameraPOS")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Spinner"]
+transform = Transform3D(3.07509, 0, 0, 0, 1, 0, 0, 0, 3.81726, -137.764, -16.754, 147.496)
+stream = ExtResource("29_fmgmd")
+volume_db = 2.547
 
 [node name="TIcker" type="CSGBox3D" parent="."]
 transform = Transform3D(0.103611, 0, -0.862523, 0, 0.311966, 0, 0.176608, 0, 0.506019, 48.9594, 16.0951, -41.1793)
