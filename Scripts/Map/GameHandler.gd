@@ -400,18 +400,23 @@ func _optionB():
 func _optionC():
 	Csel = ActionCards[Csel]
 	for type in Csel["types"]:
-		if type == 0:
+		if type == 0: #money
 			Players[currentPlayerID].Cash += Csel["value"]
-		if type == 1:
+		if type == 1: #bonus turn
 			currentPlayerID -= 1
-		if type == 2:
+		if type == 2: #miss a turn
 			pass
-		if type == 3:
+		if type == 3: #money per child
 			Players[currentPlayerID].Cash += Csel["value"] * max(Players[currentPlayerID].Pegs-2, 0)
-		if type == 4:
+		if type == 4: #procreate
 			Players[currentPlayerID].Pegs += 1
-		if type == 5 and Players[currentPlayerID].Pegs > 2:
-			Players[currentPlayerID].Pegs -= 1
+		if type == 5 and Players[currentPlayerID].Pegs > 2: #adoption
+			#Players[currentPlayerID].Pegs -= 1
+			pass
+		if type == 6 and Players[currentPlayerID].Pegs > 2: # child = turn
+			#remove child
+			#bonus turn
+			pass
 			
 	gameState = 1  # Move to spinner state
 	gameStateChanged = true
@@ -466,7 +471,7 @@ var ActionCards = [
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (33).jpg", "value":0, "types":[2]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (34).jpg", "value":0, "types":[2]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (35).jpg", "value":0, "types":[5]},
-	{"path":"res://Cards/CARD TEMPLATE (ACTION) (36).jpg", "value":0, "types":[1,5]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (36).jpg", "value":0, "types":[6]},
 ]
 
 # Jobs that dont pay well

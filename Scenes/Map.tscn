@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=56 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -30,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
 [ext_resource type="ArrayMesh" uid="uid://bpvyqjvfqyavg" path="res://Models/SpinnerTest/tinker.obj" id="27_ub3wo"]
 [ext_resource type="AudioStream" uid="uid://6xfbveucm5qn" path="res://Media/minecraft_click.mp3" id="29_fmgmd"]
+[ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="31_4co00"]
+[ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="32_2hggc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -97,6 +99,15 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_ffj3f"]
 font_size = 24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt8r4"]
+albedo_color = Color(0, 0.662745, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhi6v"]
+size = Vector3(5.47208, 9.79803, 4.95255)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehp10"]
+albedo_color = Color(1, 0.352941, 1, 1)
 
 [node name="Map" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99055, 1.79852, 1.87526)
@@ -2796,3 +2807,55 @@ volume_db = 2.547
 
 [node name="TIcker" type="CSGBox3D" parent="."]
 transform = Transform3D(0.103611, 0, -0.862523, 0, 0.311966, 0, 0.176608, 0, 0.506019, 48.9594, 16.0951, -41.1793)
+
+[node name="Blue Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, -10.2502, -13.2264, -0.822519)
+
+[node name="Blue" type="MeshInstance3D" parent="Blue Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
+mesh = ExtResource("31_4co00")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt8r4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_qhi6v")
+
+[node name="Pink Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, -0.415893, -12.415, -0.10996)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_qhi6v")
+
+[node name="Pink" type="MeshInstance3D" parent="Pink Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
+mesh = ExtResource("32_2hggc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehp10")
+
+[node name="Blue Child Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, 8.32909, -13.2264, -0.822519)
+
+[node name="BlueS" type="MeshInstance3D" parent="Blue Child Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
+mesh = ExtResource("31_4co00")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt8r4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue Child Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_qhi6v")
+
+[node name="Pink Child Peg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, 17.7726, -13.2327, -0.810814)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Child Peg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
+shape = SubResource("BoxShape3D_qhi6v")
+
+[node name="PinkS" type="MeshInstance3D" parent="Pink Child Peg"]
+transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
+mesh = ExtResource("32_2hggc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehp10")

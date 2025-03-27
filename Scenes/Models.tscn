@@ -158,7 +158,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_grspd")
 [node name="Blue Child Peg" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -33.523, -2.95045, 39.9273)
 
-[node name="Blue" type="MeshInstance3D" parent="Blue Child Peg"]
+[node name="BlueS" type="MeshInstance3D" parent="Blue Child Peg"]
 transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
 mesh = ExtResource("10_bjwmg")
 skeleton = NodePath("../..")
@@ -175,7 +175,7 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -24.0795, -2.95045, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
 shape = SubResource("BoxShape3D_d6sjs")
 
-[node name="Pink" type="MeshInstance3D" parent="Pink Child Peg"]
+[node name="PinkS" type="MeshInstance3D" parent="Pink Child Peg"]
 transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
 mesh = ExtResource("11_w4v2o")
 skeleton = NodePath("../..")

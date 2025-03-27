@@ -80,3 +80,9 @@ func setDestination(dest, rot):
 # Activates the car's camera to make it the active camera for the scene
 func activateCamera():
 	car.get_node("carCamera").current = true  # Set the car's camera node to be the active one
+
+func PegTheCar():
+	pass
+	
+func Disadoption():
+	pass
