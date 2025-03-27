@@ -170,6 +170,31 @@ func _process(delta: float) -> void:
 				
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
+			
+			if SubEvent == "house":
+				var run = true
+				if Players[currentPlayerID].Cash < 5000:
+					run = false
+				if run == true:
+					var currentspot = 0
+					var upperbound = 12
+					
+					for House in Housing:
+						if Players[currentPlayerID].Cash <= House["price"]:
+							upperbound = currentspot
+						currentspot += 1
+					
+					BlueExtA = randi_range(0, upperbound - 1)  # Randomly select option A
+					BlueExtB = randi_range(0, upperbound -1)  # Randomly select option B
+					while BlueExtB == BlueExtA:  # Ensure the two options are different
+						BlueExtB = randi_range(0, upperbound -1)
+						
+					# Set the text and value of each option
+					opA.get_node("image").texture = load(Housing[BlueExtA]["path"])
+					opB.get_node("image").texture = load(Housing[BlueExtB]["path"])
+					
+					opA.visible = true  # Make option A visible
+					opB.visible = true  # Make option B visible
 				
 	
 	# spin the spiiner
@@ -181,7 +206,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 1
+		num *= 10
 		
 		if num != spinTickNumberTracker:
 			spinnerPlayer.play(0.6)
@@ -358,6 +383,8 @@ func _optionA():
 			Players[currentPlayerID].Salary = RichJobs[BlueExtA]["salary"]
 		if SubEvent == "fork":
 			Players[currentPlayerID].spotExt = BlueExtA
+		if SubEvent == "house":
+			Players[currentPlayerID].Cash -= Housing[BlueExtA]["price"]
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -386,6 +413,8 @@ func _optionB():
 			Players[currentPlayerID].Salary = RichJobs[BlueExtB]["salary"]
 		if SubEvent == "fork":
 			Players[currentPlayerID].spotExt = BlueExtB
+		if SubEvent == "house":
+			Players[currentPlayerID].Cash -= Housing[BlueExtB]["price"]
 			
 		if RollStoage > 0:
 			Roll = RollStoage
