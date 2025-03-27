@@ -27,7 +27,6 @@ offset_bottom = 646.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 2
-offset_left = -2.0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_8gmqe")
@@ -56,9 +55,11 @@ script = ExtResource("2_o2qaw")
 
 [node name="Loading" type="Sprite2D" parent="Control"]
 visible = false
-position = Vector2(576, 325.705)
-scale = Vector2(1, 1.008)
+position = Vector2(576.25, 324.188)
+scale = Vector2(0.990112, 0.987232)
 texture = ExtResource("3_mtl7s")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cjtds")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
