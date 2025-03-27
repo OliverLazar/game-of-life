@@ -181,7 +181,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 100
+		num *= 1
 		
 		if num != spinTickNumberTracker:
 			spinnerPlayer.play(0.6)
@@ -303,12 +303,15 @@ func _start_button():
 	
 	PlayerCount = pSlider.value  # Get the number of players from the slider
 	print("starting,", PlayerCount)
-
+	
+	var car_possbile = Garage.get_children()
 	# Initialize players
 	for p in range(PlayerCount):
 		var pp = Player.new()  # Create a new player object
-		var car = Garage.get_node("Green").duplicate()  # Duplicate the car from the garage
-		car.name = Garage.get_node("Green").name + str(p)
+		var n = randi_range(0,len(car_possbile)-1)
+		var car = car_possbile[n].duplicate()  # Duplicate the car from the garage
+		car.name = car_possbile[n].name
+		car_possbile.pop_at(n)
 		add_child(car)  # Add the car to the scene
 		pp.setCar(car)  # Set the car for the player
 		Players.append(pp)  # Add the player to the list of players
@@ -432,7 +435,7 @@ var ActionCards = [
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (2).jpg", "value":5000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (3).jpg", "value":5000, "types":[0,1]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (4).jpg", "value":15000, "types":[0]},
-	{"path":"res://Cards/CARD TEMPLATE (ACTION) (5).jpg", "value":5000, "types":[0]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (5).jpg", "value":20000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (6).jpg", "value":20000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (7).jpg", "value":25000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (8).jpg", "value":30000, "types":[0]},

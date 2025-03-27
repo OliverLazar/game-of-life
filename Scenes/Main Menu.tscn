@@ -45,6 +45,7 @@ text = "PLAY
 script = ExtResource("2_o2qaw")
 
 [node name="Exit" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 384.0
 offset_top = 488.0
 offset_right = 771.0
