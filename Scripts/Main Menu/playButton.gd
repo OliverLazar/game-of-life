@@ -9,7 +9,7 @@ var sound_button: TextureButton
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	sound_button = get_node_or_null("Control/Sound")
+	sound_button = $"../Sound"
 	audio2.play()
 	if sound_button == null:
 		print("null")

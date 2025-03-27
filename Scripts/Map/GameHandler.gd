@@ -47,6 +47,9 @@ var BlueExtB
 
 var rollMaxMaxMax = 10 # spinner debug roll 1-rollMax
 
+@onready var adultPegs = [$"BluePeg", $"Pink Peg"]
+@onready var childPegs = [$"Blue Child Peg", $"Pink Child Peg"]
+
 # Game state and player tracking variables
 var Players = []  # List of all the player objects
 var Cooldown: int  # General cooldown timer for the game
@@ -362,6 +365,8 @@ func _start_button():
 		Players[p].car.add_child(cam)  # Attach camera to the car
 		Players[p].car.get_node("carCamera").position = a  # Set camera position
 		Players[p].car.get_node("carCamera").rotation = b  # Set camera rotation
+	
+		#Players[p].PegTheCar(adultPegs, childPegs)
 	
 	# Start the game with the spinner phase
 	gameState = 1
