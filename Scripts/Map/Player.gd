@@ -81,8 +81,27 @@ func setDestination(dest, rot):
 func activateCamera():
 	car.get_node("carCamera").current = true  # Set the car's camera node to be the active one
 
-func PegTheCar():
-	pass
+func PegTheCar(adultPegs, childPegs):
+	var peg 
+	if self.Pegs < 10:		
+		if self.Pegs < 2:
+			peg = adultPegs.pick_random()
+		else:
+			peg = childPegs.pick_random()
+			
+		print(peg)
+		
+		self.Pegs += 1
+			
+		var x = self.Pegs % 2
+		var y = floor(self.Pegs / 2)
+		
+		var dpeg = peg.duplicate()
+		dpeg.name = str(self.Pegs)
+		self.car.add_child(dpeg)
+		
+		dpeg.position = self.car.position
+		
 	
 func Disadoption():
 	pass
