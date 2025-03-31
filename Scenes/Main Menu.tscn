@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpgqlgff2xvs2"]
+[gd_scene load_steps=13 format=3 uid="uid://bpgqlgff2xvs2"]
 
 [ext_resource type="Texture2D" uid="uid://di3uun1ctom8d" path="res://Textures/Titlescreen.png" id="1_8gmqe"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d3l6s51tgyldd" path="res://Media/powerUp.wav" id="4_cjtds"]
 [ext_resource type="AudioStream" uid="uid://dj0r8ag25qqrj" path="res://Media/GOL Menu Music.mp3" id="5_rgtte"]
 [ext_resource type="Texture2D" uid="uid://sk7m5pq7bjwo" path="res://Textures/SUnmuted.png" id="5_uj1vv"]
+[ext_resource type="Texture2D" uid="uid://dm3la37f4dc07" path="res://Textures/H0.png" id="7_of58b"]
 [ext_resource type="Texture2D" uid="uid://33eo1287pic2" path="res://Textures/H1.png" id="7_qlq3a"]
 [ext_resource type="Texture2D" uid="uid://nmmgmcnkcq6f" path="res://Textures/H2.png" id="8_cf6ll"]
 
@@ -80,13 +81,15 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="Help" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 564.0
 offset_right = 88.0
 offset_bottom = 633.0
 toggle_mode = true
-texture_normal = ExtResource("7_qlq3a")
-texture_pressed = ExtResource("8_cf6ll")
+texture_normal = ExtResource("7_of58b")
+texture_pressed = ExtResource("7_qlq3a")
+texture_hover = ExtResource("8_cf6ll")
 ignore_texture_size = true
 stretch_mode = 4
 
