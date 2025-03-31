@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6dsp685lv46o"]
+[gd_scene load_steps=15 format=3 uid="uid://b6dsp685lv46o"]
 
 [ext_resource type="Texture2D" uid="uid://b5jqmo1amm6nh" path="res://Models/low-poly-cliff/cliff/UV-Cliff.png" id="1_7gsr7"]
 [ext_resource type="ArrayMesh" uid="uid://c8b0i1mxnu1qk" path="res://Models/low-poly-cliff/cliff/Cliff.obj" id="2_8woyj"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cit2oo31x0ryn" path="res://Models/Low Poly House/Low Poly House/Low Poly House.fbx" id="7_y6biu"]
 [ext_resource type="PackedScene" uid="uid://bqng5qmp0jkml" path="res://Models/model (1).glb" id="8_haceo"]
 [ext_resource type="PackedScene" uid="uid://b5rtq61ry6c8b" path="res://Models/3490 Trilogy trail.glb" id="9_6rp0i"]
+[ext_resource type="PackedScene" uid="uid://dycwbvlqrglsi" path="res://Models/model (3).glb" id="10_fjba7"]
+[ext_resource type="PackedScene" uid="uid://dq6a780wi134g" path="res://Models/model (4).glb" id="11_pd0ii"]
+[ext_resource type="PackedScene" uid="uid://dhjf7nsvuuolp" path="res://Models/model (5).glb" id="12_jqk8t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2erfy"]
 albedo_texture = ExtResource("1_7gsr7")
@@ -43,3 +46,12 @@ transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-0
 
 [node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("9_6rp0i")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -5.50153, 0.431638, 5.97677)
+
+[node name="model (3)" parent="." instance=ExtResource("10_fjba7")]
+transform = Transform3D(0.05, 0, 0, 0, 0.000959872, 0.0499908, 0, -0.0499908, 0.000959872, -12.4142, 0.0978804, 8.05185)
+
+[node name="model (4)" parent="." instance=ExtResource("11_pd0ii")]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, -1.7925, 0.281494, 9.16475)
+
+[node name="model (5)" parent="." instance=ExtResource("12_jqk8t")]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, -0.866226, 0.363294, 9.13013)

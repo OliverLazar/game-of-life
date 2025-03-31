@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpgqlgff2xvs2"]
+[gd_scene load_steps=12 format=3 uid="uid://bpgqlgff2xvs2"]
 
 [ext_resource type="Texture2D" uid="uid://di3uun1ctom8d" path="res://Textures/Titlescreen.png" id="1_8gmqe"]
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
 [ext_resource type="Texture2D" uid="uid://cyiqqrmn0uxtu" path="res://Textures/Unmuted.png" id="3_cmqnm"]
+[ext_resource type="Texture2D" uid="uid://8nje0nbicoi0" path="res://Textures/HOW TO PLAY (2).png" id="3_lelo6"]
 [ext_resource type="Texture2D" uid="uid://j86epuhe58k1" path="res://Textures/Loading.png" id="3_mtl7s"]
 [ext_resource type="Texture2D" uid="uid://b2rabrah0t6bv" path="res://Textures/Muted.png" id="4_0xl8r"]
 [ext_resource type="AudioStream" uid="uid://d3l6s51tgyldd" path="res://Media/powerUp.wav" id="4_cjtds"]
 [ext_resource type="AudioStream" uid="uid://dj0r8ag25qqrj" path="res://Media/GOL Menu Music.mp3" id="5_rgtte"]
 [ext_resource type="Texture2D" uid="uid://sk7m5pq7bjwo" path="res://Textures/SUnmuted.png" id="5_uj1vv"]
+[ext_resource type="Texture2D" uid="uid://33eo1287pic2" path="res://Textures/H1.png" id="7_qlq3a"]
+[ext_resource type="Texture2D" uid="uid://nmmgmcnkcq6f" path="res://Textures/H2.png" id="8_cf6ll"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -57,6 +60,12 @@ theme_override_font_sizes/font_size = 48
 text = "EXIT"
 script = ExtResource("2_o2qaw")
 
+[node name="Helpscreen" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(577, 324)
+scale = Vector2(0.988822, 0.987805)
+texture = ExtResource("3_lelo6")
+
 [node name="Sound" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 1067.0
@@ -67,6 +76,17 @@ toggle_mode = true
 texture_normal = ExtResource("3_cmqnm")
 texture_pressed = ExtResource("4_0xl8r")
 texture_hover = ExtResource("5_uj1vv")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Help" type="TextureButton" parent="Control"]
+offset_left = 19.0
+offset_top = 564.0
+offset_right = 88.0
+offset_bottom = 633.0
+toggle_mode = true
+texture_normal = ExtResource("7_qlq3a")
+texture_pressed = ExtResource("8_cf6ll")
 ignore_texture_size = true
 stretch_mode = 4
 

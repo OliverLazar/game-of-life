@@ -1,16 +1,19 @@
 extends Button
 
 @onready var sprite = $"../Loading"
+@onready var sprite2 = $"../Helpscreen"
 @onready var audio = $"../../AudioStreamPlayer"
 @onready var map = "res://Scenes/Map.tscn"
 @onready var audio2 = $"../../AudioStreamPlayer2"
 var sound_button: TextureButton
 var audiostatus = true
 var has_processed = false
+var help_button: TextureButton
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
 	sound_button = $"../Sound"
+	help_button = $"../Help"
 	audio2.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,3 +35,8 @@ func _process(delta: float) -> void:
 			audio2.playing = true
 			audiostatus = true
 			has_processed = false
+	if help_button.button_pressed == true:
+		sprite2.visible = true
+	if help_button.button_pressed == false:
+		sprite2.visible = false
+		
