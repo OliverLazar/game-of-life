@@ -5,16 +5,13 @@ extends Button
 @onready var map = "res://Scenes/Map.tscn"
 @onready var audio2 = $"../../AudioStreamPlayer2"
 var sound_button: TextureButton
-
+var audiostatus = true
+var has_processed = false
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
 	sound_button = $"../Sound"
 	audio2.play()
-	if sound_button == null:
-		print("null")
-	else:
-		print("hello")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if name == "Play" and button_pressed:
@@ -25,5 +22,13 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file(map)
 	if name == "Exit" and button_pressed:
 		get_tree().quit()
-	if sound_button and sound_button.button_pressed:
-		print("hi")
+	if sound_button and sound_button.button_pressed and not has_processed:
+		if audiostatus == true and audio2.playing == true:
+			audio2.playing = false
+			audiostatus = false
+			has_processed = true
+	elif sound_button and not sound_button.button_pressed and has_processed:
+		if audiostatus == false:
+			audio2.playing = true
+			audiostatus = true
+			has_processed = false
