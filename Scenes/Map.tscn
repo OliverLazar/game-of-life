@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=60 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -23,8 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://d1501h5qsdf5w" path="res://Cards/CARD BACK (ACTION).jpg" id="19_0ikuf"]
 [ext_resource type="PackedScene" uid="uid://2uie2nejotyn" path="res://Models/Bus/game_of_life_bus light blue.tscn" id="19_ru4b2"]
 [ext_resource type="PackedScene" uid="uid://d0jdkpopj763o" path="res://Models/Bus/game_of_life_bus light dark blue.tscn" id="20_wy4mw"]
+[ext_resource type="Texture2D" uid="uid://cyiqqrmn0uxtu" path="res://Textures/Unmuted.png" id="21_cksij"]
 [ext_resource type="PackedScene" uid="uid://bqqq2lrqjqire" path="res://Models/Bus/game_of_life_bus orange.tscn" id="21_qocdc"]
 [ext_resource type="PackedScene" uid="uid://dpx51dj35sn0q" path="res://Models/Bus/game_of_life_bus pink.tscn" id="22_5xivm"]
+[ext_resource type="Texture2D" uid="uid://b2rabrah0t6bv" path="res://Textures/Muted.png" id="22_a8nkj"]
+[ext_resource type="Texture2D" uid="uid://sk7m5pq7bjwo" path="res://Textures/SUnmuted.png" id="23_c413j"]
 [ext_resource type="PackedScene" uid="uid://cfmtavd2qwuoe" path="res://Models/Bus/game_of_life_bus purple.tscn" id="23_nn4gh"]
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="24_lm7d8"]
 [ext_resource type="PackedScene" uid="uid://cvlhhcyi0l25v" path="res://Models/Bus/game_of_life_bus yellow.tscn" id="25_jb1yt"]
@@ -32,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://6xfbveucm5qn" path="res://Media/minecraft_click.mp3" id="29_fmgmd"]
 [ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="31_4co00"]
 [ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="32_2hggc"]
+[ext_resource type="AudioStream" uid="uid://ufsbicj14cx7" path="res://Media/Main Game Music.mp3" id="36_p0f24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -2755,6 +2759,18 @@ text = "$1000
 "
 label_settings = SubResource("LabelSettings_ffj3f")
 
+[node name="Sound" type="TextureButton" parent="UI"]
+offset_left = 1067.0
+offset_top = 564.0
+offset_right = 1136.0
+offset_bottom = 633.0
+toggle_mode = true
+texture_normal = ExtResource("21_cksij")
+texture_pressed = ExtResource("22_a8nkj")
+texture_hover = ExtResource("23_c413j")
+ignore_texture_size = true
+stretch_mode = 4
+
 [node name="Garage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.69261, 0)
 
@@ -2807,59 +2823,62 @@ skeleton = NodePath("../../StartCameraPOS")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Spinner"]
 transform = Transform3D(3.07509, 0, 0, 0, 1, 0, 0, 0, 3.81726, -137.764, -16.754, 147.496)
 stream = ExtResource("29_fmgmd")
-volume_db = 2.547
+volume_db = 13.757
 
 [node name="TIcker" type="CSGBox3D" parent="."]
 transform = Transform3D(0.103611, 0, -0.862523, 0, 0.311966, 0, 0.176608, 0, 0.506019, 48.9594, 16.0951, -41.1793)
 
-[node name="Blue Peg" type="CharacterBody3D" parent="."]
+[node name="BluePeg" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, -10.2502, -13.2264, -0.822519)
 
-[node name="Blue" type="MeshInstance3D" parent="Blue Peg"]
+[node name="Blue" type="MeshInstance3D" parent="BluePeg"]
 transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
 mesh = ExtResource("31_4co00")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mt8r4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue Peg"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BluePeg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
 shape = SubResource("BoxShape3D_qhi6v")
 
-[node name="Pink Peg" type="CharacterBody3D" parent="."]
+[node name="PinkPeg" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, -0.415893, -12.415, -0.10996)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Peg"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PinkPeg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
 shape = SubResource("BoxShape3D_qhi6v")
 
-[node name="Pink" type="MeshInstance3D" parent="Pink Peg"]
+[node name="Pink" type="MeshInstance3D" parent="PinkPeg"]
 transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
 mesh = ExtResource("32_2hggc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ehp10")
 
-[node name="Blue Child Peg" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, 8.32909, -13.2264, -0.822519)
+[node name="BlueChildPeg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, -9.2931, -13.2264, -0.822519)
 
-[node name="BlueS" type="MeshInstance3D" parent="Blue Child Peg"]
-transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.2312, 2.80713, -3.24655)
+[node name="BlueS" type="MeshInstance3D" parent="BlueChildPeg"]
+transform = Transform3D(-0.199999, -0.000334965, 0.000409047, 0.000415128, -0.00367192, 0.199966, -0.000327398, 0.199966, 0.00367261, -0.885223, 2.80713, -1.87567)
 mesh = ExtResource("31_4co00")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mt8r4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue Child Peg"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChildPeg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
 shape = SubResource("BoxShape3D_qhi6v")
 
-[node name="Pink Child Peg" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, 17.7726, -13.2327, -0.810814)
+[node name="PinkChildPeg" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.04, 0, 0.04, -1.74846e-09, 0.150414, -13.2327, -0.810814)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pink Child Peg"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PinkChildPeg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02081, 7.72486, 3.09404)
 shape = SubResource("BoxShape3D_qhi6v")
 
-[node name="PinkS" type="MeshInstance3D" parent="Pink Child Peg"]
-transform = Transform3D(-0.249999, -0.000418697, 0.0005114, 0.000519003, -0.00459074, 0.249957, -0.000409236, 0.249958, 0.00459159, -1.23262, 2.85837, -3.26571)
+[node name="PinkS" type="MeshInstance3D" parent="PinkChildPeg"]
+transform = Transform3D(-0.199999, -0.000334965, 0.000409047, 0.000415128, -0.00367192, 0.199966, -0.000327398, 0.199966, 0.00367261, -0.886665, 2.85837, -1.89481)
 mesh = ExtResource("32_2hggc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ehp10")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_p0f24")

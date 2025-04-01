@@ -25,6 +25,12 @@ var Csel = 0
 # Topleft UI
 @onready var PlayerInfo = $"UI/PlayerHeader"
 
+# audio
+@onready var audio2 = $"AudioStreamPlayer2"
+@onready var sound_button = $"UI/Sound"
+var audiostatus = true
+var has_processed = false
+
 var PlayerCount = 3  # Default number of players
 
 # Cooldown variables controlling the flow of the game
@@ -47,8 +53,13 @@ var BlueExtB
 
 var rollMaxMaxMax = 10 # spinner debug roll 1-rollMax
 
-@onready var adultPegs = [$"BluePeg", $"Pink Peg"]
-@onready var childPegs = [$"Blue Child Peg", $"Pink Child Peg"]
+@onready var abp = $"BluePeg"
+@onready var app = $"PinkPeg"
+@onready var cbp = $"BlueChildPeg"
+@onready var cpp = $"PinkChildPeg"
+
+@onready var adultPegs = [abp, app]
+@onready var childPegs = [cbp, cpp]
 
 # Game state and player tracking variables
 var Players = []  # List of all the player objects
@@ -66,6 +77,8 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	audio2.play()
+	
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
 	
@@ -80,6 +93,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Audio
+	if sound_button and sound_button.button_pressed and not has_processed:
+		if audiostatus == true and audio2.playing == true:
+			audio2.playing = false
+			audiostatus = false
+			has_processed = true
+	elif sound_button and not sound_button.button_pressed and has_processed:
+		if audiostatus == false:
+			audio2.playing = true
+			audiostatus = true
+			has_processed = false
+	
 	if Cooldown:
 		Cooldown -= 1
 		return
@@ -209,7 +234,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 10
+		num *= 1
 		
 		if num != spinTickNumberTracker:
 			spinnerPlayer.play(0.6)
@@ -366,7 +391,19 @@ func _start_button():
 		Players[p].car.get_node("carCamera").position = a  # Set camera position
 		Players[p].car.get_node("carCamera").rotation = b  # Set camera rotation
 	
-		#Players[p].PegTheCar(adultPegs, childPegs)
+		#print(adultPegs.pick_random())
+		#print(app)
+		var peh = Players[p].PegTheCar(adultPegs, childPegs)
+		add_child(peh)
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		add_child(Players[p].PegTheCar(adultPegs, childPegs))
 	
 	# Start the game with the spinner phase
 	gameState = 1
