@@ -27,6 +27,7 @@ var Speed = 0.2
 var Cash = 0  # Player's cash amount
 var Salary = 0  # Player's salary
 var Pegs = 0  # Progress or achievements (purpose not clear)
+var pegList = []
 var Job = "None"  # The player's current job, initially set to "None"
 
 # Called when the player node is ready and added to the scene
@@ -55,6 +56,18 @@ func _process(delta: float):
 		
 		# Increment lerpWeight based on Speed and delta time to control the smoothness
 		lerpWeight += Speed * delta
+		
+	# bring pegs
+	for i in range(len(self.pegList)):
+		var x = i % 2
+		var y = floor(i / 2)
+		self.pegList[i].position = self.car.position + Vector3.UP
+		self.pegList[i].rotation = self.car.rotation + Vector3.RIGHT*deg_to_rad(90)
+		
+		#self.pegList[i].position += self.pegList[i].transform.basis.x*5
+		
+		self.pegList[i].position += -self.pegList[i].transform.basis.x*8.3 - self.pegList[i].transform.basis.z*0.8\
+		 + self.pegList[i].transform.basis.x*5*y - self.pegList[i].transform.basis.z*5*x
 
 # Sets the car to the specified Car node, and positions it at the target destination
 func setCar(Car):
@@ -88,19 +101,19 @@ func PegTheCar(adultPegs, childPegs):
 			peg = adultPegs.pick_random()
 		else:
 			peg = childPegs.pick_random()
-			
-		print(peg)
 		
 		self.Pegs += 1
 			
-		var x = self.Pegs % 2
-		var y = floor(self.Pegs / 2)
+		#var x = self.Pegs % 2
+		#var y = floor(self.Pegs / 2)
 		
 		var dpeg = peg.duplicate()
 		dpeg.name = str(self.Pegs)
-		self.car.add_child(dpeg)
+		#self.car.add_child(dpeg)
 		
-		dpeg.position = self.car.position
+		#dpeg.position = Vector3.ZERO + Vector3.UP #self.pDestination #self.car.position
+		self.pegList.append(dpeg)
+		return dpeg
 		
 	
 func Disadoption():
