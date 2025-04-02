@@ -29,6 +29,7 @@ var Salary = 0  # Player's salary
 var Pegs = 0  # Progress or achievements (purpose not clear)
 var pegList = []
 var Job = "None"  # The player's current job, initially set to "None"
+var PassTurns = 0
 
 # Called when the player node is ready and added to the scene
 func _ready():
@@ -117,4 +118,7 @@ func PegTheCar(adultPegs, childPegs):
 		
 	
 func Disadoption():
-	pass
+	if self.Pegs > 2:
+		var killed = self.pegList.pop_back()
+		killed.queue_free()
+		self.Pegs -= 1

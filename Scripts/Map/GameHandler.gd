@@ -7,6 +7,7 @@ extends Node3D
 @onready var Garage = $"Garage"  # Reference to the Garage where cars are stored
 @onready var Spinner = $"Spinner"
 @onready var spinnerPlayer = $"Spinner/AudioStreamPlayer3D"
+var SFX
 var spinRotVel = 0
 var spinTickNumberTracker = 0
 
@@ -52,6 +53,7 @@ var BlueExtA
 var BlueExtB
 
 var rollMaxMaxMax = 10 # spinner debug roll 1-rollMax
+var currentPlayerTurnAgain = false # to fix camera bug on bonus turn
 
 @onready var abp = $"BluePeg"
 @onready var app = $"PinkPeg"
@@ -78,6 +80,10 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio2.play()
+	
+	SFX = AudioStreamPlayer3D.new()
+	add_child(SFX)
+	#SFX.loop = false
 	
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
@@ -149,6 +155,10 @@ func _process(delta: float) -> void:
 			gameState = 3  # Wait for the car to finish moving
 
 		if gameState == 4:  # Regular event (choose between two options)
+			SFX.stream = load("res://Media/get_card.mp3")
+			SFX.volume_db = 20
+			if audiostatus: SFX.play(0.4)
+			
 			Csel = randi_range(0, len(ActionCards)-1)  # Randomly select option C
 				
 			# Set the text and value of each option
@@ -157,6 +167,9 @@ func _process(delta: float) -> void:
 			opC.visible = true  # Make option A visible
 			
 		if gameState == 6:
+			SFX.stream = load("res://Media/get_card.mp3")
+			SFX.volume_db = 20
+			
 			if SubEvent == "career": # choose career or college
 				# Set the text and value of each option
 				opA.get_node("image").texture = load("res://Cards/CARD BACK (CAREER).jpg")
@@ -200,22 +213,23 @@ func _process(delta: float) -> void:
 				opB.visible = true  # Make option B visible
 			
 			if SubEvent == "house":
-				var run = true
-				if Players[currentPlayerID].Cash < 5000:
-					run = false
+				var run = false
+				
+				var safe = []
+				for House in Housing:
+					if Players[currentPlayerID].Cash >= House["price"]:
+						safe.append(House)
+						
+				var upperbound = len(safe)
+				run = upperbound >= 2
+				
+				#print(run, upperbound, safe)
+				
 				if run == true:
-					var currentspot = 0
-					var upperbound = 12
-					
-					for House in Housing:
-						if Players[currentPlayerID].Cash <= House["price"]:
-							upperbound = currentspot
-						currentspot += 1
-					
 					BlueExtA = randi_range(0, upperbound - 1)  # Randomly select option A
-					BlueExtB = randi_range(0, upperbound -1)  # Randomly select option B
+					BlueExtB = randi_range(0, upperbound - 1)  # Randomly select option B
 					while BlueExtB == BlueExtA:  # Ensure the two options are different
-						BlueExtB = randi_range(0, upperbound -1)
+						BlueExtB = randi_range(0, upperbound - 1)
 						
 					# Set the text and value of each option
 					opA.get_node("image").texture = load(Housing[BlueExtA]["path"])
@@ -223,7 +237,16 @@ func _process(delta: float) -> void:
 					
 					opA.visible = true  # Make option A visible
 					opB.visible = true  # Make option B visible
+				else:
+					SFX.volume_db = -50
+					if RollStoage > 0:
+						gameState = 2
+						Roll = RollStoage
+					else:
+						gameState = 4
+					gameStateChanged = true
 				
+			if audiostatus: SFX.play(0.4)
 	
 	# spin the spiiner
 	if gameState == 1 and spinRotVel > 0:
@@ -237,7 +260,7 @@ func _process(delta: float) -> void:
 		num *= 1
 		
 		if num != spinTickNumberTracker:
-			spinnerPlayer.play(0.6)
+			if audiostatus: spinnerPlayer.play(0.6)
 			spinTickNumberTracker = num
 		
 		if spinRotVel <= 0:
@@ -258,6 +281,9 @@ func _process(delta: float) -> void:
 			# Different actions based on the type of square the player lands on
 			if nodeType == "payday":
 				p.Cash += p.Salary  # Pay the player their salary
+				SFX.stream = load("res://Media/get_money.mp3")
+				SFX.volume_db = 5
+				if audiostatus: SFX.play()
 			elif nodeType == "stop":
 				gameState = 5  # Transition to stop event
 				gameStateChanged = true
@@ -331,10 +357,15 @@ func moveCar(player, target, ext):
 
 # Switch to the next player in the game
 func nextPlayer():
-	PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
+	var adjust = 0
+	if currentPlayerTurnAgain:
+		adjust = 1
+		currentPlayerTurnAgain = false
 	
-	mainCamera.position = Players[currentPlayerID].car.position + Vector3.UP*5
-	mainCamera.rotation = Players[currentPlayerID].car.rotation
+	PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID + adjust].Cash))
+	
+	mainCamera.position = Players[currentPlayerID + adjust].car.position + Vector3.UP*5
+	mainCamera.rotation = Players[currentPlayerID + adjust].car.rotation
 	
 	mainCamera.current = true  # Set the camera to follow the current player's car
 	opA.visible = false  # Hide options A and B
@@ -347,12 +378,20 @@ func nextPlayer():
 	
 	if currentPlayerID >= len(Players):
 		currentPlayerID = 0  # Loop back to the first player if we reach the end
+	
+	if Players[currentPlayerID].PassTurns > 0:
+		Players[currentPlayerID].PassTurns -= 1
+		currentPlayerID -= 1
 
 # Start button handler, initializes the game with the selected number of players
 func _start_button():
 	$"UI/PlayerCount".visible = false  # Hide player count slider
 	$"UI/pcountLabel".visible = false  # Hide player count label
 	$"UI/StartGame".visible = false  # Hide start button
+	
+	SFX.stream = load("res://Media/powerUp.wav")
+	SFX.volume_db = 5
+	if audiostatus: SFX.play()
 	
 	PlayerCount = pSlider.value  # Get the number of players from the slider
 	print("starting,", PlayerCount)
@@ -391,19 +430,9 @@ func _start_button():
 		Players[p].car.get_node("carCamera").position = a  # Set camera position
 		Players[p].car.get_node("carCamera").rotation = b  # Set camera rotation
 	
-		#print(adultPegs.pick_random())
-		#print(app)
 		var peh = Players[p].PegTheCar(adultPegs, childPegs)
 		add_child(peh)
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
-		add_child(Players[p].PegTheCar(adultPegs, childPegs))
+		Players[p].Disadoption()
 	
 	# Start the game with the spinner phase
 	gameState = 1
@@ -473,21 +502,33 @@ func _optionC():
 	for type in Csel["types"]:
 		if type == 0: #money
 			Players[currentPlayerID].Cash += Csel["value"]
+			if Csel["value"] > 0:
+				SFX.stream = load("res://Media/get_money.mp3")
+				SFX.volume_db = 5
+				if audiostatus: SFX.play()
+			else:
+				SFX.stream = load("res://Media/lose_money.mp3")
+				SFX.volume_db = 5
+				if audiostatus: SFX.play()
 		if type == 1: #bonus turn
 			currentPlayerID -= 1
+			currentPlayerTurnAgain = true
 		if type == 2: #miss a turn
-			pass
+			Players[currentPlayerID].PassTurns += 1
 		if type == 3: #money per child
 			Players[currentPlayerID].Cash += Csel["value"] * max(Players[currentPlayerID].Pegs-2, 0)
+			if Players[currentPlayerID].Pegs > 2:
+				SFX.stream = load("res://Media/get_money.mp3")
+				SFX.volume_db = 5
+				if audiostatus: SFX.play()
 		if type == 4: #procreate
 			Players[currentPlayerID].Pegs += 1
-		if type == 5 and Players[currentPlayerID].Pegs > 2: #adoption
-			#Players[currentPlayerID].Pegs -= 1
-			pass
+		if type == 5: #adoption
+			Players[currentPlayerID].Disadoption()
 		if type == 6 and Players[currentPlayerID].Pegs > 2: # child = turn
-			#remove child
-			#bonus turn
-			pass
+			Players[currentPlayerID].Disadoption()
+			currentPlayerID -= 1
+			currentPlayerTurnAgain = true
 			
 	gameState = 1  # Move to spinner state
 	gameStateChanged = true
