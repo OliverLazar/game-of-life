@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bmj3nna31jydp"]
+[gd_scene load_steps=64 format=3 uid="uid://bmj3nna31jydp"]
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -36,6 +36,7 @@
 [ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="31_4co00"]
 [ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="32_2hggc"]
 [ext_resource type="AudioStream" uid="uid://ufsbicj14cx7" path="res://Media/Main Game Music.mp3" id="36_p0f24"]
+[ext_resource type="Texture2D" uid="uid://civ1jtdcunujc" path="res://Textures/in_the_clouds_6k.jpg" id="37_i783m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjmfa"]
 size = Vector3(122.492, 1, 143.173)
@@ -112,6 +113,16 @@ size = Vector3(5.47208, 9.79803, 4.95255)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehp10"]
 albedo_color = Color(1, 0.352941, 1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lyytn"]
+panorama = ExtResource("37_i783m")
+
+[sub_resource type="Sky" id="Sky_scrci"]
+sky_material = SubResource("PanoramaSkyMaterial_lyytn")
+
+[sub_resource type="Environment" id="Environment_g15bs"]
+background_mode = 2
+sky = SubResource("Sky_scrci")
 
 [node name="Map" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99055, 1.79852, 1.87526)
@@ -2882,3 +2893,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ehp10")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_p0f24")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g15bs")
