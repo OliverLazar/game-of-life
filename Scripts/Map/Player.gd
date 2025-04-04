@@ -30,6 +30,7 @@ var Pegs = 0  # Progress or achievements (purpose not clear)
 var pegList = []
 var Job = "None"  # The player's current job, initially set to "None"
 var PassTurns = 0
+var Done = false
 
 # Called when the player node is ready and added to the scene
 func _ready():
