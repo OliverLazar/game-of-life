@@ -104,6 +104,8 @@ func _ready() -> void:
 	
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
+	PlayerInfo.get_node("Sprite2D").modulate.a = 0.96
+	PlayerInfo.get_node("Sprite2D").visible = false
 	
 	#spinnerPlayer.stream = "res://Media/minecraft_click.mp3"
 		
@@ -142,7 +144,8 @@ func _process(delta: float) -> void:
 			# Set player text
 			PlayerInfo.get_node("Player").visible = true
 			PlayerInfo.get_node("Money").visible = true
-			PlayerInfo.get_node("Player").set_text("Player " + str(currentPlayerID+1) + " (" + Players[currentPlayerID].car.name + ")")		
+			PlayerInfo.get_node("Sprite2D").visible = true
+			PlayerInfo.get_node("Player").set_text("Player " + str(currentPlayerID%len(Players)+1))		
 			# Tween (smooth transition) the camera to the spinner's position and rotation
 			var cameraTween1 = get_tree().create_tween()
 			var cameraTween2 = get_tree().create_tween()
@@ -170,10 +173,15 @@ func _process(delta: float) -> void:
 			moveCar(Players[currentPlayerID], Target, PathChoice)  # Move the car to the target
 			Roll -= 1  # Decrease roll after move
 			gameState = 3  # Wait for the car to finish moving
+			
+			if not SFX.playing:
+				SFX.stream = load("res://Media/square.mp3")
+				SFX.volume_db = 2
+				if audiostatus: SFX.play()
 
 		if gameState == 4:  # Regular event (choose between two options)
 			SFX.stream = load("res://Media/get_card.mp3")
-			SFX.volume_db = 20
+			SFX.volume_db = 50
 			if audiostatus: SFX.play(0.4)
 			
 			Csel = randi_range(0, len(ActionCards)-1)  # Randomly select option C
@@ -339,7 +347,7 @@ func _process(delta: float) -> void:
 # Handle input events, such as pressing the accept button (e.g., for rolling)
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		if gameState == 1:  # If the game is in the spin state
+		if gameState == 1 and spinRotVel < 1:  # If the game is in the spin state
 			#Roll = randi_range(1, rollMaxMaxMax)  # Generate a random roll
 			#print("Roll: ", Roll)
 			#gameState = 2  # Start the movement phase
