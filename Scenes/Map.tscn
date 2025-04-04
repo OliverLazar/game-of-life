@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=89 format=4 uid="uid://bmj3nna31jydp"]
-=======
-[gd_scene load_steps=71 format=3 uid="uid://bmj3nna31jydp"]
->>>>>>> 49a9dfb111c51fe598df71c490cbf9cb7b49810a
 
 [ext_resource type="Texture2D" uid="uid://b1gkyfj1fo2ug" path="res://Media/grass.jpg" id="1_2mq4v"]
 [ext_resource type="Script" path="res://Scripts/Map/GameHandler.gd" id="1_mawgn"]
@@ -153,14 +149,6 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_ffj3f"]
 font_size = 24
-
-[sub_resource type="Gradient" id="Gradient_q1juk"]
-offsets = PackedFloat32Array(0.354978, 1)
-colors = PackedColorArray(0.358456, 0.335128, 0.201251, 1, 0.154876, 0.154876, 0.154876, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ww3s"]
-gradient = SubResource("Gradient_q1juk")
-fill_to = Vector2(1, 0.461774)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt8r4"]
 albedo_color = Color(0, 0.662745, 1, 1)
@@ -4301,6 +4289,26 @@ offset_bottom = 339.0
 texture = ExtResource("19_0ikuf")
 expand_mode = 1
 
+[node name="PlayerHeader" type="Node2D" parent="UI"]
+
+[node name="Player" type="Label" parent="UI/PlayerHeader"]
+offset_left = 16.0
+offset_top = 33.0
+offset_right = 319.0
+offset_bottom = 84.0
+text = "Player 1 (Red)
+"
+label_settings = SubResource("LabelSettings_e1opp")
+
+[node name="Money" type="Label" parent="UI/PlayerHeader"]
+offset_left = 14.0
+offset_top = 82.0
+offset_right = 317.0
+offset_bottom = 133.0
+text = "$1000
+"
+label_settings = SubResource("LabelSettings_ffj3f")
+
 [node name="Sound" type="TextureButton" parent="UI"]
 offset_left = 1067.0
 offset_top = 564.0
@@ -4312,36 +4320,6 @@ texture_pressed = ExtResource("22_a8nkj")
 texture_hover = ExtResource("23_c413j")
 ignore_texture_size = true
 stretch_mode = 4
-
-[node name="PlayerHeader" type="Node2D" parent="UI"]
-
-[node name="Player" type="Label" parent="UI/PlayerHeader"]
-z_index = 1
-offset_left = 23.0
-offset_top = 36.0
-offset_right = 326.0
-offset_bottom = 87.0
-text = "Player 1 (Red)
-"
-label_settings = SubResource("LabelSettings_e1opp")
-metadata/_edit_use_anchors_ = true
-
-[node name="Money" type="Label" parent="UI/PlayerHeader"]
-z_index = 1
-offset_left = 14.0
-offset_top = 82.0
-offset_right = 317.0
-offset_bottom = 133.0
-text = "$1000
-"
-label_settings = SubResource("LabelSettings_ffj3f")
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/PlayerHeader"]
-position = Vector2(89.2085, 76.5)
-scale = Vector2(2.44402, 1.32813)
-skew = 0.120428
-texture = SubResource("GradientTexture2D_5ww3s")
 
 [node name="Garage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.69261, 0)
