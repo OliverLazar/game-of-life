@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bn2v17bfxm66r"]
+[gd_scene load_steps=19 format=3 uid="uid://bn2v17bfxm66r"]
 
 [ext_resource type="PackedScene" uid="uid://d3opoi1tw1nyv" path="res://Models/Bus/game_of_life_bus.tscn" id="1_4fw2c"]
 [ext_resource type="PackedScene" uid="uid://cd846y8btsdbp" path="res://Models/Bus/game_of_life_bus red.tscn" id="2_cxsr6"]
@@ -12,6 +12,8 @@
 [ext_resource type="ArrayMesh" uid="uid://thloply4sp1v" path="res://Models/Pegs/tinker.obj" id="10_bjwmg"]
 [ext_resource type="ArrayMesh" uid="uid://cyhu80fopwwvu" path="res://Models/Pegs/Pink.obj" id="11_w4v2o"]
 [ext_resource type="ArrayMesh" uid="uid://bpvyqjvfqyavg" path="res://Models/SpinnerTest/tinker.obj" id="12_tnvre"]
+[ext_resource type="PackedScene" uid="uid://bixqf7331ionc" path="res://Models/low_poly_city.glb" id="13_nx3pi"]
+[ext_resource type="PackedScene" uid="uid://dswgwxy14fgys" path="res://Models/low_poly_public_buildings_pack.glb" id="14_d7867"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_flo6r"]
 size = Vector3(35.6769, 14.2758, 10.728)
@@ -184,3 +186,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_grspd")
 [node name="Tinker" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00837753, 0.999965, 0, -0.999965, 0.00837753, 44.7751, 5.45443, 121.95)
 mesh = ExtResource("12_tnvre")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("13_nx3pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.217, 106.491, 278.543)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("14_d7867")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.916, 129.175, 253.611)
