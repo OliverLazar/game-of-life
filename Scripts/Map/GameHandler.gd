@@ -25,6 +25,7 @@ var Csel = 0
 
 # Topleft UI
 @onready var PlayerInfo = $"UI/PlayerHeader"
+var statusText
 
 # audio
 @onready var audio2 = $"AudioStreamPlayer2"
@@ -84,6 +85,22 @@ func _ready() -> void:
 	SFX = AudioStreamPlayer3D.new()
 	add_child(SFX)
 	#SFX.loop = false
+	
+	statusText = Label.new()
+	statusText.name = "statusText"
+	statusText.text = "Testing"
+	statusText.size = Vector2(557, 112)
+	statusText.position = Vector2(310, 79)
+	statusText.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	statusText.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	
+	var ls = LabelSettings.new()
+	ls.font_size = 50
+	statusText.label_settings = ls
+	$"UI".add_child(statusText)
+	#statusText.label_settings.font_color = Color.
+	
+	statusText.create_tween()
 	
 	PlayerInfo.get_node("Player").visible = false
 	PlayerInfo.get_node("Money").visible = false
@@ -297,6 +314,10 @@ func _process(delta: float) -> void:
 				gameStateChanged = true
 				RollStoage = Roll  # Store the current roll value for use later
 				Roll = 0
+			elif nodeType == "END":
+				print("Player ", currentPlayerID, " reached END")
+				Roll = 0
+				Players[currentPlayerID].Done = true
 
 			# If there are still more moves to make, move to the next square
 			if Roll > 0:
@@ -375,13 +396,17 @@ func nextPlayer():
 	Cooldown = cooldown_endMovement
 	
 	currentPlayerID += 1  # Move to the next player
-	
 	if currentPlayerID >= len(Players):
-		currentPlayerID = 0  # Loop back to the first player if we reach the end
+		currentPlayerID = 0
 	
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
 		currentPlayerID -= 1
+		
+	if Players[currentPlayerID].Done:
+		currentPlayerID += 1  # Move to the next player
+		if currentPlayerID >= len(Players):
+			currentPlayerID = 0
 
 # Start button handler, initializes the game with the selected number of players
 func _start_button():
