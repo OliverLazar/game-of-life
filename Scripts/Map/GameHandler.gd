@@ -191,6 +191,19 @@ func _process(delta: float) -> void:
 			
 			opC.visible = true  # Make option A visible
 			
+		if gameState == 5:
+			if SubEvent == "marriage":
+				SFX.stream = load("res://Media/weddingmarchpiano.mp3")
+				audio2.volume_db = -80
+				if audiostatus: SFX.play()
+				add_child(Players[currentPlayerID].PegTheCar(adultPegs, childPegs))
+				Players[currentPlayerID]._process(delta)
+				await get_tree().create_timer(8).timeout
+				audio2.volume_db = 0
+				nextPlayer()
+				gameState = 1
+				gameStateChanged = true
+			
 		if gameState == 6:
 			SFX.stream = load("res://Media/get_card.mp3")
 			SFX.volume_db = 20
@@ -282,7 +295,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 1
+		num *= 10
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
@@ -310,6 +323,7 @@ func _process(delta: float) -> void:
 				SFX.volume_db = 5
 				if audiostatus: SFX.play()
 			elif nodeType == "stop":
+				SubEvent = node.get_meta("Subevent")
 				gameState = 5  # Transition to stop event
 				gameStateChanged = true
 				Roll = 0

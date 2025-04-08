@@ -63,13 +63,14 @@ func _process(delta: float):
 	for i in range(len(self.pegList)):
 		var x = i % 2
 		var y = floor(i / 2)
-		self.pegList[i].position = self.car.position + Vector3.UP
+		var child = -0 if y > 0 else 0
+		self.pegList[i].position = self.car.position + Vector3.UP*0.1 - Vector3.DOWN*child
 		self.pegList[i].rotation = self.car.rotation + Vector3.RIGHT*deg_to_rad(90)
 		
 		#self.pegList[i].position += self.pegList[i].transform.basis.x*5
 		
-		self.pegList[i].position += -self.pegList[i].transform.basis.x*8.3 - self.pegList[i].transform.basis.z*0.8\
-		 + self.pegList[i].transform.basis.x*5*y - self.pegList[i].transform.basis.z*5*x
+		self.pegList[i].position += -self.pegList[i].transform.basis.x*10\
+		 + self.pegList[i].transform.basis.x*6.4*y - self.pegList[i].transform.basis.z*6.2*x
 
 # Sets the car to the specified Car node, and positions it at the target destination
 func setCar(Car):
