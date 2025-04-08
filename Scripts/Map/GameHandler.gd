@@ -88,9 +88,9 @@ func _ready() -> void:
 	
 	statusText = Label.new()
 	statusText.name = "statusText"
-	statusText.text = "Testing"
+	
 	statusText.size = Vector2(557, 112)
-	statusText.position = Vector2(310, 79)
+	statusText.position = Vector2(300, 20)
 	statusText.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	statusText.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	
@@ -531,9 +531,25 @@ func _optionB():
 			
 			
 func _optionC():
+	
 	Csel = ActionCards[Csel]
 	for type in Csel["types"]:
 		if type == 0: #money
+			var lower_taper_fade = get_tree().create_tween()
+			if Csel["value"] > 0:
+				statusText.text = "+" + str(Csel["value"])
+				statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
+				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+				statusText.label_settings.outline_size = 10
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.play()
+			else:
+				statusText.text = str(Csel["value"])
+				statusText.modulate = Color(1.0, 0.0, 0.0, 1.0)
+				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+				statusText.label_settings.outline_size = 10
+				lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.play()
 			Players[currentPlayerID].Cash += Csel["value"]
 			if Csel["value"] > 0:
 				SFX.stream = load("res://Media/get_money.mp3")
