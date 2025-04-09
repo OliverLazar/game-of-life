@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jrkvpyte4s0v"]
+
+[ext_resource type="PackedScene" uid="uid://dswgwxy14fgys" path="res://Models/low_poly_public_buildings_pack.glb" id="1_lh6ad"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_lh6ad")]

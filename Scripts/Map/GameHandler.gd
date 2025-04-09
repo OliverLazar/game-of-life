@@ -295,7 +295,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 10
+		num *= 1
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
@@ -666,7 +666,7 @@ var RichJobs = [
 	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (4).jpg", "name":"Accountant", "salary":85000},
 	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (5).jpg", "name":"Veterinarian", "salary":95000},
 	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (6).jpg", "name":"Lawyer", "salary":110000},
-	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (7).jpg", "name":"Doctor", "salary":12500}
+	{"path":"res://Cards/CARD TEMPLATE (COLLEGE) (7).jpg", "name":"Doctor", "salary":125000}
 ]
 
 var Housing = [
