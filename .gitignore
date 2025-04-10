@@ -13,3 +13,15 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+EXPORT/export_test.exe
+EXPORT/export_test.pck
+export_test.console.exe
+export_test.exe
+export_test.pck
+export_test.pck
+Scenes/Map2C54.tmp
+Scenes/Map4432.tmp
+Scenes/Map61A6.tmp
+Scenes/MapAFCE.tmp
+export_test.pck
+export_test.pck

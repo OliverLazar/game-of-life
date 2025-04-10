@@ -283,6 +283,17 @@ func _process(delta: float) -> void:
 					else:
 						gameState = 4
 					gameStateChanged = true
+					
+			if SubEvent == "baby":
+				var children = randi_range(1, 3)
+				for i in range(children):
+					add_child(Players[currentPlayerID].PegTheCar(adultPegs, childPegs))
+				if RollStoage > 0:
+					gameState = 2
+					Roll = RollStoage
+				else:
+					gameState = 4
+				gameStateChanged = true
 				
 			if audiostatus: SFX.play(0.4)
 	
