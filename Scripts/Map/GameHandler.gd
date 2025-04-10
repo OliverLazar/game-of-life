@@ -83,7 +83,7 @@ func _ready() -> void:
 	audio2.play()
 	
 	SFX = AudioStreamPlayer3D.new()
-	add_child(SFX)
+	$"MainCamera".add_child(SFX)
 	#SFX.loop = false
 	
 	statusText = Label.new()
@@ -180,6 +180,8 @@ func _process(delta: float) -> void:
 				if audiostatus: SFX.play()
 
 		if gameState == 4:  # Regular event (choose between two options)
+			Players[currentPlayerID].ActionCards += 1
+			
 			SFX.stream = load("res://Media/get_card.mp3")
 			SFX.volume_db = 50
 			if audiostatus: SFX.play(0.4)
@@ -281,18 +283,30 @@ func _process(delta: float) -> void:
 						gameState = 2
 						Roll = RollStoage
 					else:
-						gameState = 4
+						gameState = 1
 					gameStateChanged = true
 					
 			if SubEvent == "baby":
 				var children = randi_range(1, 3)
+				
+				if children == 1:
+					statusText.text = "+1 Child"
+				else:
+					statusText.text = str(children) + " Children"
+				statusText.modulate = Color(0.2, 0.4, 0.8,1.0)
+				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+				statusText.label_settings.outline_size = 10
+				var lower_taper_fade = get_tree().create_tween()
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.2, 0.4, 0.0, 0.0), 2.5)
+				lower_taper_fade.play()
+				
 				for i in range(children):
 					add_child(Players[currentPlayerID].PegTheCar(adultPegs, childPegs))
 				if RollStoage > 0:
 					gameState = 2
 					Roll = RollStoage
 				else:
-					gameState = 4
+					gameState = 1
 				gameStateChanged = true
 				
 			if audiostatus: SFX.play(0.4)
@@ -306,7 +320,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 1
+		num *= 10
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
@@ -331,8 +345,16 @@ func _process(delta: float) -> void:
 			if nodeType == "payday":
 				p.Cash += p.Salary  # Pay the player their salary
 				SFX.stream = load("res://Media/get_money.mp3")
-				SFX.volume_db = 5
+				SFX.volume_db = 50
 				if audiostatus: SFX.play()
+				
+				statusText.text = "+" + str(p.Salary)
+				statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
+				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+				statusText.label_settings.outline_size = 10
+				var lower_taper_fade = get_tree().create_tween()
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.play()
 			elif nodeType == "stop":
 				SubEvent = node.get_meta("Subevent")
 				gameState = 5  # Transition to stop event
@@ -434,7 +456,17 @@ func nextPlayer():
 	
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
-		currentPlayerID -= 1
+		currentPlayerID += 1
+		if currentPlayerID >= len(Players):
+			currentPlayerID = 0
+			
+		statusText.text = "Skip Turn"
+		statusText.modulate = Color(1.0, 0.1, 0.0,1.0)
+		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+		statusText.label_settings.outline_size = 10
+		var lower_taper_fade = get_tree().create_tween()
+		lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.1, 0.0, 0.0), 2.5)
+		lower_taper_fade.play()
 		
 	if Players[currentPlayerID].Done:
 		currentPlayerID += 1  # Move to the next player
@@ -587,19 +619,52 @@ func _optionC():
 		if type == 1: #bonus turn
 			currentPlayerID -= 1
 			currentPlayerTurnAgain = true
+			
+			statusText.text = "Bonus Turn"
+			statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+			lower_taper_fade.play()
 		if type == 2: #miss a turn
 			Players[currentPlayerID].PassTurns += 1
 		if type == 3: #money per child
-			Players[currentPlayerID].Cash += Csel["value"] * max(Players[currentPlayerID].Pegs-2, 0)
+			var a = Csel["value"] * max(Players[currentPlayerID].Pegs-2, 0)
+			Players[currentPlayerID].Cash += a
 			if Players[currentPlayerID].Pegs > 2:
 				SFX.stream = load("res://Media/get_money.mp3")
 				SFX.volume_db = 5
 				if audiostatus: SFX.play()
+				
+				statusText.text = "+" + str(a)
+				statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
+				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+				statusText.label_settings.outline_size = 10
+				var lower_taper_fade = get_tree().create_tween()
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.play()
 		if type == 4: #procreate
 			Players[currentPlayerID].Pegs += 1
-		if type == 5: #adoption
+		if type == 5 and Players[currentPlayerID].Pegs > 2: #adoption
+			statusText.text = "-1 Child ~ Bonus Turn"
+			statusText.modulate = Color(1.0, 0.2, 0.0,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.2, 0.0, 0.0), 2.5)
+			lower_taper_fade.play()
+			
 			Players[currentPlayerID].Disadoption()
 		if type == 6 and Players[currentPlayerID].Pegs > 2: # child = turn
+			statusText.text = "-1 Child"
+			statusText.modulate = Color(1.0, 0.0, 0.0,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2.5)
+			lower_taper_fade.play()
+			
 			Players[currentPlayerID].Disadoption()
 			currentPlayerID -= 1
 			currentPlayerTurnAgain = true
