@@ -465,23 +465,25 @@ func moveCar(player, target, ext):
 	player.setDestination(d, r)
 
 # Switch to the next player in the game
+var nextPlayerLoop = false
 func nextPlayer():
 	var adjust = 0
 	if currentPlayerTurnAgain:
 		adjust = 1
 		currentPlayerTurnAgain = false
 	
-	PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID + adjust].Cash))
+	if not nextPlayerLoop:
+		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID + adjust].Cash))
+		
+		mainCamera.position = Players[currentPlayerID + adjust].car.position + Vector3.UP*5
+		mainCamera.rotation = Players[currentPlayerID + adjust].car.rotation
+		
+		mainCamera.current = true  # Set the camera to follow the current player's car
+		opA.visible = false  # Hide options A and B
+		opB.visible = false
+		opC.visible = false
 	
-	mainCamera.position = Players[currentPlayerID + adjust].car.position + Vector3.UP*5
-	mainCamera.rotation = Players[currentPlayerID + adjust].car.rotation
-	
-	mainCamera.current = true  # Set the camera to follow the current player's car
-	opA.visible = false  # Hide options A and B
-	opB.visible = false
-	opC.visible = false
-	
-	Cooldown = cooldown_endMovement
+		Cooldown = cooldown_endMovement
 	
 	currentPlayerID += 1  # Move to the next player
 	if currentPlayerID >= len(Players):
@@ -490,9 +492,6 @@ func nextPlayer():
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
 		statusText.text = "Skip Player "+str((currentPlayerID+1)%len(Players))
-		currentPlayerID += 1
-		if currentPlayerID >= len(Players):
-			currentPlayerID = 0
 
 		statusText.modulate = Color(1.0, 0.1, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
@@ -501,10 +500,13 @@ func nextPlayer():
 		lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.1, 0.0, 0.0), 2)
 		lower_taper_fade.play()
 		
-	if Players[currentPlayerID].Done:
-		currentPlayerID += 1  # Move to the next player
-		if currentPlayerID >= len(Players):
-			currentPlayerID = 0
+		nextPlayer()
+	elif Players[currentPlayerID].Done:
+		#currentPlayerID += 1  # Move to the next player
+		Players[currentPlayerID].Cash += round(Players[currentPlayerID].Salary*0.30)
+		nextPlayer()
+		
+	nextPlayerLoop = false
 
 # Start button handler, initializes the game with the selected number of players
 func _start_button():
@@ -579,6 +581,7 @@ func _optionA():
 			Players[currentPlayerID].spotExt = BlueExtA
 		if SubEvent == "house":
 			Players[currentPlayerID].Cash -= Housing[BlueExtA]["price"]
+			Players[currentPlayerID].HouseValue =Housing[BlueExtA]["price"]
 			statusText.text = "-" + str(Housing[BlueExtA]["price"])
 			statusText.modulate = Color(1.0, 0.0, 0.0,1.0)
 			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
@@ -592,6 +595,10 @@ func _optionA():
 			Players[currentPlayerID].Done = true
 			Roll = 0
 			RollStoage = 0
+			
+			Players[currentPlayerID].NET += (Players[currentPlayerID].Pegs-2)*30000
+			Players[currentPlayerID].NET += round(Players[currentPlayerID].HouseValue*1.25)
+			Players[currentPlayerID].NET += Players[currentPlayerID].ActionCards * 5000
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -622,6 +629,7 @@ func _optionB():
 			Players[currentPlayerID].spotExt = BlueExtB
 		if SubEvent == "house":
 			Players[currentPlayerID].Cash -= Housing[BlueExtB]["price"]
+			Players[currentPlayerID].HouseValue =Housing[BlueExtB]["price"]
 			statusText.text = "-" + str(Housing[BlueExtB]["price"])
 			statusText.modulate = Color(1.0, 0.0, 0.0,1.0)
 			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
@@ -629,6 +637,16 @@ func _optionB():
 			var lower_taper_fade = get_tree().create_tween()
 			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
+		if SubEvent == "end":
+			moveCar(Players[currentPlayerID], RichEnd, "rich")
+			RichEnd += 1
+			Players[currentPlayerID].Done = true
+			Roll = 0
+			RollStoage = 0
+			
+			Players[currentPlayerID].NET += (Players[currentPlayerID].Pegs-2)*15000
+			Players[currentPlayerID].NET += round(Players[currentPlayerID].HouseValue*2)
+			Players[currentPlayerID].NET += Players[currentPlayerID].ActionCards * 5000
 			
 		if RollStoage > 0:
 			Roll = RollStoage

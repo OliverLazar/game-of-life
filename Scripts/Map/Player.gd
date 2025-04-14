@@ -35,6 +35,8 @@ var Job = "None"  # The player's current job, initially set to "None"
 var PassTurns = 0
 var Done = false
 var ActionCards = 0
+var HouseValue = 0
+var NET = 0
 
 # Called when the player node is ready and added to the scene
 func _ready():
