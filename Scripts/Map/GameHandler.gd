@@ -462,7 +462,7 @@ func nextPlayer():
 		currentPlayerID += 1
 		if currentPlayerID >= len(Players):
 			currentPlayerID = 0
-			
+			#
 		statusText.text = "Skip Turn"
 		statusText.modulate = Color(1.0, 0.1, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
