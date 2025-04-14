@@ -291,8 +291,11 @@ func _process(delta: float) -> void:
 				
 				if children == 1:
 					statusText.text = "+1 Child"
+				elif children == 2:
+					statusText.text = "Twins!"
 				else:
-					statusText.text = str(children) + " Children"
+					statusText.text = "Triplets!"
+					
 				statusText.modulate = Color(0.2, 0.4, 0.8,1.0)
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
