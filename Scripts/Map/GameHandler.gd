@@ -80,6 +80,7 @@ var gameStateChanged = false  # Flag to indicate if the game state has changed
 # 4 -> regular square cards (yellow)
 # 5 -> stop sign event (red)
 # 6 -> branch selection (blue)
+# 7 -> Game Over
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -120,14 +121,7 @@ func _ready() -> void:
 	mainCamera.current = true  # Set the main camera as the active camera
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var gamedone = true
-	for p in Players:
-		if not p.Done:
-			gamedone = false
-	if gamedone:
-		print("Game Over")
-	
+func _process(delta: float) -> void:	
 	# Audio
 	if sound_button and sound_button.button_pressed and not has_processed:
 		if audiostatus == true and audio2.playing == true:
@@ -139,10 +133,19 @@ func _process(delta: float) -> void:
 			audio2.playing = true
 			audiostatus = true
 			has_processed = false
-	
+			
 	if Cooldown:
 		Cooldown -= 1
 		return
+		
+	var gamedone = len(Players) > 0 and not gameState == 7
+	for p in Players:
+		if not p.Done:
+			gamedone = false
+	if gamedone:
+		print("Game Over")
+		gameState = 7
+		gameStateChanged = true
 		
 	if len(Players) - 1 >= currentPlayerID:
 		PlayerInfo.get_node("Money").set_text("$" + str(Players[currentPlayerID].Cash))
@@ -466,7 +469,12 @@ func moveCar(player, target, ext):
 
 # Switch to the next player in the game
 var nextPlayerLoop = false
+var depth = 0
 func nextPlayer():
+	depth += 1
+	if depth == 5:
+		return
+	
 	var adjust = 0
 	if currentPlayerTurnAgain:
 		adjust = 1
@@ -482,8 +490,6 @@ func nextPlayer():
 		opA.visible = false  # Hide options A and B
 		opB.visible = false
 		opC.visible = false
-	
-		Cooldown = cooldown_endMovement
 	
 	currentPlayerID += 1  # Move to the next player
 	if currentPlayerID >= len(Players):
@@ -507,6 +513,8 @@ func nextPlayer():
 		nextPlayer()
 		
 	nextPlayerLoop = false
+	depth = 0
+	Cooldown = cooldown_endMovement
 
 # Start button handler, initializes the game with the selected number of players
 func _start_button():
