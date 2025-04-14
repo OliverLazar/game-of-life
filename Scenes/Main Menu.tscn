@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/Main Menu/playButton.gd" id="2_o2qaw"]
 [ext_resource type="Texture2D" uid="uid://8v8wrp3q4nrt" path="res://Textures/Instructions.png" id="3_8w3te"]
 [ext_resource type="Texture2D" uid="uid://cyiqqrmn0uxtu" path="res://Textures/Unmuted.png" id="3_cmqnm"]
-[ext_resource type="Texture2D" uid="uid://j86epuhe58k1" path="res://Textures/Loading.png" id="3_mtl7s"]
 [ext_resource type="Texture2D" uid="uid://b2rabrah0t6bv" path="res://Textures/Muted.png" id="4_0xl8r"]
 [ext_resource type="AudioStream" uid="uid://d3l6s51tgyldd" path="res://Media/powerUp.wav" id="4_cjtds"]
 [ext_resource type="AudioStream" uid="uid://dj0r8ag25qqrj" path="res://Media/GOL Menu Music.mp3" id="5_rgtte"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dm3la37f4dc07" path="res://Textures/H0.png" id="7_of58b"]
 [ext_resource type="Texture2D" uid="uid://33eo1287pic2" path="res://Textures/H1.png" id="7_qlq3a"]
 [ext_resource type="Texture2D" uid="uid://nmmgmcnkcq6f" path="res://Textures/H2.png" id="8_cf6ll"]
+[ext_resource type="Texture2D" uid="uid://cphcb0p6kob1g" path="res://Textures/LoadingV2.png" id="10_k2p8f"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -96,7 +96,7 @@ stretch_mode = 4
 visible = false
 position = Vector2(576.25, 324.188)
 scale = Vector2(0.990112, 0.987232)
-texture = ExtResource("3_mtl7s")
+texture = ExtResource("10_k2p8f")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cjtds")
