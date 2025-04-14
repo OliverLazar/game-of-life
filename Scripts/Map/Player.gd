@@ -11,6 +11,9 @@ var spot = 0
 # Extended spot info, likely used for more specific location data
 var spotExt = ""
 
+var Target = 0
+var PathChoice = ""
+
 # The target destination for the car's position (Vector3 for 3D coordinates)
 var pDestination = Vector3.ZERO
 
