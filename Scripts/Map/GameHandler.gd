@@ -121,6 +121,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var gamedone = true
+	for p in Players:
+		if not p.Done:
+			gamedone = false
+	if gamedone:
+		print("Game Over")
+	
 	# Audio
 	if sound_button and sound_button.button_pressed and not has_processed:
 		if audiostatus == true and audio2.playing == true:
@@ -482,7 +489,7 @@ func nextPlayer():
 	
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
-		statusText.text = "Skip Player "+str(currentPlayerID)
+		statusText.text = "Skip Player "+str((currentPlayerID+1)%len(Players))
 		currentPlayerID += 1
 		if currentPlayerID >= len(Players):
 			currentPlayerID = 0
@@ -580,7 +587,11 @@ func _optionA():
 			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
 		if SubEvent == "end":
-			pass
+			moveCar(Players[currentPlayerID], PoorEnd, "poor")
+			PoorEnd += 1
+			Players[currentPlayerID].Done = true
+			Roll = 0
+			RollStoage = 0
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -630,7 +641,7 @@ func _optionB():
 			
 			
 func _optionC():
-	
+	Players[currentPlayerID].ActionCards += 1
 	Csel = ActionCards[Csel]
 	for type in Csel["types"]:
 		if type == 0: #money
