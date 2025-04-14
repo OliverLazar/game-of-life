@@ -44,8 +44,8 @@ var cooldown_endMovement = 60*2  # Cooldown time before ending movement
 var currentPlayerID: int = 0  # Tracks the current player ID (index)
 var Roll = 0  # Current roll value for the dice (spinner)
 var RollStoage = 0  # Stores the roll value during a special blue event
-var Target = 0  # Target destination for the current player's movement
-var PathChoice = ""  # Stores the path choice for the player (for special squares)
+#var Target = 0  # Target destination for the current player's movement
+#var PathChoice = ""  # Stores the path choice for the player (for special squares)
 var d = Vector3.ZERO  # Target position for the car to move to
 var r = Vector3.ZERO  # Target rotation for the car
 
@@ -63,6 +63,9 @@ var currentPlayerTurnAgain = false # to fix camera bug on bonus turn
 
 @onready var adultPegs = [abp, app]
 @onready var childPegs = [cbp, cpp]
+
+var PoorEnd = 1
+var RichEnd = 1
 
 # Game state and player tracking variables
 var Players = []  # List of all the player objects
@@ -163,14 +166,19 @@ func _process(delta: float) -> void:
 			
 			Players[currentPlayerID].car.get_node("carCamera").current = true  # Set the player's car camera active
 			
-			var n = Map.get_node(str(Target)+str(PathChoice))
+			#Target = Players[currentPlayerID].spot
+			#PathChoice = Players[currentPlayerID].spotExt
+			#print("-", currentPlayerID, " ", Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)
+			
+			var n = Map.get_node(str(Players[currentPlayerID].Target)+str(Players[currentPlayerID].PathChoice))
 			if n.has_meta("teleport"):
-				Target = n.get_meta("teleport")
-				PathChoice = n.get_meta("teleportExt")
+				Players[currentPlayerID].Target = n.get_meta("teleport")
+				Players[currentPlayerID].PathChoice = n.get_meta("teleportExt")
 			else:
-				Target = Players[currentPlayerID].spot + 1  # Set the target spot for the player's movement
-				PathChoice = Players[currentPlayerID].spotExt  # Get the path choice from the player
-			moveCar(Players[currentPlayerID], Target, PathChoice)  # Move the car to the target
+				Players[currentPlayerID].Target = Players[currentPlayerID].spot + 1  # Set the target spot for the player's movement
+				Players[currentPlayerID].PathChoice = Players[currentPlayerID].spotExt  # Get the path choice from the player
+			#print(currentPlayerID, " ", Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)
+			moveCar(Players[currentPlayerID], Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)  # Move the car to the target
 			Roll -= 1  # Decrease roll after move
 			gameState = 3  # Wait for the car to finish moving
 			
@@ -251,7 +259,6 @@ func _process(delta: float) -> void:
 				
 				opA.visible = true  # Make option A visible
 				opB.visible = true  # Make option B visible
-			
 			if SubEvent == "house":
 				var run = false
 				
@@ -300,7 +307,7 @@ func _process(delta: float) -> void:
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
 				var lower_taper_fade = get_tree().create_tween()
-				lower_taper_fade.tween_property(statusText, "modulate", Color(0.2, 0.4, 0.0, 0.0), 2.5)
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.2, 0.4, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 				
 				for i in range(children):
@@ -311,6 +318,13 @@ func _process(delta: float) -> void:
 				else:
 					gameState = 1
 				gameStateChanged = true
+			if SubEvent == "end":
+				# Set the text and value of each option
+				opA.get_node("image").texture = load("res://Media/Left.jpg")
+				opB.get_node("image").texture = load("res://Media/Right.jpg")
+				
+				opA.visible = true  # Make option A visible
+				opB.visible = true  # Make option B visible
 				
 			if audiostatus: SFX.play(0.4)
 	
@@ -323,7 +337,8 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 10
+		num *= 100
+		#num = 14
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
@@ -335,6 +350,14 @@ func _process(delta: float) -> void:
 			gameState = 2  # Start the movement phase
 			gameStateChanged = true
 			Cooldown = 60
+			
+			statusText.text = str(Roll)
+			statusText.modulate = Color(0.9, 0.9, 0.9,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(0.9, 0.9, 0.9, 0.0), 2)
+			lower_taper_fade.play()
 			
 
 	# Handle movement and game state changes during the movement phase
@@ -356,7 +379,7 @@ func _process(delta: float) -> void:
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
 				var lower_taper_fade = get_tree().create_tween()
-				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 			elif nodeType == "stop":
 				SubEvent = node.get_meta("Subevent")
@@ -459,16 +482,16 @@ func nextPlayer():
 	
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
+		statusText.text = "Skip Player "+str(currentPlayerID)
 		currentPlayerID += 1
 		if currentPlayerID >= len(Players):
 			currentPlayerID = 0
-			#
-		statusText.text = "Skip Turn"
+
 		statusText.modulate = Color(1.0, 0.1, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 		statusText.label_settings.outline_size = 10
 		var lower_taper_fade = get_tree().create_tween()
-		lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.1, 0.0, 0.0), 2.5)
+		lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.1, 0.0, 0.0), 2)
 		lower_taper_fade.play()
 		
 	if Players[currentPlayerID].Done:
@@ -501,7 +524,7 @@ func _start_button():
 		pp.setCar(car)  # Set the car for the player
 		Players.append(pp)  # Add the player to the list of players
 		$"PLayers".add_child(pp)  # Add the player to the Players group
-		moveCar(pp, Target, PathChoice)  # Move the player to the starting point
+		moveCar(pp, Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)  # Move the player to the starting point
 
 	# Animate the camera to the start position
 	var cameraTween1 = get_tree().create_tween()
@@ -549,6 +572,15 @@ func _optionA():
 			Players[currentPlayerID].spotExt = BlueExtA
 		if SubEvent == "house":
 			Players[currentPlayerID].Cash -= Housing[BlueExtA]["price"]
+			statusText.text = "-" + str(Housing[BlueExtA]["price"])
+			statusText.modulate = Color(1.0, 0.0, 0.0,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
+			lower_taper_fade.play()
+		if SubEvent == "end":
+			pass
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -579,6 +611,13 @@ func _optionB():
 			Players[currentPlayerID].spotExt = BlueExtB
 		if SubEvent == "house":
 			Players[currentPlayerID].Cash -= Housing[BlueExtB]["price"]
+			statusText.text = "-" + str(Housing[BlueExtB]["price"])
+			statusText.modulate = Color(1.0, 0.0, 0.0,1.0)
+			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+			statusText.label_settings.outline_size = 10
+			var lower_taper_fade = get_tree().create_tween()
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
+			lower_taper_fade.play()
 			
 		if RollStoage > 0:
 			Roll = RollStoage
@@ -601,14 +640,14 @@ func _optionC():
 				statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
-				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 			else:
 				statusText.text = str(Csel["value"])
 				statusText.modulate = Color(1.0, 0.0, 0.0, 1.0)
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
-				lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 			Players[currentPlayerID].Cash += Csel["value"]
 			if Csel["value"] > 0:
@@ -628,7 +667,7 @@ func _optionC():
 			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 			statusText.label_settings.outline_size = 10
 			var lower_taper_fade = get_tree().create_tween()
-			lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+			lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
 		if type == 2: #miss a turn
 			Players[currentPlayerID].PassTurns += 1
@@ -645,7 +684,7 @@ func _optionC():
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
 				var lower_taper_fade = get_tree().create_tween()
-				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2.5)
+				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 		if type == 4: #procreate
 			Players[currentPlayerID].Pegs += 1
@@ -655,7 +694,7 @@ func _optionC():
 			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 			statusText.label_settings.outline_size = 10
 			var lower_taper_fade = get_tree().create_tween()
-			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.2, 0.0, 0.0), 2.5)
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.2, 0.0, 0.0), 2)
 			lower_taper_fade.play()
 			
 			Players[currentPlayerID].Disadoption()
@@ -665,7 +704,7 @@ func _optionC():
 			statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 			statusText.label_settings.outline_size = 10
 			var lower_taper_fade = get_tree().create_tween()
-			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2.5)
+			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
 			
 			Players[currentPlayerID].Disadoption()
