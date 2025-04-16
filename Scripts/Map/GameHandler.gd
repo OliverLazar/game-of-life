@@ -713,7 +713,7 @@ func _optionC():
 				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 			else:
-				statusText.text = "-" + str(Csel["value"])
+				statusText.text = str(Csel["value"])
 				statusText.modulate = Color(1.0, 0.0, 0.0, 1.0)
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
