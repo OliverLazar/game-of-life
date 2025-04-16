@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://fmnbdta0j0x3"
-path="res://.godot/imported/trophy_-_low_poly_-_game_ready.glb-7a1de26ac224bddf3d35a274539c169c.scn"
+path="res://.godot/imported/trophy_-_low_poly_-_game_ready.glb-d55836cebc1960c1d28763a8c92c6ede.scn"
 
 [deps]
 
-source_file="res://Models/stylized bush/trophy_-_low_poly_-_game_ready.glb"
-dest_files=["res://.godot/imported/trophy_-_low_poly_-_game_ready.glb-7a1de26ac224bddf3d35a274539c169c.scn"]
+source_file="res://Models/trophy_-_low_poly_-_game_ready.glb"
+dest_files=["res://.godot/imported/trophy_-_low_poly_-_game_ready.glb-d55836cebc1960c1d28763a8c92c6ede.scn"]
 
 [params]
 
