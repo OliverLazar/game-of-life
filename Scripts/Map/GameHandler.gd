@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var mainMenu = "res://Scenes/Main Menu.tscn"
+
 # Node references to various elements in the scene, initialized via @onready
 @onready var Map = $"NodeMapMath"  # The map that contains nodes for game movement
 @onready var testCar = $"Game of Life Bus"  # Reference to a test car, may not be used
@@ -120,6 +122,9 @@ func _ready() -> void:
 	opC.pressed.connect(self._optionC)
 	mainCamera.current = true  # Set the main camera as the active camera
 
+func sortNet(p):
+	return p.NET
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
 	# Audio
@@ -144,6 +149,26 @@ func _process(delta: float) -> void:
 			gamedone = false
 	if gamedone:
 		print("Game Over")
+		
+		Players.sort_custom(sortNet)
+		for i in range(len(Players)):
+			moveCar(Players[i], i+1, "Podium")
+			
+		var cameraTween1 = get_tree().create_tween()
+		var cameraTween2 = get_tree().create_tween()
+		cameraTween1.tween_property(mainCamera, "position", $"endCamera".position, 1.5)
+		cameraTween2.tween_property(mainCamera, "rotation", $"endCamera".rotation, 1.5)
+		cameraTween1.play()
+		cameraTween2.play()
+		
+		statusText.text = "Player "+str((currentPlayerID+1))+" Won!"
+		statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
+		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
+		statusText.label_settings.outline_size = 10
+		var lower_taper_fade = get_tree().create_tween()
+		lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 10)
+		lower_taper_fade.play()
+		
 		gameState = 7
 		gameStateChanged = true
 		
@@ -347,7 +372,7 @@ func _process(delta: float) -> void:
 		if num == 0: num = 10
 		if num == -1: num = 9
 		
-		num *= 100
+		num *= 1
 		#num = 14
 		
 		if num != spinTickNumberTracker:
@@ -437,6 +462,8 @@ func _input(event: InputEvent) -> void:
 			#gameStateChanged = true
 			
 			spinRotVel = 20.0 + randf_range(-1.5, 1.5)
+		if gameState == 7:
+			get_tree().change_scene_to_file(mainMenu)
 
 # Move the car to the target position and rotation
 func moveCar(player, target, ext):
@@ -497,7 +524,7 @@ func nextPlayer():
 	
 	if Players[currentPlayerID].PassTurns > 0:
 		Players[currentPlayerID].PassTurns -= 1
-		statusText.text = "Skip Player "+str((currentPlayerID+1)%len(Players))
+		statusText.text = "Skip Player "+str((currentPlayerID+1))
 
 		statusText.modulate = Color(1.0, 0.1, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
@@ -509,7 +536,7 @@ func nextPlayer():
 		nextPlayer()
 	elif Players[currentPlayerID].Done:
 		#currentPlayerID += 1  # Move to the next player
-		Players[currentPlayerID].Cash += round(Players[currentPlayerID].Salary*0.30)
+		Players[currentPlayerID].NET += round(Players[currentPlayerID].Salary*0.30)
 		nextPlayer()
 		
 	nextPlayerLoop = false
@@ -597,6 +624,9 @@ func _optionA():
 			var lower_taper_fade = get_tree().create_tween()
 			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
+			SFX.stream = load("res://Media/lose_money.mp3")
+			SFX.volume_db = 5
+			if audiostatus: SFX.play()
 		if SubEvent == "end":
 			moveCar(Players[currentPlayerID], PoorEnd, "poor")
 			PoorEnd += 1
@@ -645,6 +675,9 @@ func _optionB():
 			var lower_taper_fade = get_tree().create_tween()
 			lower_taper_fade.tween_property(statusText, "modulate", Color(1.0, 0.0, 0.0, 0.0), 2)
 			lower_taper_fade.play()
+			SFX.stream = load("res://Media/lose_money.mp3")
+			SFX.volume_db = 5
+			if audiostatus: SFX.play()
 		if SubEvent == "end":
 			moveCar(Players[currentPlayerID], RichEnd, "rich")
 			RichEnd += 1
@@ -680,7 +713,7 @@ func _optionC():
 				lower_taper_fade.tween_property(statusText, "modulate", Color(0.0, 1.0, 0.0, 0.0), 2)
 				lower_taper_fade.play()
 			else:
-				statusText.text = str(Csel["value"])
+				statusText.text = "-" + str(Csel["value"])
 				statusText.modulate = Color(1.0, 0.0, 0.0, 1.0)
 				statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 				statusText.label_settings.outline_size = 10
