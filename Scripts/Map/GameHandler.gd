@@ -376,7 +376,7 @@ func _process(delta: float) -> void:
 		if num == -1: num = 9
 		
 		num *= 1
-		num = 1
+		#num = 1
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
