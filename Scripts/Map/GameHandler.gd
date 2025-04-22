@@ -123,7 +123,7 @@ func _ready() -> void:
 	mainCamera.current = true  # Set the main camera as the active camera
 
 func sortNet(p):
-	return p.NET
+	return -p.NET
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
