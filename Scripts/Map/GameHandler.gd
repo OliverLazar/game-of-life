@@ -123,7 +123,7 @@ func _ready() -> void:
 	mainCamera.current = true  # Set the main camera as the active camera
 
 func sortNet(p):
-	return p.NET
+	return -p.NET
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
@@ -147,7 +147,7 @@ func _process(delta: float) -> void:
 	for p in Players:
 		if not p.Done:
 			gamedone = false
-	if gamedone:
+	if gamedone:                  # DANIEL EXPLAIN CODE SECTION
 		print("Game Over")
 		
 		Players.sort_custom(sortNet)
@@ -161,7 +161,7 @@ func _process(delta: float) -> void:
 		cameraTween1.play()
 		cameraTween2.play()
 		
-		statusText.text = "Player "+str((currentPlayerID+1))+" Won!"
+		statusText.text = "Player "+str((Players[0].id+1))+" Won!"
 		statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 		statusText.label_settings.outline_size = 10
@@ -326,6 +326,7 @@ func _process(delta: float) -> void:
 						Roll = RollStoage
 					else:
 						gameState = 1
+						nextPlayer()
 					gameStateChanged = true
 					
 			if SubEvent == "baby":
@@ -347,11 +348,13 @@ func _process(delta: float) -> void:
 				
 				for i in range(children):
 					add_child(Players[currentPlayerID].PegTheCar(adultPegs, childPegs))
+				
 				if RollStoage > 0:
 					gameState = 2
 					Roll = RollStoage
 				else:
 					gameState = 1
+					nextPlayer()
 				gameStateChanged = true
 			if SubEvent == "end":
 				# Set the text and value of each option
@@ -373,7 +376,7 @@ func _process(delta: float) -> void:
 		if num == -1: num = 9
 		
 		num *= 1
-		#num = 14
+		#num = 1
 		
 		if num != spinTickNumberTracker:
 			if audiostatus: spinnerPlayer.play(0.6)
@@ -381,6 +384,7 @@ func _process(delta: float) -> void:
 		
 		if spinRotVel <= 0:
 			print(num)
+			spinRotVel = 0
 			Roll = num
 			gameState = 2  # Start the movement phase
 			gameStateChanged = true
@@ -566,6 +570,7 @@ func _start_button():
 		car_possbile.pop_at(n)
 		add_child(car)  # Add the car to the scene
 		pp.setCar(car)  # Set the car for the player
+		pp.id = p
 		Players.append(pp)  # Add the player to the list of players
 		$"PLayers".add_child(pp)  # Add the player to the Players group
 		moveCar(pp, Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)  # Move the player to the starting point
@@ -699,7 +704,7 @@ func _optionB():
 			nextPlayer()  # Move to the next player
 			
 			
-func _optionC():
+func _optionC():                # OLIVER SECTION CODE EXPLAIN
 	Players[currentPlayerID].ActionCards += 1
 	Csel = ActionCards[Csel]
 	for type in Csel["types"]:
@@ -816,7 +821,7 @@ var ActionCards = [
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (15).jpg", "value":100000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (16).jpg", "value":100000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (17).jpg", "value":30000, "types":[3]},
-	{"path":"res://Cards/CARD TEMPLATE (ACTION) (18).jpg", "value":35000, "types":[3]},
+	{"path":"res://Cards/CARD TEMPLATE (ACTION) (18).jpg", "value":50000, "types":[3]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (19).jpg", "value":-5000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (20).jpg", "value":-10000, "types":[0]},
 	{"path":"res://Cards/CARD TEMPLATE (ACTION) (21).jpg", "value":-10000, "types":[0]},
