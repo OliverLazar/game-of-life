@@ -37,6 +37,7 @@ var Done = false
 var ActionCards = 0
 var HouseValue = 0
 var NET = 0
+var id = 0
 
 # Called when the player node is ready and added to the scene
 func _ready():

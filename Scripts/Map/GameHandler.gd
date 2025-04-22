@@ -161,7 +161,7 @@ func _process(delta: float) -> void:
 		cameraTween1.play()
 		cameraTween2.play()
 		
-		statusText.text = "Player "+str((currentPlayerID+1))+" Won!"
+		statusText.text = "Player "+str((Players[0].id+1))+" Won!"
 		statusText.modulate = Color(0.0, 1.0, 0.0,1.0)
 		statusText.label_settings.outline_color = Color(0.0,0.0,0.0,1.0)
 		statusText.label_settings.outline_size = 10
@@ -566,6 +566,7 @@ func _start_button():
 		car_possbile.pop_at(n)
 		add_child(car)  # Add the car to the scene
 		pp.setCar(car)  # Set the car for the player
+		pp.id = p
 		Players.append(pp)  # Add the player to the list of players
 		$"PLayers".add_child(pp)  # Add the player to the Players group
 		moveCar(pp, Players[currentPlayerID].Target, Players[currentPlayerID].PathChoice)  # Move the player to the starting point
