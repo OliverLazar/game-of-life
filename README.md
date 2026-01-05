@@ -1,7 +1,5 @@
 # Game of Life
 
-![Game of Life Logo](The_Game_of_Life_LOGO.webp)
-
 A digital adaptation of the classic board game "The Game of Life" built with Godot Engine 4.3.
 
 ## About
